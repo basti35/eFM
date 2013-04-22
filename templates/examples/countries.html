@@ -1,0 +1,49 @@
+{% for country in countries %}
+    <table>
+    {% for city in country.city_list %}
+        <tr>
+        <td>Country #{{ forloop.parentloop.counter }}</td>
+        <td>City #{{ forloop.counter }}</td>
+        <td>{{ city }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endfor %}
+
+
+<!-- examples using template tags -->
+
+
+{% ifequal user currentuser %}
+    <h1>Welcome!</h1>
+{% endifequal %}
+
+
+
+{% ifequal section 'sitenews' %}
+    <h1>Site News</h1>
+{% endifequal %}
+
+{% ifequal section "community" %}
+    <h1>Community</h1>
+{% endifequal %}
+
+
+
+{% ifequal section 'sitenews' %}
+    <h1>Site News</h1>
+{% else %}
+    <h1>No News Here</h1>
+{% endifequal %}
+
+
+
+
+<!-- commenting django style -->
+
+{# This is a comment #}
+
+{% comment %}
+This is a
+multi-line comment.
+{% endcomment %}

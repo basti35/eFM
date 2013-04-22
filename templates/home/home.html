@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+    <!--Left column content-->
+      <div class="span3">
+
+        <!-- Weather -->
+        <div class="well">
+            <p class="lead">Outdoor</p>
+	        <h1>12 C</h1>
+	      </div>
+
+        <!-- Temperature -->
+        <div class="well">
+	      <div class="">
+	        <p class="lead">Indoor</p>
+	        <h1>18 C</h1>
+	      </div>
+        </div>
+
+      </div>
+
+    <!--Center column content-->
+      <div class="span5">
+
+        <!-- Notices -->
+        <div class="well">
+	        <p class="lead">Notice</p>
+	        <p class="">Message</p>
+	        <p class="">Message</p>
+	        <p class="">Message</p>
+	        <p class="">Message</p>
+	        <p class="">Message</p>
+        </div>
+
+      </div>
+
+    <!--Right Column content-->
+    <div class="span4">
+
+      <!-- Welcome -->
+      <div class="">
+	    <p class="lead">-datetime-</p>
+	    <h2 class="muted">Good Morning, Jina!</h2>
+      </div>
+
+      <!-- Today -->
+      <div class="well">
+	      <p class="lead">Today</p>
+	      <p class="">Message</p>
+        <p class="">Message</p>
+        <p class="">Message</p>
+      </div>
+
+    </div>
+
+
+{% endblock %}
