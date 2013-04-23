@@ -4,7 +4,7 @@ import os.path
 
 """ always use non-absolute paths like this:
 DIR = (
-    os.path.join(os.path.dirname(__file__), '..', 'folder').replace('\\','/'),
+    os.path.join(os.path.dirname(__file__), 'folder').replace('\\','/'),
 )
 """
 
@@ -12,7 +12,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('Joni Lahde', 'joni.lahde@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -20,7 +20,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        # replaced this absolut path: 'NAME': 'C:/Users/joni.lahde/Documents/GitHub/eFM/ecosystem/sqlite3.db', by:
+        # replace this absolut path: 'NAME': 'C:/Users/joni.lahde/Documents/GitHub/eFM/ecosystem/sqlite3.db', by:
         'NAME': os.path.join(os.path.dirname(__file__), 'sqlite3.db').replace('\\','/'), # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'demoapp',

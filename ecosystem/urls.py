@@ -1,20 +1,32 @@
-# from django.conf.urls import patterns, include, url
-from django.conf.urls import *
+from django.conf.urls import patterns, include, url
 from ecosystem.views import *
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    (r'^$', redirects), # redirects to home
 
-    url(r'^$', redirects), # redirects to home
+    (r'^home/$', home),
+    (r'^monitor/$', monitor),
+    (r'^control/$', control),
+    (r'^services/$', services),
 
-    url(r'^home/$', home),
-    url(r'^monitor/$', monitor),
-    url(r'^control/$', control),
-    url(r'^services/$', services),
+    # Examples:
+    # url(r'^$', my_homepage_view),
+    # url(r'^$', 'ecosystem.views.home', name='home'),
+    # url(r'^ecosystem/', include('ecosystem.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    (r'^admin/', include(admin.site.urls)),
+
+
+)
 
 """
     #EXAMPLE PAGES by Joni
@@ -29,17 +41,4 @@ urlpatterns = patterns('',
     url(r'^current/$', current_time), # using render()
     url(r'^extended/$', demo_time),
     
-    # Examples:
-	# url(r'^$', my_homepage_view),
-    # url(r'^$', 'ecosystem.views.home', name='home'),
-    # url(r'^ecosystem/', include('ecosystem.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-
 """
-
-)
