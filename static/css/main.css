@@ -1,0 +1,25 @@
+#slider {
+	margin:0 auto;
+	float:none;
+}
+
+#appbox {
+	max-height:50px;
+}
+
+#nuoli_oik {
+	position:relative;
+	left:-20px;
+}
+
+.valko {
+background-color:#fff;
+}
+
+.btn {
+margin:10px 0 0 0;
+}
+
+.tila {
+margin:0 3px 0 0;
+}

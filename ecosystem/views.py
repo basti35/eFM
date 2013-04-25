@@ -25,7 +25,16 @@ def control(request):
 
 # services page view
 def services(request):
-    return render(request, 'services/services.html', {'title': 'Services' } )
+    applist1 = range(1, 19)
+    applist2 = range(20, 37)
+    return render(request, 'services/services.html', {'title': 'Services', 'applist1': applist1, 'applist2': applist2, } )
+
+
+
+# blank test view
+def test(request):
+    return render(request, 'test.html' )
+
 
 
 

@@ -1,18 +1,12 @@
-from django.db import models
+#from django.db import models
 
 #from wemo import on, off, get
 
 
 
 
-
-
-
-
-
-
 """
-EXAMPLE CLASSES
+#EXAMPLE CLASSES
 # example that shows how easily to deal with database by using python classes only
 
 class Publisher(models.Model):
@@ -39,6 +33,5 @@ class Book(models.Model):
     publication_date = models.DateField()
     def __unicode__(self):
         return self.title
-
-
 """
+

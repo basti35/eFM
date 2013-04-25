@@ -14,6 +14,11 @@ urlpatterns = patterns('',
     (r'^control/$', control),
     (r'^services/$', services),
 
+    (r'^test/$', test),
+
+
+    #(r'^testpage/$', demoapp.func),
+
     # Examples:
     # url(r'^$', my_homepage_view),
     # url(r'^$', 'ecosystem.views.home', name='home'),

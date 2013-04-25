@@ -2,12 +2,6 @@ eFM
 ===
 Django framework project for eFM web app prototype
 
-Key features to be done for Friday:
-- Monitor: "Faked" temperature tracking by using animated gif (temp changing 21.3-21.4 C every 7 secs)
-- Monitor: Embedded web cam stream
-- Control: locally used wemo.py to control Belkin (light control)
-- Service request: Message to social media (by using email-ifttt-fb)
-
 =======================================================================
 
 To use set up this project on your desktop, you need to:
