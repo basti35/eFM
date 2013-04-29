@@ -21,5 +21,17 @@ margin:10px 0 0 0;
 }
 
 .tila {
-margin:0 3px 0 0;
+    margin:0 10px 0 0;
+	position:relative;
+	top:3px;
+}
+
+.hiukan {
+	position:relative;
+	left:20px;
+    top:-40px;
+}
+
+.iiii {
+	max-width:95%;
 }

@@ -15,18 +15,14 @@ def redirects(request):
 def home(request):
     return render(request, 'home/home.html', {'title': 'Home' } )
 
-# monitor page view
-def monitor(request):
-    return render(request, 'monitor/monitor.html', {'title': 'Monitor' } )
-
-# control page view
-def control(request):
-    return render(request, 'control/control.html', {'title': 'Control' } )
+# manage page view
+def manage(request):
+    return render(request, 'manage/manage.html', {'title': 'Manage' } )
 
 # services page view
 def services(request):
-    applist1 = range(1, 19)
-    applist2 = range(20, 37)
+    applist1 = range(1, 17)
+    applist2 = range(18, 34)
     return render(request, 'services/services.html', {'title': 'Services', 'applist1': applist1, 'applist2': applist2, } )
 
 

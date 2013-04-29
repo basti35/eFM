@@ -10,8 +10,7 @@ urlpatterns = patterns('',
     (r'^$', redirects), # redirects to home
 
     (r'^home/$', home),
-    (r'^monitor/$', monitor),
-    (r'^control/$', control),
+    (r'^manage/$', manage),
     (r'^services/$', services),
 
     (r'^test/$', test),
