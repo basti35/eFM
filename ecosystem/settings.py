@@ -12,19 +12,19 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Joni Lahde', 'joni.lahde@gmail.com'),
+    # ('Joni Lahde', 'joni.lahde@gmail.com'),    
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         # replace this absolut path: 'NAME': 'C:/Users/joni.lahde/Documents/GitHub/eFM/ecosystem/sqlite3.db', by:
-        'NAME': os.path.join(os.path.dirname(__file__), 'sqlite3.db').replace('\\','/'), # Or path to database file if using sqlite3.
+        'NAME': '143256_db', # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
+        'USER': '143256',
+        'PASSWORD': '143256pw',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
