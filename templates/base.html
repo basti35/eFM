@@ -10,19 +10,19 @@
   <!-- Le styles -->
   <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
   <style>
-    body { padding-top: 60px; padding-bottom: 40px; /* container to go below topbar */ }
-  </style>
-  <link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-  <script src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
+body { padding-top: 60px; padding-bottom: 40px; /* container to go below topbar */ }
+</style>
+<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+<script src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
 
-  {% block extrahead %}
-  {% endblock %}
+{% block extrahead %}
+{% endblock %}
 
-  <script type="text/javascript">
-      {% block jquery %}
-      {% endblock %}
-  </script>
+<script type="text/javascript">
+{% block jquery %}
+{% endblock %}
+</script>
 </head>
 
 <body>
@@ -31,56 +31,56 @@
   <div class="container">
     <div class="row-fluid">
 
-    <!-- Menu -->
+      <!-- Menu -->
       <div class="container">
         <div class="row-fluid">
           <div class="masthead">
             <h3 class="muted">eFM Home</h3>
             <div class="navbar">
-    	        <div class="navbar-inner"> 
-    	  	      <div class="container">
+             <div class="navbar-inner"> 
+              <div class="container">
 
-   		            <ul class="nav">
-    			          <li {% block active_home %}{% endblock %}><a href="/">Home</a></li>
-       	            <li {% block active_manage %}{% endblock %}><a href="/manage/">Manage</a></li>
-                    <li {% block active_services %}{% endblock %}><a href="/services/">Services</a></li>
-      		        </ul>
+               <ul class="nav">
+                 <li {% block active_home %}{% endblock %}><a href="/">Home</a></li>
+                 <li {% block active_manage %}{% endblock %}><a href="/manage/">Manage</a></li>
+                 <li {% block active_services %}{% endblock %}><a href="/services/">Services</a></li>
+               </ul>
 
-  		          </div>
-  	          </div>
-  	        </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-    <!-- Content -->
-      <div class="container-fluid">
-        <div class="row-fluid">
+  <!-- Content -->
+  <div class="container-fluid">
+    <div class="row-fluid">
 
-          {% block content %}
-          {% endblock %}
-
-        </div>
-      </div>
-
+      {% block content %}
+      {% endblock %}
 
     </div>
+  </div>
 
 
-    <!-- Footer -->
-
-      <div class="container">
-        <div class="footer">
-          <div class="muted"><small><p>UI proto 0.1</p></small></div>
-        </div>
-      </div>
+</div>
 
 
-  </div><!-- ./wrapper -->
+<!-- Footer -->
+
+<div class="container">
+  <div class="footer">
+    <div class="muted"><small><p>UI proto 0.1</p></small></div>
+  </div>
+</div>
 
 
-  <!-- Le javascript -->
-  <script src="{{STATIC_URL}}js/bootstrap.js"></script>
+</div><!-- ./wrapper -->
+
+
+<!-- Le javascript -->
+<script src="{{STATIC_URL}}js/bootstrap.js"></script>
 
 
 </body>

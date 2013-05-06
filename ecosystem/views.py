@@ -27,7 +27,7 @@ def services(request):
 
 
 
-# blank test view
+# test view for temporay testing
 def test(request):
     return render(request, 'test.html' )
 
