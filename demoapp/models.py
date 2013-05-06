@@ -1,13 +1,32 @@
-#from django.db import models
+from django.db import models
+import datetime
+from django.utils import timezone
 
-#from wemo import on, off, get
+
+
+# EXAMPLE CLASSES FOR POLLS APP
+# example that shows how to communicate with db and render results to browser
+
+class Poll(models.Model):
+    question = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+    def __unicode__(self):
+        return self.question
+
+class Choice(models.Model):
+    poll = models.ForeignKey(Poll)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    def __unicode__(self):
+        return self.choice_text
+
 
 
 
 
 """
-#EXAMPLE CLASSES
-# example that shows how easily to deal with database by using python classes only
+# EXAMPLE CLASSES FOR BOOKS APP
+# example that shows how to deal with database by using python classes
 
 class Publisher(models.Model):
     name = models.CharField(max_length=30)

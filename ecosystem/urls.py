@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls.defaults import *
 from ecosystem.views import *
 
 # Uncomment the next two lines to enable the admin:
@@ -7,16 +7,15 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-    (r'^$', redirects), # redirects to home
+    url(r'^$', redirects), # redirects to home
 
-    (r'^home/$', home),
-    (r'^manage/$', manage),
-    (r'^services/$', services),
-
-    (r'^test/$', test),
+    url(r'^home/$', home),
+    url(r'^manage/$', manage),
+    url(r'^services/$', services),
 
 
-    #(r'^testpage/$', demoapp.func),
+    # for temporary testing
+    url(r'^test/$', test),
 
     # Examples:
     # url(r'^$', my_homepage_view),
@@ -27,10 +26,12 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^polls/', include('demoapp.urls', namespace="polls")),
 
 
 )
+
 
 """
     #EXAMPLE PAGES by Joni
