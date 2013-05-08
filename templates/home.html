@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %} | {{ title|capfirst }}{% endblock %}
+
+
+{% block content %}
+
+<!-- modules-->
+<div class="row-fluid">
+  <ul class="thumbnails">
+
+    <li class="span4">
+      <div class="thumbnail">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <img src="{{STATIC_URL}}img/icons/random/9.png" alt="">
+        <div class="caption">
+          <h3>Bulletin Board</h3>
+          <p class="lead">Latest note</p>
+          <p class="alert alert-error">Break in water distribution in whole building tomorrow from 10am to 11am.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="span4">
+      <div class="thumbnail">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <img src="{{STATIC_URL}}img/icons/random/6.png" alt="">
+        <div class="caption">
+          <h3>Calendar</h3>
+          <p class="lead">Next events</p>
+          <div class="alert alert-info"><p><span class="label label-info clearfix">12:00</span></p><p>Your laundry booking</p></div>
+        </div>
+      </div>
+    </li>
+
+    <li class="span4">
+      <div class="thumbnail">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <img src="{{STATIC_URL}}img/icons/random/2.png" alt="">
+        <div class="caption">
+
+          <h3>Module X</h3>
+          <p class="lead">Tell us your need!</p>
+          <p>What feature wish you like to have here? Let us know by using the field below!</p>
+          <form action="" method="get">
+            <input type="text" name="q" placeholder=""></input><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          {% if sent %}
+          <div class="alert alert-success viesti">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <p><strong>Got it!</strong><p>Thanks for your input!</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div><!-- ./modules-->
+
+
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block script %}
+<script src="{{STATIC_URL}}js/{{ title }}.js"></script>
+{% endblock %}

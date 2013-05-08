@@ -2,86 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>eFM | {% block title %}Untitled{% endblock %}</title>
+  <title>Domus Sapiens{% block title %}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Le styles -->
-  <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
-  <style>
-body { padding-top: 60px; padding-bottom: 40px; /* container to go below topbar */ }
-</style>
-<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
-<link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-<script src="{{STATIC_URL}}js/jquery-1.9.1.js"></script>
-
-{% block extrahead %}
-{% endblock %}
-
-<script type="text/javascript">
-{% block jquery %}
-{% endblock %}
-</script>
+  <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/darkstrap.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- Wrapper -->
   <div class="container">
-    <div class="row-fluid">
-
-      <!-- Menu -->
-      <div class="container">
-        <div class="row-fluid">
-          <div class="masthead">
-            <h3 class="muted">eFM Home</h3>
-            <div class="navbar">
-             <div class="navbar-inner"> 
-              <div class="container">
-
-               <ul class="nav">
-                 <li {% block active_home %}{% endblock %}><a href="/">Home</a></li>
-                 <li {% block active_manage %}{% endblock %}><a href="/manage/">Manage</a></li>
-                 <li {% block active_services %}{% endblock %}><a href="/services/">Services</a></li>
-               </ul>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Content -->
-  <div class="container-fluid">
-    <div class="row-fluid">
-
-      {% block content %}
-      {% endblock %}
-
-    </div>
-  </div>
+    <div class="row">
 
 
-</div>
+      <!-- header -->
+      <div class="page-header">
+            
+          <a class="span1 thumbnail pull-right" href="/sensors/" rel="tooltip" title="Sensor manager" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/feed.png"></a>
+
+          <a class="span1 thumbnail pull-right" href="/services/" rel="tooltip" title="Service catalogue" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/basket.png"></a>
+
+          <a class="span1 thumbnail pull-right" href="/home/" rel="tooltip" title="Home screen" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/home.png"></a>
+
+          <small class="text-warning pull-right"><em>UI proto 0.2</em></small>
+
+          <ul class="inline">
+            <li><a href="/home/"><img src="{{STATIC_URL}}img/pics/logo/logo.png"><img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></a></li>
+
+            {% block menu %}
+            {% endblock %}
+          </ul>
+
+          <div class="muted"><strong> &raquo; {{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></div>
+
+      </div><!-- .header -->
+
+<div class="sisalto">
+
+    {% block content %}
+    {% endblock %}
+
+</div>    
+
+  </div><!-- .row -->
+</div><!-- .container -->
 
 
-<!-- Footer -->
-
-<div class="container">
-  <div class="footer">
-    <div class="muted"><small><p>UI proto 0.1</p></small></div>
-  </div>
-</div>
+{% block footer %}
+{% endblock %}
 
 
-</div><!-- ./wrapper -->
-
-
-<!-- Le javascript -->
-<script src="{{STATIC_URL}}js/bootstrap.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+<script src="{{STATIC_URL}}js/base.js"></script>
+  {% block script %}
+  {% endblock %}
 
 </body>
 </html>

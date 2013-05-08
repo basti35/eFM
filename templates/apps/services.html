@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %} | {{ title|capfirst }}{% endblock %}
+
+
+{% block content %}
+
+{{ meta }}
+
+<div class="container-fluid">
+  <div class="row-fluid">
+   <div class="span12">
+     <ul class="thumbnails">
+
+      <li class="span2"><a href="#providerModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/apps/provider.png"></a></li>
+
+      <li class="span2"><a href="#energyModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/apps/energy.png"></a></li>
+      
+
+
+
+
+
+
+
+
+
+
+      {% for app in applist %}
+      <li class="span2"><a href="#myModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/random/{{ app }}.png"></a></li>
+      {% endfor %}
+
+    </li>
+  </ul> 
+</div>
+</div>
+
+{% include 'apps/description/modal.html' %}
+{% include 'apps/description/modal_provider.html' %}
+{% include 'apps/description/modal_energy.html' %}
+
+
+{% endblock %}
+
+
+{% block script %}
+
+
+<script>
+/**
+ * Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules.
+ * Recall the function when the floating of the elements changed.
+ */
+function fixThumbnailMargins() {
+    $('.row-fluid .thumbnails').each(function () {
+        var $thumbnails = $(this).children(),
+            previousOffsetLeft = $thumbnails.first().offset().left;
+        $thumbnails.removeClass('first-in-row');
+        $thumbnails.first().addClass('first-in-row');
+        $thumbnails.each(function () {
+            var $thumbnail = $(this),
+                offsetLeft = $thumbnail.offset().left;
+            if (offsetLeft < previousOffsetLeft) {
+                $thumbnail.addClass('first-in-row');
+            }
+            previousOffsetLeft = offsetLeft;
+        });
+    });
+}
+
+// Fix the margins when potentally the floating changed
+$(window).resize(fixThumbnailMargins);
+
+fixThumbnailMargins();
+</script>
+
+
+<script src="{{STATIC_URL}}js/{{ title }}.js"></script>
+{% endblock %}

@@ -1,37 +1,24 @@
-#slider {
-	margin:0 auto;
-	float:none;
+@font-face {
+	font-family:ubuntuFont;
+	src: url(ubuntu-title-fr-1.1.ttf);
 }
 
-#appbox {
-	max-height:50px;
+.ubuntu {
+	font-family:ubuntuFont;
 }
 
-#nuoli_oik {
+
+.first-in-row { margin-left: 0 !important; }
+
+
+.nurkkaan {
 	position:relative;
-	left:-20px;
+	top:-50px;
 }
 
-.valko {
-background-color:#fff;
-}
-
-.btn {
-margin:10px 0 0 0;
-}
-
-.tila {
-    margin:0 10px 0 0;
-	position:relative;
-	top:3px;
-}
-
-.hiukan {
-	position:relative;
-	left:20px;
-    top:-40px;
-}
-
-.iiii {
-	max-width:95%;
+.viesti {
+     position: fixed;
+     bottom: 0;
+     right: 0;
+     opacity: 0.6;
 }
