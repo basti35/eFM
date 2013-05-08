@@ -11,19 +11,10 @@
    <div class="span12">
      <ul class="thumbnails">
 
-      <li class="span2"><a href="#providerModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/apps/provider.png"></a></li>
+      <li class="span2"><a href="#providerModal" class="thumbnail" role="button" data-toggle="modal" rel="tooltip" title="Provider Finder"><img src="{{STATIC_URL}}img/icons/apps/provider.png"></a></li>
 
-      <li class="span2"><a href="#energyModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/apps/energy.png"></a></li>
+      <li class="span2"><a href="#energyModal" class="thumbnail" role="button" data-toggle="modal" rel="tooltip" title="Energy Account"><img src="{{STATIC_URL}}img/icons/apps/energy.png"></a></li>
       
-
-
-
-
-
-
-
-
-
 
       {% for app in applist %}
       <li class="span2"><a href="#myModal" class="thumbnail" role="button" data-toggle="modal"><img src="{{STATIC_URL}}img/icons/random/{{ app }}.png"></a></li>
