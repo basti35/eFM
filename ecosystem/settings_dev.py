@@ -1,4 +1,4 @@
-# Django settings for efmproject project.
+# Django settings for ecosystem project.
 
 import os.path
 
@@ -14,11 +14,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '143256_db'              # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(os.path.dirname(__file__), 'sqlite3.db').replace('\\','/'),                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '143256',
-        'PASSWORD': '143256pw',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -117,10 +117,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'efmproject.urls'
+ROOT_URLCONF = 'ecosystem.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'efmproject.wsgi.application'
+WSGI_APPLICATION = 'ecosystem.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),
