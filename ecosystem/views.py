@@ -10,17 +10,22 @@ def redirects(request):
 # home page view
 def home(request):
 	if 'q' in request.GET:
-		feed = str(request.GET['q'])
-		time = str(datetime.datetime.now())
-		browser = str(request.META.get('HTTP_USER_AGENT', 'unknown'))
-		ip = str(request.META.get('REMOTE_ADDR', 'unknown'))
-		try:
-			f = open('feedback.csv', 'a')
-			s = str(feed + ';' + time + ';' + browser + ';' + ip + '\n')
-			f.write(s)
-			f.close()
-			sent = True
-		except:
+		feed = (request.GET['q'])
+		if feed != '':
+			feed = (request.GET['q'])
+			safefeed = feed.encode('ascii', 'ignore')
+			time = str(datetime.datetime.now())
+			browser = str(request.META.get('HTTP_USER_AGENT', 'unknown'))
+			ip = str(request.META.get('REMOTE_ADDR', 'unknown'))
+			try:
+				f = open('feedback.csv', 'a')
+				s = str(safefeed + ';' + time + ';' + browser + ';' + ip + '\n')
+				f.write(s)
+				f.close()
+				sent = True
+			except:
+				sent = False
+		else:
 			sent = False
 	else:
 		sent = False

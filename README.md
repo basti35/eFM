@@ -6,8 +6,6 @@ Django framework project for eFM web app prototype
 
 To be able to open this web application in your browser you need to have django framework installed.
 
-Rename settigs_dev.py
-
 Use python command manage.py runserver inside this folder and visit:
 
 http://localhost:8000/
