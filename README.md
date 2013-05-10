@@ -20,3 +20,4 @@ rapid development and clean, pragmatic design"
 Django (1.5) documentation and tutorials:
 http://www.djangobook.com
 http://www.djangoproject.com
+
