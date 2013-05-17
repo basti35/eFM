@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% block title %} | {{ title }}{% endblock %}
 
 
 {% block content %}
@@ -19,7 +18,6 @@
 <th>Feedback</th>
 <th>Time</th>
 <th>Browser/OS</th>
-<th>IP</th>
 </tr>
 
 {% for feed in list %}
@@ -27,7 +25,6 @@
 	<td>{{ feed.message }}</td>
 	<td>{{ feed.time }}</td>
 	<td>{{ feed.browser }}</td>
-	<td>{{ feed.ip }}</td>
 </tr>
 {% endfor %}
 

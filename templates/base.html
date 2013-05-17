@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>dosa{% block title %} | {{ title }}{% endblock %}</title>
+  <title>Domus Sapiens{% block title %} | {{ title|capfirst }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{STATIC_URL}}img/fav.ico">
   <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
@@ -31,17 +31,11 @@
           <small class="text-warning pull-right"><em>UI proto 0.3</em></small>
 
           <ul class="inline">
-            <li><a href="/home/">
-
-              <span id="do" class="ubuntu tunnus">d<img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></span><span id="sa" class="ubuntu tunnus">sa</span>
-
-              <!-- <img src="{{STATIC_URL}}img/pics/logo/dosa-logo.png"> -->
-
-              </a></li>
+            <li><a href="/home/"><img src="{{STATIC_URL}}img/pics/logo/logo.png"><img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></a></li>
 
             {% block menu %}
             {% endblock %}
-          </ul><br>
+          </ul>
 
           <div class="muted"><strong> &raquo; {{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></div>
 

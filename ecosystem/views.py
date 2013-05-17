@@ -33,7 +33,7 @@ def home(request):
 		feed = (request.GET['q'])
 		if feed != '':
 			feed = str(request.GET['q'])
-			#safefeed = feed.encode('ascii', 'ignore')
+			#safefeed = feed.encode('ascii', 'ignore') # doesn't work on server
 			time = str(datetime.datetime.now())
 			browser = str(request.META.get('HTTP_USER_AGENT', 'unknown'))
 			ip = str(request.META.get('REMOTE_ADDR', 'unknown'))
@@ -92,6 +92,12 @@ def feedback(request):
 		'title': 'feedback',
 		'desc': 'Feedback people have sent to us',
 		'list': fb,
+		})
+
+def doc(request):
+	return render(request, 'documentation.html', {
+		'title': 'documentation',
+		'desc': 'Short documentation',
 		})
 
 

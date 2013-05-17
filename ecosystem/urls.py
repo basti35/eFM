@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^provider/$', provider),
     url(r'^feedback/$', feedback),
+    url(r'^doc/$', doc),
 
     url(r'^temp/$', temp),
 
