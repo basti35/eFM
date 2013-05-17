@@ -13,6 +13,9 @@ urlpatterns = patterns('',
     url(r'^sensors/$', sensors),
 
     url(r'^provider/$', provider),
+    url(r'^feedback/$', feedback),
+
+    url(r'^temp/$', temp),
 
    # url(r'^services/provider$', provider),
     #url(r'^myapp/', include('mysite.myapp.urls')),

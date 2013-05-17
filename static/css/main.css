@@ -1,19 +1,25 @@
 @font-face {
-	font-family:ubuntuFont;
+	font-family: ubuntuFont;
 	src: url(ubuntu-title-fr-1.1.ttf);
 }
 
 .ubuntu {
-	font-family:ubuntuFont;
+	font-family: ubuntuFont;
+}
+
+a:hover {
+	text-decoration: none;
+
+}
+
+.first-in-row {
+	margin-left: 0 !important;
 }
 
 
-.first-in-row { margin-left: 0 !important; }
-
-
 .nurkkaan {
-	position:relative;
-	top:-50px;
+	position: relative;
+	top: -50px;
 }
 
 .viesti {
@@ -21,4 +27,21 @@
      bottom: 0;
      right: 0;
      opacity: 0.6;
+}
+
+.tunnus {
+	font-size: 100px;
+	position: relative;
+	top: 20px;
+	letter-spacing: 4px;
+}
+
+#do {
+	color: #ff9d2e;
+	text-shadow: #f90 0px 0px 1px;
+}
+
+#sa {
+	color: #939598;
+	text-shadow: #999 0px 0px 1px;
 }

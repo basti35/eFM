@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} | {{ title }}{% endblock %}
+
+
+{% block content %}
+
+{% if temp %}
+{{ temp }}
+{% endif %}
+
+
+
+
+
+{% if list %}
+<table class="table table-striped">
+
+<tr>
+<th>Feedback</th>
+<th>Time</th>
+<th>Browser/OS</th>
+<th>IP</th>
+</tr>
+
+{% for feed in list %}
+<tr>
+	<td>{{ feed.message }}</td>
+	<td>{{ feed.time }}</td>
+	<td>{{ feed.browser }}</td>
+	<td>{{ feed.ip }}</td>
+</tr>
+{% endfor %}
+
+
+
+</table>  
+{% else %}
+    <p>{{ error }}</p>
+{% endif %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block script %}
+<script src="{{STATIC_URL}}js/{{ title }}.js"></script>
+{% endblock %}

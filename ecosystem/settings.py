@@ -13,19 +13,19 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'NAME': '143256_db'              # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        #'USER': '143256',
-        #'PASSWORD': '143256pw',
-        #'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        #'PORT': '',                      # Set to empty string for default.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'djdb',                                      # Or path to database file if using sqlite3.
+                                                            # The following settings are not used with sqlite3:
+        'USER': 'efm',
+        'PASSWORD': 'ME310-eFM',
+        'HOST': 'web327.webfaction.com',                  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',                                     # Set to empty string for default.
     }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['web327.webfaction.com',]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -139,6 +139,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+	'feedback',
 
 )
 
@@ -170,3 +171,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+   from local_settings import *
+except ImportError, e:
+   pass

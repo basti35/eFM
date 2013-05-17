@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Domus Sapiens{% block title %}{% endblock %}</title>
+  <title>dosa{% block title %} | {{ title }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="{{STATIC_URL}}fav.ico">
+  <link rel="shortcut icon" href="{{STATIC_URL}}img/fav.ico">
   <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/darkstrap.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+  <script src="{{STATIC_URL}}js/main.js"></script>
 </head>
 
 <body>
 
-  <div class="container">
+
+  <div class="container"><div id="scrollable">
     <div class="row">
 
 
@@ -26,14 +28,20 @@
 
           <a class="span1 thumbnail pull-right" href="/home/" rel="tooltip" title="Home screen" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/home.png"></a>
 
-          <small class="text-warning pull-right"><em>UI proto 0.2</em></small>
+          <small class="text-warning pull-right"><em>UI proto 0.3</em></small>
 
           <ul class="inline">
-            <li><a href="/home/"><img src="{{STATIC_URL}}img/pics/logo/logo.png"><img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></a></li>
+            <li><a href="/home/">
+
+              <span id="do" class="ubuntu tunnus">d<img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></span><span id="sa" class="ubuntu tunnus">sa</span>
+
+              <!-- <img src="{{STATIC_URL}}img/pics/logo/dosa-logo.png"> -->
+
+              </a></li>
 
             {% block menu %}
             {% endblock %}
-          </ul>
+          </ul><br>
 
           <div class="muted"><strong> &raquo; {{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></div>
 
@@ -47,6 +55,7 @@
 </div>    
 
   </div><!-- .row -->
+  </div>
 </div><!-- .container -->
 
 
@@ -57,9 +66,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
 <script src="{{STATIC_URL}}js/base.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>-->
+<!--<script src="{{STATIC_URL}}js/jquery.slimscroll.min.js"></script>-->
   {% block script %}
   {% endblock %}
 
 </body>
 </html>
-

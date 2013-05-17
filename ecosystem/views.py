@@ -1,7 +1,10 @@
 ﻿from django.shortcuts import render
+from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 
-import random, datetime
+import random, datetime, csv
+
+from feedback.models import *
 
 # redirects to home page
 def redirects(request):
@@ -9,22 +12,39 @@ def redirects(request):
 
 # home page view
 def home(request):
+
+# seems to not work on server..
+# 	temps = []
+# 	f = open("media/temps.csv","rb")
+# 	try:
+# 		cr = csv.reader(f)
+# 		for row in cr:
+# 			temps.append(row)
+# 		data = temps[len(temps)-1]
+# 		item = data[1]
+# 		temperature = float(item)
+# 		temp = str('%.2f' % temperature) + ' °C'
+# 	except:
+# 		temp = 'error'
+# 	f.close()
+
+	message = 'no errors'
 	if 'q' in request.GET:
 		feed = (request.GET['q'])
 		if feed != '':
-			feed = (request.GET['q'])
+			feed = str(request.GET['q'])
 			#safefeed = feed.encode('ascii', 'ignore')
 			time = str(datetime.datetime.now())
 			browser = str(request.META.get('HTTP_USER_AGENT', 'unknown'))
 			ip = str(request.META.get('REMOTE_ADDR', 'unknown'))
 			try:
-				f = open('media/feedback.csv', 'a')
-				s = str(feed + ';' + time + ';' + browser + ';' + ip + '\n')
-				f.write(s)
-				f.close()
+				f = Feedback(message = feed, time = time, browser = browser, ip = ip)
+				f.save()
 				sent = True
-			except:
+			except IntegrityError, e:
+				message = e.message
 				sent = False
+				return render(request, 'feedback.html', {'error': message,})
 		else:
 			sent = False
 	else:
@@ -34,7 +54,8 @@ def home(request):
 		'title': 'home',
 		'desc': 'General view of your basic services',
 		'sent' : sent,
-		} )
+		'temp' : temp,
+		})
 
 def services(request):
 	applist = []
@@ -48,7 +69,6 @@ def services(request):
 		'applist': applist,
 		'pic1': applist[0],
 		'pic2': applist[10],
-		'pic3': applist[20],
 		})
 
 def sensors(request):
@@ -66,7 +86,16 @@ def provider(request):
 		})
 
 
+def feedback(request):
+	fb = Feedback.objects.all()
+	return render(request, 'feedback.html', {
+		'title': 'feedback',
+		'desc': 'Feedback people have sent to us',
+		'list': fb,
+		})
 
 
-
-
+def temp(request):
+	return render(request, 'feedback.html', {
+		'temp' : temp,
+		})
