@@ -3,13 +3,15 @@ An example showing how to keep a running log of a temperature sensor's readings
 in a CSV file. Note: uses the Device.pulse method, which allows for watching
 only one device at a time.
 """
+import os
+dir = os.path.dirname(__file__)
 
-from _examples import *
+from _examples  import *
 
-from ninja.api      import NinjaAPI
-from ninja.devices  import TemperatureSensor
+from ninja.api  import NinjaAPI
+from ninja.devices import TemperatureSensor
 
-from datetime       import datetime
+from datetime   import datetime
 
 
 
@@ -20,7 +22,7 @@ device  = TemperatureSensor(api, secrets.TEMP_ID)
 
 
 # Prep the logfile with some headings
-LOGFILE = '../media/temps.csv'
+LOGFILE = os.path.join(dir, '../media/temps.csv')
 file(LOGFILE, 'w').write('Date,Temperature (C)\n')
 
 
