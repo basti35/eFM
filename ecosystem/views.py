@@ -14,19 +14,19 @@ def redirects(request):
 def home(request):
 
 # seems to not work on server..
-# 	temps = []
-# 	f = open("media/temps.csv","rb")
-# 	try:
-# 		cr = csv.reader(f)
-# 		for row in cr:
-# 			temps.append(row)
-# 		data = temps[len(temps)-1]
-# 		item = data[1]
-# 		temperature = float(item)
-# 		temp = str('%.2f' % temperature) + ' °C'
-# 	except:
-# 		temp = 'error'
-# 	f.close()
+ 	temps = []
+ 	f = open("media/temps.csv","rb")
+ 	try:
+ 		cr = csv.reader(f)
+ 		for row in cr:
+ 			temps.append(row)
+ 		data = temps[len(temps)-1]
+ 		item = data[1]
+ 		temperature = float(item)
+ 		temp = str('%.2f' % temperature) + ' °C'
+ 	except:
+ 		temp = 'error'
+ 	f.close()
 
 	message = 'no errors'
 	if 'q' in request.GET:
