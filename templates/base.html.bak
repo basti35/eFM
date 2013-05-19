@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Domus Sapiens{% block title %} | {{ title|capfirst }}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{STATIC_URL}}img/fav.ico">
+  <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/darkstrap.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+  <script src="{{STATIC_URL}}js/main.js"></script>
+</head>
+
+<body>
+
+
+  <div class="container"><div id="scrollable">
+    <div class="row">
+
+
+      <!-- header -->
+      <div class="page-header">
+            
+          <a class="span1 thumbnail pull-right" href="/sensors/" rel="tooltip" title="Sensor manager" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/feed.png"></a>
+
+          <a class="span1 thumbnail pull-right" href="/services/" rel="tooltip" title="Service catalogue" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/basket.png"></a>
+
+          <a class="span1 thumbnail pull-right" href="/home/" rel="tooltip" title="Home screen" data-placement="bottom"><img src="{{STATIC_URL}}img/icons/home.png"></a>
+
+          <small class="text-warning pull-right"><em>UI proto 0.3</em></small>
+
+          <ul class="inline">
+            <li><a href="/home/"><img src="{{STATIC_URL}}img/pics/logo/logo.png"><img class="" src="{{STATIC_URL}}img/pics/logo/waves.png"></a></li>
+
+            {% block menu %}
+            {% endblock %}
+          </ul>
+
+          <div class="muted"><strong> &raquo; {{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></div>
+
+      </div><!-- .header -->
+
+<div class="sisalto">
+
+    {% block content %}
+    {% endblock %}
+
+</div>    
+
+  </div><!-- .row -->
+  </div>
+</div><!-- .container -->
+
+
+{% block footer %}
+{% endblock %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+<script src="{{STATIC_URL}}js/base.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>-->
+<!--<script src="{{STATIC_URL}}js/jquery.slimscroll.min.js"></script>-->
+  {% block script %}
+  {% endblock %}
+
+</body>
+</html>

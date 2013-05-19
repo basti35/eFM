@@ -57,20 +57,6 @@ def home(request):
 		'temp' : temp,
 		})
 
-def services(request):
-	applist = []
-	i = 0
-	while i < 22:
-		applist.append(random.randint(1, 30))
-		i += 1
-	return render(request, 'apps/services.html', {
-		'title': 'services',
-		'desc': 'Add new services to your system',
-		'applist': applist,
-		'pic1': applist[0],
-		'pic2': applist[10],
-		})
-
 def sensors(request):
 	return render(request, 'apps/sensors.html', {
 		'title': 'sensors',
@@ -101,7 +87,8 @@ def doc(request):
 		})
 
 
-def temp(request):
-	return render(request, 'feedback.html', {
-		'temp' : temp,
+def test(request):
+	return render(request, 'test.html', {
+		'title': 'test',
+		'desc': 'Test page for development',
 		})

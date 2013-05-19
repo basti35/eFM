@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, url, include
 from ecosystem.views import *
 
-from services.views import services
-
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -11,21 +9,16 @@ urlpatterns = patterns('',
 
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
-    #url(r'^services/$', services),
+    url(r'^services/$', services),
     url(r'^sensors/$', sensors),
 
     url(r'^provider/$', provider),
     url(r'^feedback/$', feedback),
     url(r'^doc/$', doc),
 
-    url(r'^test/$', test),
+    url(r'^temp/$', temp),
 
-
-
-
-    
-
-    url(r'^services/$', services),
+   # url(r'^services/provider$', provider),
     #url(r'^myapp/', include('mysite.myapp.urls')),
 
 

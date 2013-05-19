@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   $('.viesti').delay(3000).fadeOut(500);
   
   // fading
@@ -18,8 +17,11 @@ $(document).ready(function() {
     window.location = linkLocation;
   }
 
+  // tooltips
   $("[rel='tooltip']").tooltip();
 
+  // nicescroll
+  $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
 
 });
 
@@ -52,3 +54,4 @@ function fixThumbnailMargins() {
 $(window).resize(fixThumbnailMargins);
 
 fixThumbnailMargins();
+

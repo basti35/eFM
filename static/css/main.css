@@ -36,12 +36,10 @@ a:hover {
 	letter-spacing: 4px;
 }
 
-#do {
-	color: #ff9d2e;
-	text-shadow: #f90 0px 0px 1px;
+.navbar .brand {
+  font-size: 1em;
 }
 
-#sa {
-	color: #939598;
-	text-shadow: #999 0px 0px 1px;
+.menu {
+	margin-top: 15px;
 }

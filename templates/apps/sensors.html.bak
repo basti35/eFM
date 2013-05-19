@@ -19,7 +19,7 @@
 
            <tr>
             <th>ID</th>
-            <th>Description</th>
+            <td>Description</th>
             <th>Installation date</th>
             <th>Status</th>
           </tr>
