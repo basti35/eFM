@@ -1,31 +1,33 @@
 <!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="{{ app.code }}Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Service X</h3>
+    <h3 id="myModalLabel">{{ app.name }}</h3>
   </div>
   <div class="modal-body">
     <ul class="thumbnails">
 
       <li class="span2">
         <div class="thumbnail">
-          <img src="{{STATIC_URL}}img/icons/random/{{ pic1 }}.png">
+          <img src="{{STATIC_URL}}img/pics/apps/{{ app.pic1 }}.png">
         </div>
       </li>
 
       <li class="span2">
         <div class="thumbnail">
-          <img src="{{STATIC_URL}}img/icons/random/{{ pic2 }}.png">
+          <img src="{{STATIC_URL}}img/pics/apps/{{ app.pic2 }}.png">
         </div>
       </li>
 
     </ul>
 
-    <p class="lead">Another service</p>
-    <p>This is an example module that we do not prototype in detail but we could provide here a short description to give an idea what kind of services there would be available..</p>
+    <p class="lead">{{ app.lead }}</p>
+    <p>{{ app.desc1 }}</p>
+    <p>{{ app.desc2 }}</p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
-    <button class="btn btn-success disabled">Open service</button>
+    <button class="btn btn-success disabled">Buy sensors</button>
+    <button class="btn btn-success disabled">Connect service</button>
   </div>
 </div>

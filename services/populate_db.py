@@ -1,21 +1,18 @@
 
 def collect()
 	"""
-	collects all the services detailed below to 'servicelist' dictionary
+	collects all the service info to db
 	"""
 
-	servicelist = {}
-
-	# service details
 	name = 'app1'
 	lead = 'lead1'
 	pic = 'kuva1'
 	desc1 = 'sadasdsasddd'
 	desc2 = 'sadasdsasddd'
 
-	servicelist[name] = [lead, pic, desc1, desc2]
+	s = Service(name = name, lead = lead, desc1 = desc1, desc2 = desc2)
+	s.save()
 
-	# service details
 	name = 'app2'
 	lead = 'lead2'
 	pic = 'kuva2'
@@ -24,7 +21,6 @@ def collect()
 
 	servicelist[name] = [lead, pic, desc1, desc2]
 
-	# service details
 	name = 'app3'
 	lead = 'lead3'
 	pic = 'kuva3'
@@ -65,6 +61,42 @@ class Service(models.Model):
 	lead = models.CharField(max_length=20)
 	desc1 = models.CharField(max_length=200)
 	desc2 = models.CharField(max_length=200)
-
 	def __unicode__(self):
 		return self.name
+
+
+	servicecatalogue = []
+#1
+	name = 'app1'
+	lead = 'lead1'
+	pic = 'kuva1'
+	desc1 = 'sadasdsasddd'
+	desc2 = 'sadasdsasddd'
+	service = [name, lead, pic, desc1, desc2]
+	servicecatalogue.append(service)
+#2
+	name = 'app1'
+	lead = 'lead1'
+	pic = 'kuva1'
+	desc1 = 'sadasdsasddd'
+	desc2 = 'sadasdsasddd'
+	service = [name, lead, pic, desc1, desc2]
+	servicecatalogue.append(service)
+#3
+	name = 'app1'
+	lead = 'lead1'
+	pic = 'kuva1'
+	desc1 = 'sadasdsasddd'
+	desc2 = 'sadasdsasddd'
+	service = [name, lead, pic, desc1, desc2]
+	servicecatalogue.append(service)
+
+	name = 'app1'
+	lead = 'lead1'
+	pic = 'kuva1'
+	desc1 = 'sadasdsasddd'
+	desc2 = 'sadasdsasddd'
+	service = [name, lead, pic, desc1, desc2]
+	servicecatalogue.append(service)
+
+	

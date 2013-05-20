@@ -10,7 +10,7 @@ http://localhost:8000/
 
 =======================================================================
 
-SHORT DOCUMENTATION
+SHORT DOCUMENTATION (www.efm.wr.fi/doc)
 
 - Project Dir Overview for basic content
 

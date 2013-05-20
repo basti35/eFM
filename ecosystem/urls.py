@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url, include
 from ecosystem.views import *
 
-from services.views import services
+from services.views import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,10 +22,15 @@ urlpatterns = patterns('',
 
 
 
-
     
 
     url(r'^services/$', services),
+
+    # ex: /services/1/
+    #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),
+
+
+
     #url(r'^myapp/', include('mysite.myapp.urls')),
 
 

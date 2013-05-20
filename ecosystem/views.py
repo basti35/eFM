@@ -57,14 +57,14 @@ def provider(request):
 
 def feedback(request):
 	fb = Feedback.objects.all()
-	return render(request, 'feedback.html', {
+	return render(request, 'feedback/feedback.html', {
 		'title': 'feedback',
 		'desc': 'Feedback people have sent to us',
 		'list': fb,
 		})
 
 def doc(request):
-	return render(request, 'documentation.html', {
+	return render(request, 'doc.html', {
 		'title': 'documentation',
 		'desc': 'Short documentation',
 		})
