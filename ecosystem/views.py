@@ -34,23 +34,16 @@ def home(request):
 	else:
 		sent = False
 
-	return render(request, 'home.html', {
+	return render(request, 'home/home.html', {
 		'title': 'home',
 		'desc': 'General view of your services',
 		'sent' : sent,
 		})
 
 def sensors(request):
-	return render(request, 'apps/sensors.html', {
+	return render(request, 'manager/sensors.html', {
 		'title': 'sensors',
 		'desc': 'Manage your hardware',
-
-		})
-
-def provider(request):
-	return render(request, 'apps/provider.html', {
-		'title': 'provider Finder',
-		'desc': 'Finds the best provider before you even know you need one!',
 
 		})
 
@@ -64,7 +57,7 @@ def feedback(request):
 		})
 
 def doc(request):
-	return render(request, 'doc.html', {
+	return render(request, 'home/doc.html', {
 		'title': 'documentation',
 		'desc': 'Short documentation',
 		})
