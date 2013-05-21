@@ -23,8 +23,28 @@ $(document).ready(function() {
   // nicescroll
   $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
 
+  // equalheight
+  equalHeight($(".equalize"));
+
 });
 
+
+
+// equalizes the heights of thumbnail boxes
+function equalHeight(group) {    
+    tallest = 0;    
+    group.each(function() {       
+        thisHeight = $(this).height();       
+        if(thisHeight > tallest) {          
+            tallest = thisHeight;       
+        }    
+    });    
+    group.each(function() { $(this).height(tallest); });
+} 
+
+$(document).ready(function() {   
+    equalHeight($(".equalize")); 
+});
 
 
 

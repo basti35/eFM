@@ -12,7 +12,11 @@
      <ul class="thumbnails">
 
       {% for app in applist %}
-      <li class="span2"><a href="#{{ app.appearance_order }}Modal" class="thumbnail" role="button" data-toggle="modal" rel="tooltip" title="{{ app.name }}"><img src={{ app.picture_url }}></a></li>
+      <li class="span2">
+        <a href="#{{ app.appearance_order }}Modal" class="thumbnail block equalize" role="button" data-toggle="modal" rel="tooltip" title="{{ app.name }}">
+          <img src={{ app.picture_url }}>
+        </a>
+      </li>
       {% endfor %}
 
     </ul> 

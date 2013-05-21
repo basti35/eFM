@@ -67,7 +67,7 @@ STATIC_ROOT = '/home/web327/webapps/efm_static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = 'http://me310.webfactional.com/static/'
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
