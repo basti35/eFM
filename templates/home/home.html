@@ -13,13 +13,12 @@
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
-      <iframe src="http://dosa.homeip.net:8071/mjpeg.cgi"
-          class="smart_sizing_iframe noresize" frameborder="0" scrolling="no" ></iframe>
           <div class="caption">
             <h3>Security camera</h3>
-            <p class="lead">Home view</p>
-
+            <p class="lead">Living room view</p>
           </div>
+          <iframe src="http://dosa.homeip.net:8071/mjpeg.cgi"
+          class="smart_sizing_iframe noresize" frameborder="0" scrolling="no" ></iframe>
         </div>
       </li>
       {% endif %}
@@ -28,12 +27,14 @@
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
-          <img src="{{STATIC_URL}}img/icons/random/9.png" alt="">
           <div class="caption">
-            <h3>Bulletin Board</h3>
-            <p class="lead">Latest note</p>
-
+            <h3>Light control</h3>
+            <p class="lead">Living room lamp</p>
+            <button id="valo-on" class="btn btn-success" type="button">On</button>
+            <button id="valo-off" class="btn btn-danger" type="button">Off</button>
           </div>
+          
+
         </div>
       </li>
       {% endif %}
@@ -42,12 +43,11 @@
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
-          <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
           <div class="caption">
             <h3>Temperature</h3>
-            <p class="lead">Indoor</p>
-            <div class=""><p>Living room</p>
-            </div>
+            <p class="lead">Living room</p>
+            <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
+
           </div>
         </div>
       </li>

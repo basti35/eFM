@@ -85,4 +85,20 @@ $(".sulje").click(function () {
 
 
 
+// valo paalle
+$("#valo-on").click(function () {
+  $.ajax({        
+    url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
+    type: 'GET',
+  });
+});
+
+// valo pois
+$("#valo-off").click(function () {
+  $.ajax({        
+    url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
+    type: 'GET',
+  });
+});
+
 
