@@ -1,54 +1,3 @@
-$(document).ready(function() {
-
-  $('.viesti').delay(3000).fadeOut(500);
-  
-  // fading
-  $(".sisalto").css("display", "none");
-
-  $(".sisalto").fadeIn(1000);
-    
-  $("a.transition").click(function(event){
-    event.preventDefault();
-    linkLocation = this.href;
-    $(".sisalto").fadeOut(500, redirectPage);    
-  });
-    
-  function redirectPage() {
-    window.location = linkLocation;
-  }
-
-  // tooltips
-  $("[rel='tooltip']").tooltip();
-
-  // nicescroll
-  $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
-
-  // equalheight
-  equalHeight($(".equalize"));
-
-});
-
-
-
-// equalizes the heights of thumbnail boxes
-function equalHeight(group) {    
-    tallest = 0;    
-    group.each(function() {       
-        thisHeight = $(this).height();       
-        if(thisHeight > tallest) {          
-            tallest = thisHeight;       
-        }    
-    });    
-    group.each(function() { $(this).height(tallest); });
-} 
-
-$(document).ready(function() {   
-    equalHeight($(".equalize")); 
-});
-
-
-
-
 /**
  * Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules.
  * Recall the function when the floating of the elements changed.
@@ -77,13 +26,34 @@ fixThumbnailMargins();
 
 
 
+// equalizes the heights of thumbnail boxes
+function equalHeight(group) {    
+    tallest = 0;    
+    group.each(function() {       
+        thisHeight = $(this).height();       
+        if(thisHeight > tallest) {          
+            tallest = thisHeight;       
+        }    
+    });    
+    group.each(function() { $(this).height(tallest); });
+}
+
+
+// GENERAL FUNCTIONS
+
+// tooltips
+$("[rel='tooltip']").tooltip();
+
+// nicescroll
+$("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
+
+// equalheight
+equalHeight($(".equalize"));
 
 // Piilota moduli
 $(".sulje").click(function () {
   $(this).closest('li').slideUp('slow');
 });
-
-
 
 // valo paalle
 $("#valo-on").click(function () {
@@ -100,5 +70,27 @@ $("#valo-off").click(function () {
     type: 'GET',
   });
 });
+
+
+
+// executed when page loaded:
+$(document).ready(function() {
+
+  fixThumbnailMargins();
+  
+  // fading in
+  $(".sisalto").css("display", "none");
+  $(".sisalto").fadeIn(1000);
+  
+  // fading out
+  $("a.transition").click(function(event){
+    event.preventDefault();
+    linkLocation = this.href;
+    $(".sisalto").fadeOut(500, redirectPage);    
+  });
+
+
+});
+
 
 

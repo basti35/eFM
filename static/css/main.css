@@ -30,10 +30,9 @@ a:hover {
 }
 
 .tunnus {
-	font-size: 100px;
 	position: relative;
 	top: 20px;
-	letter-spacing: 4px;
+	left: 50px;
 }
 
 .navbar .brand {

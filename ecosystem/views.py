@@ -8,13 +8,14 @@ from feedback.models import *
 
 # redirects to home page
 def redirects(request):
-	request.session["module1"] = True
-	request.session["module2"] = True
-	request.session["module3"] = True
+
 	return HttpResponseRedirect('/home/')
 
 # home page view
 def home(request):
+	request.session["module1"] = True
+	request.session["module2"] = True
+	request.session["module3"] = True
 	if 'q' in request.GET:
 		feed = (request.GET['q'])
 		if feed != '':

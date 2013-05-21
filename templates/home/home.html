@@ -15,11 +15,12 @@
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
             <h3>Security camera</h3>
+            <img src="http://icons.iconarchive.com/icons/icons-land/vista-hardware-devices/128/Security-Camera-icon.png">
             <p class="lead">Living room view</p>
           </div>
           <iframe src="http://dosa.homeip.net:8071/mjpeg.cgi"
           class="smart_sizing_iframe noresize" frameborder="0" scrolling="no" ></iframe>
-        </div>
+<!--        <a href="" class="pull-right tunnus"><img src="{{STATIC_URL}}img/logo/d-link.png"></a>-->
       </li>
       {% endif %}
 
@@ -28,10 +29,13 @@
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
-            <h3>Light control</h3>
+            <h3>Energy</h3>
+            <img src="http://png-5.findicons.com/files/icons/1681/siena/128/bulb_green.png">
             <p class="lead">Living room lamp</p>
-            <button id="valo-on" class="btn btn-success" type="button">On</button>
-            <button id="valo-off" class="btn btn-danger" type="button">Off</button>
+            <button id="valo-on" class="btn btn-success" type="button"> On </button>
+            <button id="valo-off" class="btn btn-danger" type="button"> Off </button><br><br>
+            <p class="">Current consumption</p>
+
           </div>
           
 
@@ -45,22 +49,23 @@
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
             <h3>Temperature</h3>
+            <img src="http://2.bp.blogspot.com/-SnwaqMpvJD8/Tny7ljcVCoI/AAAAAAAAABg/3P9Bdv7avRg/s200/Thermometer.png">
             <p class="lead">Living room</p>
             <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
-
           </div>
         </div>
       </li>
       {% endif %}
 
 
-
-
-
-
     </ul>
   </div>
 </div><!-- ./modules-->
+
+
+
+
+
 
 
 {% endblock %}
