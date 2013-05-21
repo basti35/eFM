@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        {% block head %}
+        {% endblock %}
   <meta charset="utf-8">
   <title>Domus Sapiens{% block title %} | {{ title|capfirst }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

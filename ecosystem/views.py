@@ -8,11 +8,13 @@ from feedback.models import *
 
 # redirects to home page
 def redirects(request):
-    return HttpResponseRedirect('/home/')
+	request.session["module1"] = True
+	request.session["module2"] = True
+	request.session["module3"] = True
+	return HttpResponseRedirect('/home/')
 
 # home page view
 def home(request):
-
 	if 'q' in request.GET:
 		feed = (request.GET['q'])
 		if feed != '':
@@ -34,10 +36,26 @@ def home(request):
 	else:
 		sent = False
 
+	if request.session["module1"] == True:
+		module1 = True
+	else:
+		module1 = False
+	if request.session["module2"] == True:
+		module2 = True
+	else:
+		module2 = False
+	if request.session["module3"] == True:
+		module3 = True
+	else:
+		module3 = False
+
 	return render(request, 'home/home.html', {
 		'title': 'home',
 		'desc': 'General view of your services',
 		'sent' : sent,
+		'module1' : module1,
+		'module2' : module2,
+		'module3' : module3,
 		})
 
 def sensors(request):

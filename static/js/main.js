@@ -75,3 +75,14 @@ $(window).resize(fixThumbnailMargins);
 
 fixThumbnailMargins();
 
+
+
+
+// Piilota moduli
+$(".sulje").click(function () {
+  $(this).closest('li').slideUp('slow');
+});
+
+
+
+

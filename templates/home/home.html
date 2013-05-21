@@ -9,53 +9,54 @@
   <div class="row-fluid">
     <ul class="thumbnails">
 
-
+      {% if module1 %}
       <li class="span4">
         <div class="thumbnail equalize">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <img src="{{STATIC_URL}}img/icons/random/2.png" alt="">
+          <button type="button" class="close sulje">&times;</button>
+      <iframe src="http://86.50.137.139:8071/mjpeg.cgi"
+          class="smart_sizing_iframe noresize" frameborder="0" scrolling="no" ></iframe>
           <div class="caption">
-            <h3>Module X</h3>
-            <p class="lead">Tell us your need!</p>
-            <p>What feature wish you like to have here? Let us know by using the field below!</p>
-            <form action="" method="get">
-              <input type="text" name="q" placeholder=""></input><br>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            {% if sent %}
-            <div class="alert alert-success viesti">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <p><strong>Got it!</strong><p>Thanks for your input!</p>
-            </div>
-            {% endif %}
+            <h3>Security camera</h3>
+            <p class="lead">Home view</p>
+
           </div>
         </div>
       </li>
+      {% endif %}
 
+      {% if module2 %}
       <li class="span4">
         <div class="thumbnail equalize">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <button type="button" class="close sulje">&times;</button>
           <img src="{{STATIC_URL}}img/icons/random/9.png" alt="">
           <div class="caption">
             <h3>Bulletin Board</h3>
             <p class="lead">Latest note</p>
-            <p class="well">Break in water distribution in whole building tomorrow from 10am to 11am.</p>
+
           </div>
         </div>
       </li>
+      {% endif %}
 
-
+      {% if module3 %}
       <li class="span4">
         <div class="thumbnail equalize">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <img src="{{STATIC_URL}}img/icons/random/7.png" alt="">
+          <button type="button" class="close sulje">&times;</button>
+          <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
           <div class="caption">
             <h3>Temperature</h3>
             <p class="lead">Indoor</p>
-            <div class=""><p>Living room</p><script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script></div>
+            <div class=""><p>Living room</p>
+            </div>
           </div>
         </div>
       </li>
+      {% endif %}
+
+
+
+
+
 
     </ul>
   </div>
