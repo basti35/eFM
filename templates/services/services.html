@@ -12,7 +12,7 @@
 
       <li class="span2">
         <a id="lataus" href="#myModal" class="thumbnail block equalize" role="button" data-toggle="modal" rel="tooltip" title="Provider Finder">
-          <img src={{STATIC_URL}}img/logo/provider.png>
+          <img src="{{STATIC_URL}}img/logo/provider.png">
         </a>
       </li>
 
@@ -42,7 +42,7 @@
 
       <li class="span2">
         <div class="thumbnail">
-          <img src={{ app.picture_url }}>
+          <img src="{{ app.picture_url }}">
         </div>
       </li>
 
@@ -52,27 +52,61 @@
     <p>{{ app.general_description }}</p>
     <p>{{ app.additional_description }}<br>
       Hardware needed:</p>
-    <p><strong>{{ app.sensor_1 }}</strong></p>
-    <p><strong>{{ app.sensor_2 }}</strong></p>
+      <p><strong>{{ app.sensor_1 }}</strong></p>
+      <p><strong>{{ app.sensor_2 }}</strong></p>
 
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+      <button class="btn btn-success disabled">{{ app.button_left }}</button>
+      <button class="btn btn-success disabled">{{ app.button_right }}</button>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
-    <button class="btn btn-success disabled">{{ app.button_left }}</button>
-    <button class="btn btn-success disabled">{{ app.button_right }}</button>
-  </div>
-</div>
-{% endfor %}
+  {% endfor %}
 
 
 
-<!-- Unique Modals -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Unique Modals -->
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-  <div class="tab-content">
+    <div class="tab-content">
+
+      <!-- 0Modal -->
+      <div class="tab-pane fade in active" id="0modal">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Provider Finder</h3>
+        </div>
+        <div class="modal-body">
+          <ul class="thumbnails">
+            <li class="span2">
+              <div class="thumbnail">
+                <img src="{{STATIC_URL}}img/logo/provider.png">
+              </div>
+            </li>
+          </ul>
+          <p class="lead">Service description</p>
+          <p>This service application enables a direct connection between your sensors and facilty services. You can make a service plan according to your preferences.</p>
+          <p>Service is powered by facility management company eFM. All the service provider partners are trushworthy and verified by eFM.</p>
+            <p><strong>Works with many types of sensors</strong></p>
+            <p>Scan your hardware to test suitability.</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+            <button class="btn btn-info disabled">Terms and conditions</button>
+            <a class="btn btn-success" href="#1modal" data-toggle="tab">Scan for suitable sensors</a>
+          </div>
+
+
+
+    </div><!-- ./0modal -->
+
+
+
 
     <!-- 1. Modal -->
-    <div class="tab-pane fade in active" id="1modal">
+    <div class="tab-pane fade" id="1modal">
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -82,7 +116,7 @@
         </h3>
       </div>
 
-      <div id="myModal scrollable" class="modal-body">
+      <div class="modal-body">
 
           <!-- load -->
           <div class="loading">
@@ -102,11 +136,9 @@
           <p>One suitable new sensor found:</p>
           <div class="alert alert-success">
           <p>Sensor: <strong>Water detector </strong><small>(Everspring)</small>
-          <span class="label label-success pull-right">Successfully installed</span></p>
+          <span class="label label-success pull-right"><i class="icon-ok icon-white"></i> Successfully installed</span></p>
           </div>
-
         </div>
-
       </div>
 
       <div class="modal-footer tulos">
@@ -124,7 +156,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Provider Finder Service</h3>
       </div>
-      <div class="modal-body scrollable">
+      <div class="modal-body">
         <ul class="thumbnails">
           <li class="span2">
             <div class="thumbnail">
@@ -137,15 +169,15 @@
             </div>
           </li>
         </ul>
-        <p>Provider Finder service takes care your home when your sensor detects a failure. Choose a contract suitable for your preferences:</p>
         <p><strong>Service category: Plumbing</strong></p>
+        <p>Choose a service plan:</p>
 
         <div class="alert alert-success">
           <label class="radio">
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
             <strong>Smart Provider</strong>
           </label>
-          <p>Service request will be automatically sent to the best service provider in your area and you will receive a confirmation to your mobile phone.</p>
+          <p>Automatically requests the best service provider in your area. You will receive a confirmation to your mobile phone.</p>
         </div>
 
         <div class="alert alert-info">
@@ -153,7 +185,7 @@
             <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
             <strong>Choose Provider</strong>
           </label>
-          <p>You will receive list of information about service providers in your area and you can choose provider by replying with your mobile phone.</p>
+          <p>Sends you a list of service providers in your area. You can sent a request with your mobile phone.</p>
         </div>
 
 
