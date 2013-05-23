@@ -18,7 +18,7 @@
 
       {% for app in applist %}
       <li class="span2">
-        <a href="#{{ app.appearance_order }}Modal" class="thumbnail block equalize" role="button" data-toggle="modal" rel="tooltip" title="{{ app.name }}">
+        <a href="#{{ app.name }}Modal" class="thumbnail block equalize" role="button" data-toggle="modal" rel="tooltip" title="{{ app.name }}">
           <img src={{ app.picture_url }}>
         </a>
       </li>
