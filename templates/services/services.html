@@ -32,7 +32,7 @@
 
 <!-- Modals -->
 {% for app in applist %}
-<div id="{{ app.appearance_order }}Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="{{ app.name }}Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">{{ app.name }}</h3>
