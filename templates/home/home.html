@@ -13,14 +13,15 @@
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
-          <div class="caption">
-            <h3>Security camera</h3>
-            <img src="http://icons.iconarchive.com/icons/icons-land/vista-hardware-devices/128/Security-Camera-icon.png">
-            <p class="lead">Living room view</p>
+          <div class="caption">     
+            <ul class="inline">
+              <li><img src="http://files.softicons.com/download/computer-icons/vista-hardware-devices-icons-by-icons-land/png/32x32/SecurityCamera.png"></li>
+              <li><h3>Security</h3></li>
+            </ul>
+          <p class="lead">Living room camera</p>
+          <div class="well">
+          <iframe id="" frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
           </div>
-          <iframe src="http://dosa.homeip.net:8071/mjpeg.cgi"
-          class="smart_sizing_iframe noresize" frameborder="0" scrolling="no" ></iframe>
-<!--        <a href="" class="pull-right tunnus"><img src="{{STATIC_URL}}img/logo/d-link.png"></a>-->
       </li>
       {% endif %}
 
@@ -29,16 +30,25 @@
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
-            <h3>Energy</h3>
-            <img src="http://png-5.findicons.com/files/icons/1681/siena/128/bulb_green.png">
-            <p class="lead">Living room lamp</p>
-            <button id="valo-on" class="btn btn-success" type="button"> On </button>
-            <button id="valo-off" class="btn btn-danger" type="button"> Off </button><br><br>
-            <p class="">Current consumption</p>
-
+            <ul class="inline">
+              <li><img src="http://cdn1.iconfinder.com/data/icons/blueberry/32/lamp_active.png"></li>
+              <li><h3>Eletricity</h3></li>
+            </ul>
+            <p class="lead">Living room lighting</p>
+            <div class="well">
+            <ul class="inline">
+              <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
+              <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
+              <li>Standard lamp</li>
+            </ul>
+            <hr>
+            <ul class="inline">
+              <li><button id="" class="btn btn-success" type="button">On</button></li>
+              <li><button id="" class="btn btn-danger" type="button">Off</button></li>
+              <li>Pedant</li>
+            </ul>
           </div>
-          
-
+          </div>
         </div>
       </li>
       {% endif %}
@@ -48,8 +58,10 @@
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
-            <h3>Temperature</h3>
-            <img src="http://2.bp.blogspot.com/-SnwaqMpvJD8/Tny7ljcVCoI/AAAAAAAAABg/3P9Bdv7avRg/s200/Thermometer.png">
+            <ul class="inline">
+              <li><img src="http://www.poweradmin.com/images/ico_speedfan.gif"></li>
+              <li><h3>Temperature</h3></li>
+            </ul>
             <p class="lead">Living room</p>
             <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
           </div>
@@ -57,14 +69,38 @@
       </li>
       {% endif %}
 
+      {% if module4 %}
+      <li class="span4">
+        <div class="thumbnail equalize">
+          <button type="button" class="close sulje">&times;</button>
+          <div class="caption">
+            <ul class="inline">
+              <li><img height="32px" width="32px" src="{{STATIC_URL}}img/logo/provider.png"></li>
+              <li><h3>Provider Finder</h3></li>
+            </ul>
+            <p class="lead">Connected services</p>
+            <table class="table table-hover well">
+
+             <tr>
+              <th>Category</th>
+              <th>Status</th>
+            </tr>
+
+            <tr>
+              <td>Plumbing</td>
+              <td><span class="badge badge-success">OK</span></td>
+            </tr>
+
+          </table><br>
+        </div>
+      </div>
+    </li>
+    {% endif %}
+
 
     </ul>
   </div>
 </div><!-- ./modules-->
-
-
-
-
 
 
 
@@ -74,5 +110,6 @@
 {% endblock %}
 
 {% block script %}
+<script src="{{STATIC_URL}}js/jquery.fitvids.js"></script>
 <script src="{{STATIC_URL}}js/{{ title }}.js"></script>
 {% endblock %}

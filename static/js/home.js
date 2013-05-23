@@ -9,10 +9,3 @@ function slowAlert() {
 }
 
 
-
-// executed when page loaded:
-$(document).ready(function() {
-
-	delayedAlert()
-
-});

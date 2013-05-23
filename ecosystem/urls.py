@@ -13,9 +13,8 @@ urlpatterns = patterns('',
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
     #url(r'^services/$', services),
-    url(r'^sensors/$', sensors),
+    url(r'^manager/$', manager),
 
-    url(r'^provider/$', provider),
     url(r'^feedback/$', feedback),
     url(r'^doc/$', doc),
 
@@ -26,6 +25,7 @@ urlpatterns = patterns('',
 
     url(r'^provider/$', provider),
 
+    url(r'^home/new/$', add),    
 
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),

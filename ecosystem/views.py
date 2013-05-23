@@ -8,14 +8,18 @@ from feedback.models import *
 
 # redirects to home page
 def redirects(request):
+	request.session["module4"] = False
+	return HttpResponseRedirect('/home/')
 
+def add(request):
+	request.session["module4"] = True
 	return HttpResponseRedirect('/home/')
 
 # home page view
 def home(request):
 	request.session["module1"] = True
 	request.session["module2"] = True
-	request.session["module3"] = True
+	request.session["module3"] = False
 	if 'q' in request.GET:
 		feed = (request.GET['q'])
 		if feed != '':
@@ -49,6 +53,10 @@ def home(request):
 		module3 = True
 	else:
 		module3 = False
+	if request.session["module4"] == True:
+		module4 = True
+	else:
+		module4 = False
 
 	return render(request, 'home/home.html', {
 		'title': 'home',
@@ -57,12 +65,13 @@ def home(request):
 		'module1' : module1,
 		'module2' : module2,
 		'module3' : module3,
+		'module4' : module4,
 		})
 
-def sensors(request):
-	return render(request, 'manager/sensors.html', {
-		'title': 'sensors',
-		'desc': 'Manage your hardware',
+def manager(request):
+	return render(request, 'manager/manager.html', {
+		'title': 'manager',
+		'desc': 'Manage your system',
 
 		})
 

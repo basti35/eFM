@@ -1,8 +1,7 @@
 from django.db import models
 
-class ExampleApp(models.Model):
-	name = models.CharField(max_length=30)
-	appearance_order = models.IntegerField()
+class ExampleService(models.Model):
+	name = models.CharField(max_length=50)
 	lead = models.CharField(max_length=200)
 	picture_url = models.URLField()
 	general_description = models.CharField(max_length=1000)
@@ -16,4 +15,4 @@ class ExampleApp(models.Model):
 		return self.name
 
 	class Meta:
-		ordering = ['appearance_order']
+		ordering = ['id']

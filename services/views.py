@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from services.models import ExampleApp
+from services.models import ExampleService
 
 def services(request):
 
-	applist = ExampleApp.objects.all()
+	applist = ExampleService.objects.all()
 
 	return render(request, 'services/services.html', {
 		'title': 'services',
