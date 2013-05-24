@@ -13,7 +13,6 @@ urlpatterns = patterns('',
 
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
-    url(r'^home/webcam/$', webcam),
 
     url(r'^services/$', services),
 

@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'services',
     'manager',
     'provider',
+    'south',
 
 )
 
@@ -176,3 +177,10 @@ LOGGING = {
     }
 }
 
+
+"""
+try:
+   from local_settings import *
+except ImportError, e:
+   pass
+"""

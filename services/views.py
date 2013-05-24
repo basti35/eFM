@@ -5,9 +5,10 @@ from services.models import *
 
 def services(request):
 
-	applist = Service.objects.all()
+	exampleservices = ExampleService.objects.all()
 
 	return render(request, 'services/services.html', {
 		'title': 'services',
+		'exampleservices' : exampleservices,
 
 		})
