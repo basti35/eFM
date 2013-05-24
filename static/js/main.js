@@ -18,13 +18,8 @@ function fixThumbnailMargins() {
         });
     });
 }
-
 // Fix the margins when potentally the floating changed
 $(window).resize(fixThumbnailMargins);
-
-fixThumbnailMargins();
-
-
 
 // equalizes the heights of thumbnail boxes
 function equalHeight(group) {    
@@ -38,55 +33,58 @@ function equalHeight(group) {
     group.each(function() { $(this).height(tallest); });
 }
 
+// fading out
+$("a.transition").click(function(event){
+  event.preventDefault();
+  linkLocation = this.href;
+  $(".sisalto").fadeOut(500, redirectPage);    
+});
+
+
+
+
 
 // GENERAL FUNCTIONS
-
-// tooltips
-$("[rel='tooltip']").tooltip();
-
-// nicescroll
-$("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
-
-// equalheight
-equalHeight($(".equalize"));
-
-// Piilota moduli
-$(".sulje").click(function () {
-  $(this).closest('li').slideUp('slow');
-});
-
-// valo paalle
-$("#valo-on").click(function () {
-  $.ajax({        
-    url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
-    type: 'GET',
-  });
-});
-
-// valo pois
-$("#valo-off").click(function () {
-  $.ajax({        
-    url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
-    type: 'GET',
-  });
-});
-
-
 
 // executed when page loaded:
 $(document).ready(function() {
 
+  // tooltips
+  $("[rel='tooltip']").tooltip();
+
+  // nicescroll
+  $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
+
+  // equalheight
+  equalHeight($(".equalize"));
+
+  // fix thumbnails
   fixThumbnailMargins();
-  
+
+  // Piilota moduli
+  $(".sulje").click(function () {
+    $(this).closest('li').slideUp('slow');
+  });
+
   // fading in
   $(".sisalto").css("display", "none");
   $(".sisalto").fadeIn(1000);
-  
-  // fading out
-  $("a.transition").click(function(event){
-    event.preventDefault();
-    linkLocation = this.href;
-    $(".sisalto").fadeOut(500, redirectPage);    
+
+
+  // valo paalle
+  $("#valo-on").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
+      type: 'GET',
+    });
+  });
+
+  // valo pois
+  $("#valo-off").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
+      type: 'GET',
+    });
   });
 
 

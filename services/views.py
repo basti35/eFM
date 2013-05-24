@@ -1,12 +1,13 @@
+# SERVICES VIEWS
+
 from django.shortcuts import render
-from services.models import ExampleService
+from services.models import *
 
 def services(request):
 
-	applist = ExampleService.objects.all()
+	applist = Service.objects.all()
 
 	return render(request, 'services/services.html', {
 		'title': 'services',
-		'desc': 'Add new services to your system',
-		'applist' : applist,
+
 		})

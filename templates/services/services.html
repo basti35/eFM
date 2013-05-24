@@ -15,7 +15,7 @@
           <img src="{{STATIC_URL}}img/logo/provider.png">
         </a>
       </li>
-
+    {% if applist %}
       {% for app in applist %}
       <li class="span2">
         <a href="#{{ app.id }}Modal" class="thumbnail block equalize" role="button" data-toggle="modal" rel="tooltip" title="{{ app.name }}">
@@ -23,6 +23,7 @@
         </a>
       </li>
       {% endfor %}
+    {% endif %}
 
     </ul> 
   </div>
@@ -120,8 +121,10 @@
 
           <!-- load -->
           <div class="loading">
-            <p class"lead muted">searching for suitable sensors..</p>
-            <img src="http://ec.europa.eu/markt/ecertis/images/progress_bar.gif" alt="loading..">  
+            <p class="lead muted">searching for suitable sensors..</p>
+                <div class="progress progress-striped active">
+    <div class="bar" style="width: 100%;"></div>
+    </div> 
           </div>
 
         <!-- result -->

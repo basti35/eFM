@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        {% block head %}
-        {% endblock %}
   <meta charset="utf-8">
   <title>Domus Sapiens{% block title %} | {{ title|capfirst }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{STATIC_URL}}img/fav.ico">
-  <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet"><!-- base css lib -->
-  <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet"><!-- responsive -->
-  <link href="{{STATIC_URL}}css/boot-custom.css" rel="stylesheet"><!-- customs -->
-  <link href="{{STATIC_URL}}css/main.css" rel="stylesheet"><!-- customs -->
+  <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/boot-custom.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+  {% block head %}
+  {% endblock %}
 </head>
 
 <body>
 
+  <div id="scrollable" class="container">
 
-  <div class="container"><div id="scrollable">
-    <div class="row">
+      <div class="row">
 
-      {% include 'menu.html' %}
+        {% include 'menu.html' %}
 
-      <div class="sisalto">
+        <div class="sisalto">
 
-        {% block content %}
-        {% endblock %}
+          {% block content %}
+          {% endblock %}
 
-      </div>    
+        </div>
+        <hr>
+        
+      </div>
 
-    </div><!-- .row -->
-  </div><!-- .container -->
+      {% include 'footer.html' %}
 
-
-  {% block footer %}
-  {% endblock %}
+  </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
   <script src="{{STATIC_URL}}js/jquery.nicescroll.min.js"></script>
   <script src="{{STATIC_URL}}js/main.js"></script>
-
   {% block script %}
   {% endblock %}
 

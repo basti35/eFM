@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, url, include
-from ecosystem.views import *
 
+from home.views import *
 from services.views import *
+from manager.views import *
 from provider.views import *
 
 # Uncomment the next two lines to enable the admin:
@@ -12,28 +13,17 @@ urlpatterns = patterns('',
 
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
-    #url(r'^services/$', services),
-    url(r'^manager/$', manager),
-
-    url(r'^feedback/$', feedback),
-    url(r'^doc/$', doc),
-
-    url(r'^test/$', test),
-
+    url(r'^home/webcam/$', webcam),
 
     url(r'^services/$', services),
 
-    url(r'^provider/$', provider),
+    url(r'^manager/$', manager),
 
-    url(r'^home/new/$', add),    
+    url(r'^provider/$', provider),
 
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),
-
-
-
     #url(r'^myapp/', include('mysite.myapp.urls')),
-
 
     # Examples:
     # url(r'^$', 'ecosystem.views.home', name='home'),
@@ -44,4 +34,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
 )

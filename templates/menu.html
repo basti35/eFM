@@ -1,36 +1,33 @@
 <!-- header -->
-      <div class="menu">
+<div class="menu">
 
-        <div class="pull-right"><a href="http://www.efmnet.it"><img src="{{STATIC_URL}}img/logo/efm_logo.png"></a></div>
+  <a href="http://domussapiens.io/"><img id="ds-logo" src="{{STATIC_URL}}img/logo/ds_logo.png"></a>
 
-        
-        <ul class="inline">
-          <li><a href="http://domussapiens.io/"><img src="{{STATIC_URL}}img/logo/logo.png"></a></li>
-        </ul>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse" rel="tooltip" data-placement="top" title="Menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <!--<span class="muted brand"><strong>{{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></span>-->
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+          <ul class="nav">
 
-            <div class="navbar">
-              <div class="navbar-inner">
-                <div class="container">
-                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse" rel="tooltip" data-placement="top" title="Menu">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </a>
-                  <!--<span class="muted brand"><strong>{{ title|capfirst }} </strong><small><em>- {{ desc }}</em></small></span>-->
-                  <div class="nav-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav">
+            <li class="{% if title == 'home'%}active{% endif %}"><a href="/home/"><i class="icon-home"></i> Home</a></li>
 
-                      <li class="{% if title == 'home'%}active{% endif %}"><a href="/home/"><i class="icon-home"></i> Home</a></li>
+            <li class="{% if title == 'services'%}active{% endif %}"><a href="/services/"><i class="icon-shopping-cart"></i> Services</a></li>
 
-                      <li class="{% if title == 'services'%}active{% endif %}"><a href="/services/"><i class="icon-shopping-cart"></i> Services</a></li>
+            <li class="{% if title == 'manager'%}active{% endif %}"><a href="/manager/"><i class="icon-wrench"></i> Manager</a></li>
 
-                      <li class="{% if title == 'manager'%}active{% endif %}"><a href="/manager/"><i class="icon-wrench"></i> Manager</a></li>
+          </ul>
 
-                    </ul>
+        </div><!-- /.nav-collapse -->
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
 
-                  </div><!-- /.nav-collapse -->
-                </div>
-              </div><!-- /navbar-inner -->
-            </div><!-- /navbar -->
+</div><!-- .header -->
 
-      </div><!-- .header -->
+

@@ -4,12 +4,12 @@
 {% block content %}
 
 
-
 <div class="active item"><!-- modules-->
   <div class="row-fluid">
     <ul class="thumbnails">
 
-      {% if module1 %}
+
+      <!-- Security Module -->
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
@@ -18,42 +18,49 @@
               <li><img src="http://www.net-files.com/images/icon-security-small.png"></li>
               <li><h3>Security</h3></li>
             </ul>
-          <p class="lead">Living room camera</p>
-          <div class="well">
-          <iframe id="" frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
+            <p class="lead">Living room camera</p>
+            <div class="well">
+              <a href="/home/webcam/" class="btn btn-block {{ button }}">{{ text }} <i class="icon-chevron-{{ arrow }} icon-white"></i></a>
+              {% if webcam %}
+              <iframe frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
+              {% endif %}
+            </div>
           </div>
+        </div>
       </li>
-      {% endif %}
 
-      {% if module2 %}
+
+
+
+      <!-- Electricity Module -->
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
             <ul class="inline">
               <li><img src="http://cdn1.iconfinder.com/data/icons/blueberry/32/lamp_active.png"></li>
-              <li><h3>Eletricity</h3></li>
+              <li><h3>Electricity</h3></li>
             </ul>
             <p class="lead">Living room lighting</p>
             <div class="well">
-            <ul class="inline">
-              <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
-              <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
-              <li>Corner lamp</li>
-            </ul>
-            <hr>
-            <ul class="inline">
-              <li><button id="" class="btn btn-success" type="button">On</button></li>
-              <li><button id="" class="btn btn-danger" type="button">Off</button></li>
-              <li>Sealing lamp</li>
-            </ul>
-          </div>
+              <ul class="inline">
+                <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
+                <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
+                <li>Corner lamp</li>
+              </ul>
+              <hr>
+              <ul class="inline">
+                <li><button id="" class="btn btn-success" type="button">On</button></li>
+                <li><button id="" class="btn btn-danger" type="button">Off</button></li>
+                <li>Sealing lamp</li>
+              </ul>
+            </div>
           </div>
         </div>
       </li>
-      {% endif %}
 
-      {% if module3 %}
+
+      <!-- Temperature Module -->
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
@@ -67,35 +74,34 @@
           </div>
         </div>
       </li>
-      {% endif %}
 
-      {% if module4 %}
+
+      <!-- Installed Modules -->
+      {% for app in applist %}
       <li class="span4">
         <div class="thumbnail equalize">
           <button type="button" class="close sulje">&times;</button>
           <div class="caption">
             <ul class="inline">
-              <li><img height="32px" width="32px" src="{{STATIC_URL}}img/logo/provider.png"></li>
-              <li><h3>Provider Finder</h3></li>
+              <li><img height="32px" width="32px" src="{{ app.picture_url }}"></li>
+              <li><h3>{{ app.name }}</h3></li>
             </ul>
-            <p class="lead">Connected services</p>
-            <table class="table table-hover well">
+            <p class="lead">{{ app.lead }}</p>
 
-             <tr>
-              <th>Category</th>
-              <th>Status</th>
-            </tr>
+            <!-- Custom content -->
+            <div class="well">
+              <p>{{ app.general_description }}</p>
+              <ul class="inline">
+                <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
+                <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
+              </ul>
+            </div>
+            <!-- ./custom -->
 
-            <tr>
-              <td>Plumbing</td>
-              <td><span class="badge badge-success">OK</span></td>
-            </tr>
-
-          </table><br>
+          </div>
         </div>
-      </div>
-    </li>
-    {% endif %}
+      </li>
+      {% endfor %}
 
 
     </ul>
@@ -103,13 +109,9 @@
 </div><!-- ./modules-->
 
 
-
 {% endblock %}
 
-{% block footer %}
-{% endblock %}
 
 {% block script %}
-<script src="{{STATIC_URL}}js/jquery.fitvids.js"></script>
 <script src="{{STATIC_URL}}js/{{ title }}.js"></script>
 {% endblock %}

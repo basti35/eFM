@@ -16,13 +16,20 @@ a:hover {
 	margin-left: 0 !important;
 }
 
-
-.nurkkaan {
-	position: relative;
-	top: -50px;
+#ds-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+   	margin-bottom: 5px;
 }
 
-.viesti {
+#efm-logo {
+    margin-bottom: 5px;
+}
+
+
+.alanurkka {
      position: fixed;
      bottom: 0;
      right: 0;
@@ -33,12 +40,4 @@ a:hover {
 	position: relative;
 	top: 20px;
 	left: 50px;
-}
-
-.navbar .brand {
-  font-size: 1em;
-}
-
-.menu {
-	margin-top: 15px;
 }
