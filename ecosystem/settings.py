@@ -14,12 +14,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'djdb',                                      # Or path to database file if using sqlite3.
-                                                            # The following settings are not used with sqlite3:
+        'NAME': 'djdb',
         'USER': 'efm',
         'PASSWORD': 'ME310-eFM',
-        'HOST': 'web327.webfaction.com',                  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '5432',                                     # Set to empty string for default.
+        'HOST': 'web327.webfaction.com',
+        'PORT': '5432',
     }
 }
 
@@ -63,7 +62,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/home/web327/webapps/efm_static/'
+STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"

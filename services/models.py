@@ -4,7 +4,7 @@ from django.db import models
 
 class ExampleService(models.Model):
 	name = models.CharField(max_length=15)
-	lead = models.CharField(max_length=25)
+	lead = models.CharField(max_length=50)
 	logo_url = models.URLField()
 	service_description = models.TextField(max_length=200)
 	additional_description = models.TextField(blank=True, max_length=300)
