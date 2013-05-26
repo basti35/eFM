@@ -19,7 +19,46 @@
 
       <div class="row">
 
-        {% include 'menu.html' %}
+<!-- header -->
+<div class="menu">
+
+  <img id="ds-logo" src="{{STATIC_URL}}img/logo/ds_logo.png">
+
+
+  <!-- menu -->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse" rel="tooltip" data-placement="top" title="Menu">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <!--<span class="muted brand">{{ title|capfirst }}</span>-->
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+          <ul class="nav">
+
+            <li class="{% if title == 'home'%}active{% endif %}"><a href="/home/"><i class="icon-home"></i> Home</a></li>
+
+            <li class="{% if title == 'services'%}active{% endif %}"><a href="/services/"><i class="icon-shopping-cart"></i> Services</a></li>
+
+            <li class="{% if title == 'manager'%}active{% endif %}"><a href="/manager/"><i class="icon-wrench"></i> Manager</a></li>
+
+          </ul>
+
+            {% block specific_buttons %}
+            {% endblock %}
+
+        </div><!-- /.nav-collapse -->
+
+      </div>
+    </div><!-- /navbar-inner -->
+  </div><!-- /navbar -->
+
+
+
+
+</div><!-- .header -->
 
         <div class="sisalto">
 
@@ -31,7 +70,7 @@
         
       </div>
 
-      {% include 'footer.html' %}
+      <a class="pull-right" href="http://www.efmnet.it"><img id="efm-logo" src="{{STATIC_URL}}img/logo/efm_logo.png"></a>
 
   </div>
 

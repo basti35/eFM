@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+            {% block specific_buttons %}
+            <ul class="nav pull-right">
+              <li><a href="#myModal" data-toggle="modal"><i class="icon-plus"></i> New App</a></li>
+            </ul>
+            {% endblock %}
 
 {% block content %}
 
@@ -9,78 +14,11 @@
     <ul class="thumbnails">
 
 
-      <!-- Security Module 
-      <li class="span4">
-        <div class="thumbnail equalize">
-          <button type="button" class="close sulje">&times;</button>
-          <div class="caption">     
-            <ul class="inline">
-              <li><img src="http://www.net-files.com/images/icon-security-small.png"></li>
-              <li><h3>Security</h3></li>
-            </ul>
-            <p class="lead">Living room camera</p>
-            <div class="well">
-              <a href="/home/webcam/" class="btn btn-block {{ button }}">{{ text }} <i class="icon-chevron-{{ arrow }} icon-white"></i></a>
-              {% if webcam %}
-              <iframe frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </li> -->
-
-
-
-
-      <!-- Electricity Module -->
-      <li class="span4">
-        <div class="thumbnail equalize">
-          <button type="button" class="close sulje">&times;</button>
-          <div class="caption">
-            <ul class="inline">
-              <li><img src="http://cdn1.iconfinder.com/data/icons/blueberry/32/lamp_active.png"></li>
-              <li><h3>Electricity</h3></li>
-            </ul>
-            <p class="lead">Living room lighting</p>
-            <div class="well">
-              <ul class="inline">
-                <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
-                <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
-                <li>Corner lamp</li>
-              </ul>
-              <hr>
-              <ul class="inline">
-                <li><button id="" class="btn btn-success" type="button">On</button></li>
-                <li><button id="" class="btn btn-danger" type="button">Off</button></li>
-                <li>Sealing lamp</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </li>
-
-
-      <!-- Temperature Module -->
-      <li class="span4">
-        <div class="thumbnail equalize">
-          <button type="button" class="close sulje">&times;</button>
-          <div class="caption">
-            <ul class="inline">
-              <li><img src="http://www.poweradmin.com/images/ico_speedfan.gif"></li>
-              <li><h3>Temperature</h3></li>
-            </ul>
-            <p class="lead">Living room</p>
-            <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
-          </div>
-        </div>
-      </li>
-
-
       <!-- Installed Modules -->
       {% for app in applist %}
       <li class="span4">
         <div class="thumbnail equalize">
-          <button type="button" class="close sulje">&times;</button>
+          <a href="/remove/{{ app.id }}" type="button" class="close sulje">&times;</a>
           <div class="caption">
             <ul class="inline">
               <li><img height="32px" width="32px" src="{{ app.picture_url }}"></li>
@@ -88,15 +26,53 @@
             </ul>
             <p class="lead">{{ app.lead }}</p>
 
-            <!-- Custom content -->
+<!-- 1. Webcam -->
+            {% if app.sensor == 1 %}
             <div class="well">
               <p>{{ app.general_description }}</p>
+              <a href="#" class="btn btn-block btn-primary">Open stream</a>
+              {% if webcam %}
+              <iframe frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
+              {% endif %}
+            </div>
+            {% endif %}
+
+<!-- 2. Temperature -->
+            {% if app.sensor == 2 %}
+            <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
+            {% endif %}
+
+<!-- 3. Multiswitch -->
+            {% if app.sensor == 3 %}
+            <div class="well">
               <ul class="inline">
-                <li><button id="valo-on" class="btn btn-success" type="button">On</button></li>
-                <li><button id="valo-off" class="btn btn-danger" type="button">Off</button></li>
+                <li><button class="btn btn-success multiswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger multiswitch-ff" type="button">Off</button></li>
+                <li>Corner lamp</li>
               </ul>
             </div>
-            <!-- ./custom -->
+            {% endif %}
+
+<!-- 4. Lampswitch -->
+            {% if app.sensor == 4 %}
+            <div class="well">
+              <ul class="inline">
+                <li><button id="" class="btn btn-success" type="button">On</button></li>
+                <li><button id="" class="btn btn-danger" type="button">Off</button></li>
+                <li>Corner lamp</li>
+              </ul>
+            </div>
+            {% endif %}
+
+<!-- 5. Water -->
+            {% if app.sensor == 5 %}
+            <div class="well">
+              <p>{{ app.name }}</p>
+            </div>
+            {% endif %}
+
+
+<!-- ./custom content -->
 
           </div>
         </div>
@@ -107,6 +83,80 @@
     </ul>
   </div>
 </div><!-- ./modules-->
+
+
+
+
+<!-- New App Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Register device</h3>
+  </div>
+  <div class="modal-body">
+    <p>Please fill in <strong>device id number</strong>:</p>
+    <form action="" method="get">
+      <input type="text" name="id" placeholder=""></input><br>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+  </div>
+</div>
+
+
+
+
+
+    {% if appform %}
+    <!-- App customize form -->
+    <div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Create your own app!</h3>
+      </div>
+      <div class="modal-body">
+
+<form action="/home/" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+
+<!-- 1. Webcam -->     
+      {% if sensorcode == '1' %}
+      
+
+
+
+      {% endif %}
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+      </div>
+    </div>
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}

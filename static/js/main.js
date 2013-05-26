@@ -33,15 +33,6 @@ function equalHeight(group) {
     group.each(function() { $(this).height(tallest); });
 }
 
-// fading out
-$("a.transition").click(function(event){
-  event.preventDefault();
-  linkLocation = this.href;
-  $(".sisalto").fadeOut(500, redirectPage);    
-});
-
-
-
 
 
 // GENERAL FUNCTIONS
@@ -72,7 +63,7 @@ $(document).ready(function() {
 
 
   // valo paalle
-  $("#valo-on").click(function () {
+  $(".multiswitch-on").click(function () {
     $.ajax({        
       url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
       type: 'GET',
@@ -80,7 +71,7 @@ $(document).ready(function() {
   });
 
   // valo pois
-  $("#valo-off").click(function () {
+  $(".multiswitch-off").click(function () {
     $.ajax({        
       url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
       type: 'GET',

@@ -14,6 +14,8 @@ urlpatterns = patterns('',
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
 
+    url(r'^remove/(?P<application_id>\d+)/$', remove),
+
     url(r'^services/$', services),
 
     url(r'^manager/$', manager),
