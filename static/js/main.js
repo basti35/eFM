@@ -82,4 +82,8 @@ $(document).ready(function() {
 });
 
 
+$(window).load(function(){
+  $('#dvLoading').fadeOut(2000);
+});
+
 
