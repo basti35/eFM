@@ -35,6 +35,7 @@ function equalHeight(group) {
 
 
 
+
 // GENERAL FUNCTIONS
 
 // executed when page loaded:
@@ -57,9 +58,10 @@ $(document).ready(function() {
     $(this).closest('li').slideUp('slow');
   });
 
-  // fading in
-  $(".sisalto").css("display", "none");
-  $(".sisalto").fadeIn(1000);
+  $(".websulki").click(function () {
+    $(this).closest('.well').slideUp('slow');
+  });
+
 
 
   // valo paalle
@@ -79,11 +81,23 @@ $(document).ready(function() {
   });
 
 
+  // lauch create app dialog if allowed
+  $('#myModal').modal('show')
+
+
+  // executed when
+
+    $('.lataus').delay(4000).fadeOut(500);
+    $('.tulos').delay(4500).fadeIn(500);
+
+
+
 });
 
 
-$(window).load(function(){
-  $('#dvLoading').fadeOut(2000);
-});
+
+
+
+
 
 
