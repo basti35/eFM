@@ -5,9 +5,9 @@
   <title>Domus Sapiens{% block title %} | {{ title|capfirst }}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{STATIC_URL}}img/fav.ico">
-  <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/bootstrap_custom.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="{{STATIC_URL}}css/boot-custom.css" rel="stylesheet">
+  <link href="{{STATIC_URL}}css/custom.css" rel="stylesheet">
   <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
   {% block head %}
   {% endblock %}
@@ -66,8 +66,10 @@
       <hr>
       
     </div>
+    <div class="footer">
 
     <a class="pull-right" href="http://www.efmnet.it"><img id="efm-logo" src="{{STATIC_URL}}img/logo/efm_logo.png"></a>
+    </div>
 
   </div>
 
