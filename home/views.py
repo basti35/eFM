@@ -9,7 +9,6 @@ import datetime
 from django import forms
 
 
-
 # redirects to home page
 def redirects(request):
 	request.session["webcam"] = False
@@ -41,6 +40,7 @@ def home(request):
 	else:
 		appform = False
 		sensorcode = False
+
 
 	try:
 		if request.session['latest_sensor']:
@@ -114,7 +114,6 @@ def remove(request, application_id):
 	except:
 		pass
 	return HttpResponseRedirect('/home/')
-
 
 
 

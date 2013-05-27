@@ -35,10 +35,7 @@ function equalHeight(group) {
 
 
 
-
-// GENERAL FUNCTIONS
-
-// executed when page loaded:
+// after page loaded:
 $(document).ready(function() {
 
   // tooltips
@@ -85,10 +82,9 @@ $(document).ready(function() {
   $('#myModal').modal('show')
 
 
-  // executed when
-
-    $('.lataus').delay(4000).fadeOut(500);
-    $('.tulos').delay(4500).fadeIn(500);
+  // scanning sensors
+  $('.lataus').delay(4000).fadeOut(500);
+  $('.tulos').delay(4500).fadeIn(500);
 
 
 
