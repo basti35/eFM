@@ -8,10 +8,16 @@
 
 {% block content %}
 
+<div class="well">
+DEV:<br>
+{{applist}}
+{{sensordata}}
+</div>
+
+
 <div class="active item sisalto"><!-- modules-->
   <div class="row-fluid">
     <ul class="thumbnails">
-
 
       <!-- Installed Modules -->
       {% for app in applist %}
@@ -20,13 +26,13 @@
           <a href="/remove/{{ app.id }}" type="button" class="close sulje">&times;</a>
           <div class="caption">
             <ul class="inline">
-              <li><img height="32px" width="32px" src="{{ app.picture_url }}"></li>
+              <li><img height="32px" width="32px" src="{{STATIC_URL}}img/icons/{{ app.icon }}.png"></li>
               <li><h3>{{ app.name }}</h3></li>
             </ul>
             <p class="lead">{{ app.lead }}</p>
 
             <!-- 01 Webcam -->
-            {% if app.sensor == 01 %}
+            {% if app.sensor.label = "Webcam" %}
             {% if webcam %}
             <div class="well">
               <a href="/webcam/" type="button" class="close websulki"><i class="icon-off"></i></a>
@@ -41,8 +47,8 @@
             
 
             <!-- 02 Temperature -->
-            {% if app.sensor == 02 %}
-            <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=fgoyxjmazepobjzaivuhvnutwsaohsmoxglzwnshridhorisil"></script>
+            {% if app.sensor.label = "Temperature sensor" %}
+            <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=rqlshdoiectupilajlvsbsgkfdqpahnbhdgxubflwgbxmfftyv"></script>
             {% endif %}
 
             <!-- 03 Multiswitch -->
@@ -77,6 +83,8 @@
 
             <!-- ./custom content -->
 
+            <small class="muted">{{ app.sensor }} set by {{ app.author }} {{ app.date }}</small>
+
           </div>
         </div>
       </li>
@@ -85,7 +93,6 @@
           <div class="caption">
             <a href="#newModal" data-toggle="modal" class="btn btn-large" type="button"><i class="icon-plus"></i> Add new feature</a>
           </div>
-
       {% endfor %}
 
 
@@ -102,7 +109,7 @@
     <h3 id="myModalLabel">Register device</h3>
   </div>
   <div class="modal-body">
-    <p>Please fill in <strong>device id number</strong>:</p>
+    <p>Please fill in <strong>ID number of new device</strong>:</p>
     <form action="" method="get">
       <div class="input-prepend">
         <span class="add-on">#</span>
@@ -131,7 +138,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">
           <span class="lataus">Scanning local network..</span><!-- load -->
-          <span class="tulos">New sensor identified</span><!-- result -->
+          <span class="tulos">New device identified</span><!-- result -->
         </h3>
       </div>
       <div class="modal-body">
@@ -145,23 +152,25 @@
         <!-- result -->
         <div class="tulos">
 
-          {% if sensordata %}
+        {% if sensordata %}
+          {% for sensor in sensordata %}
           <ul class="thumbnails">
             <li class="span2">
               <div class="thumbnail">
-                <img src="{{ sensordata.3 }}">
+                <img src="{{ sensor.picture_url }}">
               </div>
             </li>
           </ul>
-          <p>One suitable new sensor found:</p>
+          <p>One new device found:</p>
           <div class="alert alert-success">
-            <p><strong>#{{ sensordata.4 }} - {{ sensordata.0 }} </strong>
+            <p><span class="muted">Device #{{ sensor.code }}</span> <strong>{{ sensor.label }}</strong>
               <span class="label label-success pull-right"><i class="icon-ok icon-white"></i> Successfully installed</span></p>
-              <p>{{ sensordata.2 }}</p>
-              <p><small>({{ sensordata.1 }})</small></p>
+              <p><small><span class="muted">Description</span><strong> {{ sensor.lead }}</strong></small></p>
+              <p><small><span class="muted">Manufacturer</span> {{ sensor.brand }} <span class="muted">- Technology</span> {{ sensor.technology }}</small></p>
             </div>
           </div>
-          {% else %}
+          {% endfor %}
+        {% else %}
           <ul class="thumbnails">
             <li class="span2">
               <div class="thumbnail">
@@ -174,7 +183,7 @@
             <p>There seems to be 2 open source projects for this device but some functionalities may not be fully supported yet.</p>
           </div>
         </div>
-          {% endif %}
+        {% endif %}
 
         </div>
         <div class="modal-footer">

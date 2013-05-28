@@ -15,6 +15,8 @@
           <p></p>
           <p class="lead">Connected sensors and devices</p>
 
+{{ sensorlist }}
+
           <table class="table table-hover">
 
            <tr>
@@ -27,9 +29,9 @@
           {% for sensor in sensorlist %}
           <tr>
             <td>{{ sensor.code }}</td>
-            <td>{{ sensor.name }}</td>
+            <td>{{ sensor.label }}</td>
             <td>{{ sensor.date }}</td>
-            <td><span class="badge badge-{{ bnt_color }}">{{ sensor.status }}</span></td>
+            <td><span class="badge badge-success">Online</span></td>
           </tr>
           {% endfor %}
 
@@ -44,10 +46,9 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>Account</h3>
-        <p class="lead">Personal details</p>
+        <p class="lead">{{ user }}</p>
                 <img src="http://png-3.findicons.com/files/icons/730/soft/128/user_male.png"><hr>
-        <p class="lead">Balance</p>
-        <p>Financial details here</p>
+        <p class="lead">Balance   23.20 €</p>
       </div>
     </div>
   </li>
@@ -56,15 +57,15 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>Support</h3>
-        <p class="lead">Contact customer service</p>
-        <p>Contact details / instant messenger here</p>
-        <p class="lead">Tutorial</p>
-        <p></p>
-
+        <ul>
+          <li>Contact customer service</li>
+          <li>Read instructions</li>
+          <li>API documentation</li>
+          <li>Partners</li>
+        </ul>
       </div>
     </div>
   </li>
-
 
 </ul>
 </div><!-- ./modules-->

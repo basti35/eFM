@@ -19,6 +19,11 @@ def returnall(request):
 	Application.objects.all().update(installed=True)
 	return HttpResponseRedirect('/home/')
 
+# return all created apps
+def flush(request):
+	Application.objects.all().update(installed=False)
+	return HttpResponseRedirect('/home/')
+
 # toggles webcam stream
 def webcam(request):
 	if request.session["webcam"]:
@@ -31,24 +36,17 @@ def webcam(request):
 # home page view
 def home(request):
 
-	sensordata = []
+	sensor = False
 
 	 # if sensor registered
 	if 'id' in request.GET:
-		request.session['latest_sensor'] = (request.GET['id'])
+		p = (request.GET['id'])
+		request.session['latest_sensor'] = Sensor.objects.filter(code=p)
+		sensor = request.session['latest_sensor']
 		appform = True
 	else:
 		appform = False
-		sensorcode = False
-
-
-	try:
-		if request.session['latest_sensor']:
-			sensorcode = request.session['latest_sensor']
-		else:
-			sensorcode = False
-	except:
-	  sensorcode = False
+		sensor = False
 
 	webcam = False
 	try:
@@ -62,33 +60,20 @@ def home(request):
 	if request.method == 'POST':
 		form = AppForm(request.POST) # A form bound to the POST data
 		if form.is_valid(): # All validation rules pass
-		    name = form.cleaned_data['application_name']
-		    lead = form.cleaned_data['description']
-		    author = form.cleaned_data['app_owner']
 		    n = Application(
-		    	name = form.cleaned_data['application_name'],
+		    	name = form.cleaned_data['feature_name'],
 		    	lead = form.cleaned_data['description'],
-		    	author = form.cleaned_data['app_owner'],
-		    	picture_url = form.cleaned_data['picture_uRL'],
-		    	sensor = int(request.session['latest_sensor']),
+		    	author = form.cleaned_data['owner'],
+		    	icon = form.cleaned_data['icon'],
+		    	sensor = request.session['latest_sensor'],
 		    	installed = True
 		    	)
 		    n.save()
+		    request.session['user'] = form.cleaned_data['owner']
 		    return HttpResponseRedirect('/home/') # Redirect after POST
 	else:
-		try:
-			sensordata = []
-			num = int(sensorcode)
-			p = Sensor.objects.get(code=num)
-			sensordata.append(p.label) # 0
-			sensordata.append(p.brand) # 1
-			sensordata.append(p.lead) # 2
-			sensordata.append(p.picture_url) # 3
-			sensordata.append(p.code) # 4
-		except:
-			pass
 		form = AppForm(
-			initial={'application_name': ''}
+			initial={'feature_name': ''}
 			) # An unbound form
 
 	# GENERAL
@@ -98,11 +83,10 @@ def home(request):
 	return render(request, 'home/home.html', {
 		'title': 'home',
 		'applist' : installed_apps,
-		'sensorcode' : sensorcode,
 		'appform' : appform,
         'form': form,
         'webcam' : webcam,
-        'sensordata' : sensordata,
+        'sensordata' : sensor,
 		})
 
 # remove app
@@ -116,10 +100,14 @@ def remove(request, application_id):
 	return HttpResponseRedirect('/home/')
 
 
+ICON_CHOICES = (('', ''),
+				('test1', 'test1'),
+               	('test2', 'test2'),
+               )
 
 # app creation form
 class AppForm(forms.Form):
-    application_name = forms.CharField(max_length=15)
+    feature_name = forms.CharField(max_length=15)
     description = forms.CharField(max_length=25)
-    app_owner = forms.CharField(max_length=15)
-    picture_uRL = forms.URLField(required=False)
+    owner = forms.CharField(max_length=15)
+    icon = forms.ChoiceField(required=False, choices=ICON_CHOICES, initial='')
