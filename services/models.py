@@ -17,8 +17,7 @@ class Package(models.Model):
 class ExampleService(models.Model):
 	name = models.CharField(max_length=15)
 	lead = models.CharField(max_length=50)
-
-	logo_url = models.URLField()
+	logo_url = models.CharField(blank=True, max_length=200)
 	service_description = models.TextField(max_length=200)
 	additional_description = models.TextField(blank=True, max_length=300)
 	sensor_1 = models.CharField(blank=True, max_length=20)
