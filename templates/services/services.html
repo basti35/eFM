@@ -31,8 +31,15 @@
      <ul class="thumbnails">
 
       {% for example in exampleservices %}
-      <li class="span2"><a href="#{{ example.id }}Modal" class="thumbnail" role="button" data-toggle="modal" rel="tooltip" title="{{ example.name }}"><img src={{ example.logo_url }}></a></li>
+
+      <li class="span2 thumbnail equalize" rel="tooltip" title="{{ example.name }}">
+        <a href="#{{ example.id }}Modal" class="" role="button" data-toggle="modal">
+        <img src="{{ example.logo_url }}"></a>
+      </li>
+
       {% endfor %}
+      
+
 
     </ul> 
   </div>
@@ -51,7 +58,7 @@
     <ul class="thumbnails">
       <li class="span2">
         <div class="thumbnail">
-          <img src={{ example.logo_url }}>
+          <img src="{{ example.logo_url }}">
         </div>
       </li>
     </ul>
