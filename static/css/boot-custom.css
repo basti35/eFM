@@ -207,40 +207,6 @@ input[type="color"],
   color: #397dbc;
 }
 
-.navbar-inner {
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -ms-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: linear-gradient(top, #ffffff, #f2f2f2);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#'ffffff, endColorstr='#'f2f2f2, GradientType=0);
-}
-
-.navbar .brand {
-  padding: 8px 20px 12px;
-  font-size: 20px;
-  color: #727272;
-}
-
-.navbar .divider-vertical {
-  height: 41px;
-  background-color: #ffffff;
-  border-right: 1px solid #c6c6c6;
-}
-
-.navbar .nav > li > a {
-  padding: 10px 10px 11px;
-  font-size: 14px;
-  color: #666666;
-}
-
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
-  color: #424242;
-}
-
 .label,
 .badge {
   padding: 1px 3px 2px;
@@ -251,21 +217,21 @@ input[type="color"],
 
 .label-important,
 .badge-important {
-  background-color: #b94a48;
+  background-color: #3A7CBC;
 }
 
 .label-warning,
 .badge-warning {
-  background-color: #37bcc4;
+  background-color: #E97837;
 }
 
 .label-success,
 .badge-success {
-  background-color: #f89406;
+  background-color: #37BCC4;
 }
 
 .label-info,
 .badge-info {
-   background-color: #397dbc;
+   background-color: #CDCEC0;
 }
 

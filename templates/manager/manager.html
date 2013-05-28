@@ -24,62 +24,17 @@
             <th>Status</th>
           </tr>
 
-          <tr class="">
-            <td>#001</td>
-            <td>Motion detector</td>
-            <td>01/04/2012</td>
-            <td><span class="badge badge-success">Connected</span></td>
+          {% for sensor in sensorlist %}
+          <tr>
+            <td>{{ sensor.code }}</td>
+            <td>{{ sensor.name }}</td>
+            <td>{{ sensor.date }}</td>
+            <td><span class="badge badge-{{ bnt_color }}">{{ sensor.status }}</span></td>
           </tr>
+          {% endfor %}
 
-          <tr class="">
-            <td>#002</td>
-            <td>Web cam</td>
-            <td>01/04/2012</td>
-            <td><span class="badge badge-success">Connected</span></td>
-          </tr>
-
-          <tr class="">
-            <td>#003</td>
-            <td>Front door lock</td>
-            <td>01/04/2012</td>
-            <td><span class="badge badge-success">Connected</span></td>
-          </tr>
-
-          <tr class="">
-            <td>#004</td>
-            <td>Lighting 1</td>
-            <td>01/04/2012</td>
-            <td><span class="badge badge-success">Connected</span></td>
-          </tr>
-
-          <tr class="">
-            <td>#005</td>
-            <td>Lighting 2</td>
-            <td>01/04/2012</td>
-            <td><span class="badge badge-important">Offline</span></td>
-          </tr>
-
-          <tr class="">
-            <td>#006</td>
-            <td>Thermo meter</td>
-            <td>07/05/2013</td>
-            <td><span class="badge badge-success">Connected</span></td>
-          </tr>
-
-          <tr class="">
-            <td>#007</td>
-            <td>Water detector</td>
-            <td>23/05/2013</td>
-            <td><span class="badge badge-warning">Installed</span></td>
-          </tr>
 
         </table><br>
-
-        <p>
-          <button class="btn btn-success" type="button">Scan for new sensors</button> &nbsp;
-          <button class="btn btn-primary disabled" type="button">Order sensors</button> &nbsp;
-          <button class="btn btn-danger disabled" type="button">Disconnect sensors</button>
-        </p>
 
       </div>
     </div>
