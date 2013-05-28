@@ -15,13 +15,13 @@
           <p></p>
           <p class="lead">Connected sensors and devices</p>
 
-{{ sensorlist }}
-
           <table class="table table-hover">
 
            <tr>
             <th>ID</th>
             <th>Description</th>
+            <th>Manufacturer</th>
+            <th>Connection</th>
             <th>Installation date</th>
             <th>Status</th>
           </tr>
@@ -30,6 +30,8 @@
           <tr>
             <td>{{ sensor.code }}</td>
             <td>{{ sensor.label }}</td>
+            <td>{{ sensor.brand }}</td>
+            <td>{{ sensor.technology }}</td>
             <td>{{ sensor.date }}</td>
             <td><span class="badge badge-success">Online</span></td>
           </tr>

@@ -8,12 +8,6 @@
 
 {% block content %}
 
-<div class="well">
-DEV:<br>
-{{applist}}
-{{sensordata}}
-</div>
-
 
 <div class="active item sisalto"><!-- modules-->
   <div class="row-fluid">
@@ -32,7 +26,7 @@ DEV:<br>
             <p class="lead">{{ app.lead }}</p>
 
             <!-- 01 Webcam -->
-            {% if app.sensor.label = "Webcam" %}
+            {% if app.sensor.code = "01" %}
             {% if webcam %}
             <div class="well">
               <a href="/webcam/" type="button" class="close websulki"><i class="icon-off"></i></a>
@@ -47,7 +41,7 @@ DEV:<br>
             
 
             <!-- 02 Temperature -->
-            {% if app.sensor.label = "Temperature sensor" %}
+            {% if app.sensor.code = "02" %}
             <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=rqlshdoiectupilajlvsbsgkfdqpahnbhdgxubflwgbxmfftyv"></script>
             {% endif %}
 
@@ -83,7 +77,7 @@ DEV:<br>
 
             <!-- ./custom content -->
 
-            <small class="muted">{{ app.sensor }} set by {{ app.author }} {{ app.date }}</small>
+            <br><br><small class="muted">{{ app.sensor }}<!-- - by {{ app.author }} - {{ app.date }}--></small>
 
           </div>
         </div>

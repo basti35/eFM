@@ -60,17 +60,19 @@ def home(request):
 	if request.method == 'POST':
 		form = AppForm(request.POST) # A form bound to the POST data
 		if form.is_valid(): # All validation rules pass
-		    n = Application(
+			p = request.session['latest_sensor'][0]
+			r = Sensor.objects.get(id=p.id)
+			n = Application(
 		    	name = form.cleaned_data['feature_name'],
 		    	lead = form.cleaned_data['description'],
 		    	author = form.cleaned_data['owner'],
 		    	icon = form.cleaned_data['icon'],
-		    	sensor = request.session['latest_sensor'],
-		    	installed = True
-		    	)
-		    n.save()
-		    request.session['user'] = form.cleaned_data['owner']
-		    return HttpResponseRedirect('/home/') # Redirect after POST
+				sensor = r,
+				installed = True
+				)
+			n.save()
+			request.session['user'] = form.cleaned_data['owner']
+			return HttpResponseRedirect('/home/') # Redirect after POST
 	else:
 		form = AppForm(
 			initial={'feature_name': ''}
