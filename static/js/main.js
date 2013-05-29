@@ -121,17 +121,6 @@ $(document).ready(function() {
   setInterval(doStuff, 5000);
 
 
-
-
-  var answer = '';
-  if (response == 255){
-    answer = 'Water detected!';
-  }
-  else {
-    answer = 'No water';
-  }
-  
-
   // 04 lampswitch
   $(".lampswitch-on").click(function () {
     $.ajax({        
@@ -146,8 +135,8 @@ $(document).ready(function() {
     });
   });
 
+
   // 05 water
-  $(".water").click(function () {
     var response = '';
     $.ajax({ type: "GET",   
       url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
@@ -157,15 +146,14 @@ $(document).ready(function() {
        response = text;
      }
    });
-
-    alert(response);
-  });
-
-
-
-
-
-
+    var answer = '';
+    if (response == 255){
+      answer = 'Water detected!';
+    }
+    else {
+      answer = 'No water';
+    }
+    $(".water").replaceWith(answer);
 
 
   // 06 switch

@@ -35,7 +35,7 @@
               </div>
             </div>
             {% else %}
-            <a href="/webcam/" class="btn btn-large">Open webcam stream</a>
+            <a href="/webcam/" class="btn btn-large btn-success">Open webcam stream</a>
             {% endif %}
             {% endif %}
             
@@ -78,11 +78,8 @@
             <!-- 05 Water -->
             {% if app.sensor.code = "05" %}
             <div class="well">
-
-
-<button class="btn water" type="button">Status</button>
-
-
+              <p>Status</p>
+              <p class="water lead">No connection</p>
             </div>
             {% endif %}
 
