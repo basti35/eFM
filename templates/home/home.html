@@ -48,12 +48,17 @@
             <!-- 03 Multiswitch -->
             {% if app.sensor.code = "03" %}
             <div class="well">
-              <ul class="inline">
+              <ul class="inline" id="multiclick">
                 <li><button class="btn btn-success multiswitch-on" type="button">On</button></li>
                 <li><button class="btn btn-danger multiswitch-off" type="button">Off</button></li>
                 <li>Switch</li>
               </ul>
-
+              <hr>
+              <ul class="unstyled">
+                <li>Energy consumption</li>
+                <li><small>Current <span class="energy-current">-</span> W</small></li>
+                <li><small>Total <span class="energy-total">-</span> kWh</small></li>
+              </ul>
 
 
             </div>
@@ -75,7 +80,7 @@
             <div class="well">
 
 
-
+<button class="btn water" type="button">Status</button>
 
 
             </div>

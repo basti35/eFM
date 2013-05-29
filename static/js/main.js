@@ -71,7 +71,7 @@ $(document).ready(function() {
 // --- DEVICE CONTROLS -------------------
 
 
-  // 03 multiswitch
+  // 03 multiswitch - switch
   $(".multiswitch-on").click(function () {
     $.ajax({        
       url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
@@ -86,6 +86,52 @@ $(document).ready(function() {
   });
 
 
+
+  doStuff();
+  $("#multiclick").click(doStuff);
+
+  function doStuff() {
+
+  // 03 multiswitch - energy current
+  var current = '';
+  $.ajax({ type: "GET",   
+    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
+    async: false,
+    success : function(text)
+    {
+     current = (text).toFixed(2);
+    }
+  });
+  $(".energy-current").replaceWith(current);
+
+
+  // 03 multiswitch - energy total
+  var total = '';
+  $.ajax({ type: "GET",   
+    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    async: false,
+    success : function(text)
+    {
+     total = (text).toFixed(2);
+    }
+  });
+  $(".energy-total").replaceWith(total);
+
+  }
+  setInterval(doStuff, 5000);
+
+
+
+
+  var answer = '';
+  if (response == 255){
+    answer = 'Water detected!';
+  }
+  else {
+    answer = 'No water';
+  }
+  
+
   // 04 lampswitch
   $(".lampswitch-on").click(function () {
     $.ajax({        
@@ -99,6 +145,27 @@ $(document).ready(function() {
       type: 'GET',
     });
   });
+
+  // 05 water
+  $(".water").click(function () {
+    var response = '';
+    $.ajax({ type: "GET",   
+      url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
+     async: false,
+     success : function(text)
+     {
+       response = text;
+     }
+   });
+
+    alert(response);
+  });
+
+
+
+
+
+
 
 
   // 06 switch
@@ -151,11 +218,3 @@ $(document).ready(function() {
 
 
 });
-
-
-
-
-
-
-
-
