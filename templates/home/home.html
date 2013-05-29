@@ -20,7 +20,7 @@
           <a href="/remove/{{ app.id }}" type="button" class="close sulje">&times;</a>
           <div class="caption">
             <ul class="inline">
-              <li><img height="32px" width="32px" src="{{STATIC_URL}}img/icons/{{ app.icon }}.png"></li>
+              <li><span aria-hidden="true" class="fui-{{ app.icon }}-24"></span></li>
               <li rel="tooltip" title="Created by {{ app.author }}"><h3>{{ app.name }}</h3></li>
             </ul>
             <p class="lead" rel="tooltip" title="{{ app.sensor.brand }} - {{ app.sensor.technology }}">{{ app.lead }}</p>

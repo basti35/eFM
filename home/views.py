@@ -102,9 +102,28 @@ def remove(request, application_id):
 	return HttpResponseRedirect('/home/')
 
 
-ICON_CHOICES = (('', ''),
-				('test1', 'test1'),
-               	('test2', 'test2'),
+ICON_CHOICES = (
+				('video', 'video'),
+               	('settings', 'settings'),
+               	('settings', 'settings'),
+               	('new', 'new'),
+               	('man', 'man'),
+               	('lock', 'lock'),
+               	('heart', 'heart'),
+               	('cross', 'cross'),
+               	('checkround', 'checkround'),
+               	('calendar', 'calendar'),
+               	('volume', 'volume'),
+               	('time', 'time'),
+               	('plus', 'plus'),
+               	('menu', 'menu'),
+               	('mail', 'mail'),
+               	('location', 'location'),
+               	('eye', 'eye'),
+               	('cmd', 'cmd'),
+				('location', 'location'),
+               	('checkmark', 'checkmark'),
+               	('camera', 'camera'),
                )
 
 # app creation form
