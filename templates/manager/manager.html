@@ -19,7 +19,7 @@
 
            <tr>
             <th>ID</th>
-            <th>Description</th>
+            <th>Device</th>
             <th>Manufacturer</th>
             <th>Connection</th>
             <th>Installation date</th>
@@ -28,7 +28,7 @@
 
           {% for sensor in sensorlist %}
           <tr>
-            <td>{{ sensor.code }}</td>
+            <td># {{ sensor.code }}</td>
             <td>{{ sensor.label }}</td>
             <td>{{ sensor.brand }}</td>
             <td>{{ sensor.technology }}</td>
@@ -60,10 +60,10 @@
       <div class="caption">
         <h3>Support</h3>
         <ul>
-          <li>Contact customer service</li>
+          <li>Customer service</li>
           <li>Read instructions</li>
           <li>API documentation</li>
-          <li>Partners</li>
+          <li>Service Partners</li>
         </ul>
       </div>
     </div>

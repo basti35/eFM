@@ -59,17 +59,25 @@ $(document).ready(function() {
     $(this).closest('.well').slideUp('slow');
   });
 
+  // lauch create app dialog if allowed
+  $('#myModal').modal('show')
 
 
-  // valo paalle
+  // scanning sensors
+  $('.lataus').delay(4000).fadeOut(500);
+  $('.tulos').delay(4500).fadeIn(500);
+
+
+// --- DEVICE CONTROLS -------------------
+
+
+  // 03 multiswitch
   $(".multiswitch-on").click(function () {
     $.ajax({        
       url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
       type: 'GET',
     });
   });
-
-  // valo pois
   $(".multiswitch-off").click(function () {
     $.ajax({        
       url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
@@ -78,13 +86,67 @@ $(document).ready(function() {
   });
 
 
-  // lauch create app dialog if allowed
-  $('#myModal').modal('show')
+  // 04 lampswitch
+  $(".lampswitch-on").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(4,0)',
+      type: 'GET',
+    });
+  });
+  $(".lampswitch-off").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(4,0)',
+      type: 'GET',
+    });
+  });
 
 
-  // scanning sensors
-  $('.lataus').delay(4000).fadeOut(500);
-  $('.tulos').delay(4500).fadeIn(500);
+  // 06 switch
+  $(".switch-06-on").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=06',
+      type: 'GET',
+    });
+  });
+  $(".switch-06-off").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=06',
+      type: 'GET',
+    });
+  });
+
+  // 08 switch
+  $(".switch-08-on").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=08',
+      type: 'GET',
+    });
+  });
+  $(".switch-08-off").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=08',
+      type: 'GET',
+    });
+  });
+
+  // 12 switch
+  $(".switch-12-on").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=12',
+      type: 'GET',
+    });
+  });
+  $(".switch-12-off").click(function () {
+    $.ajax({        
+      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=12',
+      type: 'GET',
+    });
+  });
+
+
+
+
+// -------------------------------------
 
 
 

@@ -21,15 +21,15 @@
           <div class="caption">
             <ul class="inline">
               <li><img height="32px" width="32px" src="{{STATIC_URL}}img/icons/{{ app.icon }}.png"></li>
-              <li><h3>{{ app.name }}</h3></li>
+              <li rel="tooltip" title="Created by {{ app.author }}"><h3>{{ app.name }}</h3></li>
             </ul>
-            <p class="lead">{{ app.lead }}</p>
+            <p class="lead" rel="tooltip" title="{{ app.sensor.brand }} - {{ app.sensor.technology }}">{{ app.lead }}</p>
 
             <!-- 01 Webcam -->
             {% if app.sensor.code = "01" %}
             {% if webcam %}
             <div class="well">
-              <a href="/webcam/" type="button" class="close websulki"><i class="icon-off"></i></a>
+              <a href="/webcam/" type="button" class="close websulki"><i class="icon-remove-sign"></i></a>
               <div class="">
                 <iframe frameborder="0" src="http://dosa.homeip.net:8071/mjpeg.cgi"></iframe>
               </div>
@@ -46,38 +46,76 @@
             {% endif %}
 
             <!-- 03 Multiswitch -->
-            {% if app.sensor == 03 %}
+            {% if app.sensor.code = "03" %}
             <div class="well">
               <ul class="inline">
                 <li><button class="btn btn-success multiswitch-on" type="button">On</button></li>
                 <li><button class="btn btn-danger multiswitch-off" type="button">Off</button></li>
-                <li>Switcher</li>
+                <li>Switch</li>
               </ul>
+
+
+
             </div>
             {% endif %}
 
             <!-- 04 Lampswitch -->
-            {% if app.sensor == 04 %}
+            {% if app.sensor.code = "04" %}
             <div class="well">
               <ul class="inline">
-                <li><button class="btn btn-success" type="button">On</button></li>
-                <li><button class="btn btn-danger" type="button">Off</button></li>
-                <li>Switcher</li>
+                <li><button class="btn btn-success lampswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger lampswitch-off" type="button">Off</button></li>
+                <li>Switch</li>
               </ul>
             </div>
             {% endif %}
 
             <!-- 05 Water -->
-            {% if app.sensor == 05 %}
+            {% if app.sensor.code = "05" %}
             <div class="well">
-              <p>{{ app.name }}</p>
+
+
+
+
+
             </div>
             {% endif %}
 
 
-            <!-- ./custom content -->
+            <!-- 06 Switch -->
+            {% if app.sensor.code = "06" %}
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success switch-06-on" type="button">On</button></li>
+                <li><button class="btn btn-danger switch-06-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
 
-            <br><br><small class="muted">{{ app.sensor }}<!-- - by {{ app.author }} - {{ app.date }}--></small>
+            <!-- 08 Switch -->
+            {% if app.sensor.code = "08" %}
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success switch-08-on" type="button">On</button></li>
+                <li><button class="btn btn-danger switch-08-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
+
+            <!-- 12 Switch -->
+            {% if app.sensor.code = "12" %}
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success switch-12-on" type="button">On</button></li>
+                <li><button class="btn btn-danger switch-12-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
+
+            <!-- ./custom content -->
 
           </div>
         </div>
