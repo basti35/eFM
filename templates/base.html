@@ -17,7 +17,7 @@
 
 <body>
 
-  <div id="scrollable" class="container">
+  <div class="container">
 
     <div class="row">
 
@@ -40,11 +40,11 @@
               <div class="nav-collapse collapse navbar-responsive-collapse">
                 <ul class="nav">
 
-                  <li class="{% if title == 'home'%}active{% endif %}"><a href="/home/"><i class="icon-home"></i> Home</a></li>
+                  <li rel="tooltip" title="Use current features" class="{% if title == 'home'%}active{% endif %}"><a href="/home/"><i class="icon-home"></i> Home</a></li>
 
-                  <li class="{% if title == 'services'%}active{% endif %}"><a href="/services/"><i class="icon-shopping-cart"></i> Services</a></li>
+                  <li rel="tooltip" title="Search for external services" class="{% if title == 'services'%}active{% endif %}"><a href="/services/"><i class="icon-shopping-cart"></i> Services</a></li>
 
-                  <li class="{% if title == 'manager'%}active{% endif %}"><a href="/manager/"><i class="icon-wrench"></i> Manager</a></li>
+                  <li rel="tooltip" title="Manage user account" class="{% if title == 'manager'%}active{% endif %}"><a href="/manager/"><i class="icon-wrench"></i> Manager</a></li>
 
                 </ul>
 
@@ -75,7 +75,7 @@
 
   </div>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="{{STATIC_URL}}js/jquery-1.10.1.min.js"></script>
   <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
   <script src="{{STATIC_URL}}js/jquery.nicescroll.min.js"></script>
   <script src="{{STATIC_URL}}js/main.js"></script>

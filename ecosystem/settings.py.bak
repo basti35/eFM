@@ -30,8 +30,6 @@ DATABASES = {
     }
 }
 
-# INTERNAL_IPS = ('127.0.0.1',)
-
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['web327.webfaction.com',]
@@ -121,7 +119,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -154,7 +151,6 @@ INSTALLED_APPS = (
     'manager',
     #'provider',
     'south',
-    # 'debug_toolbar',
 
 )
 
@@ -188,13 +184,9 @@ LOGGING = {
 }
 
 
-
+"""
 try:
    from local_settings import *
 except ImportError, e:
-<<<<<<< HEAD
    pass
 """
-=======
-   pass
->>>>>>> fixes for local files

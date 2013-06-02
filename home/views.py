@@ -37,6 +37,8 @@ def webcam(request):
 def home(request):
 
 	sensor = False
+	webcam = False
+	form = ()
 
 	 # if sensor registered
 	if 'id' in request.GET:
@@ -48,7 +50,6 @@ def home(request):
 		appform = False
 		sensor = False
 
-	webcam = False
 	try:
 		if request.session["webcam"]:
 			webcam = True
@@ -56,7 +57,6 @@ def home(request):
 		pass
 
 	# if creating a new app
-	form = ()
 	if request.method == 'POST':
 		form = AppForm(request.POST) # A form bound to the POST data
 		if form.is_valid(): # All validation rules pass
@@ -104,7 +104,6 @@ def remove(request, application_id):
 
 ICON_CHOICES = (
 				('video', 'video'),
-               	('settings', 'settings'),
                	('settings', 'settings'),
                	('new', 'new'),
                	('man', 'man'),

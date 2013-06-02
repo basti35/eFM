@@ -2,12 +2,11 @@
 
 {% block specific_buttons %}
 <ul class="nav pull-right">
-  <li><a href="#newModal" data-toggle="modal"><i class="icon-plus"></i> Add new feature</a></li>
+  <li rel="tooltip" title="Add new device and custom feature!"><a href="#newModal" data-toggle="modal"><i class="icon-plus"></i> Add new feature</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-
 
 <div class="active item sisalto"><!-- modules-->
   <div class="row-fluid">
@@ -18,15 +17,18 @@
       <li class="span4">
         <div class="thumbnail equalize">
           <a href="/remove/{{ app.id }}" type="button" class="close sulje">&times;</a>
+          <div class="muted"><small>#{{ app.sensor.code }} <span rel="tooltip" title="{{ app.sensor.brand }} - {{ app.sensor.technology }}">{{ app.sensor.label }}</span></small></div>
+          
           <div class="caption">
             <ul class="inline">
-              <li><span aria-hidden="true" class="fui-{{ app.icon }}-24"></span></li>
-              <li rel="tooltip" title="Created by {{ app.author }}"><h3>{{ app.name }}</h3></li>
+              <li><embed class="svg-icons" src="{{STATIC_URL}}img/icons/{{ app.icon }}-24.svg" type="image/svg+xml" style="opacity:0.5"/></li>
+              <li><h3>{{ app.name }}</h3></li>
             </ul>
-            <p class="lead" rel="tooltip" title="{{ app.sensor.brand }} - {{ app.sensor.technology }}">{{ app.lead }}</p>
+            <p class="lead">{{ app.lead }}</p>
 
-            <!-- 01 Webcam -->
+        
             {% if app.sensor.code = "01" %}
+            <!-- 01 Webcam -->
             {% if webcam %}
             <div class="well">
               <a href="/webcam/" type="button" class="close websulki"><i class="icon-remove-sign"></i></a>
@@ -40,13 +42,15 @@
             {% endif %}
             
 
-            <!-- 02 Temperature -->
+            
             {% if app.sensor.code = "02" %}
+            <!-- 02 Temperature -->
             <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=rqlshdoiectupilajlvsbsgkfdqpahnbhdgxubflwgbxmfftyv"></script>
             {% endif %}
 
-            <!-- 03 Multiswitch -->
+            
             {% if app.sensor.code = "03" %}
+            <!-- 03 Multiswitch -->
             <div class="well">
               <ul class="inline" id="multiclick">
                 <li><button class="btn btn-success multiswitch-on" type="button">On</button></li>
@@ -59,13 +63,12 @@
                 <li><small>Current <span class="energy-current">-</span> W</small></li>
                 <li><small>Total <span class="energy-total">-</span> kWh</small></li>
               </ul>
-
-
             </div>
             {% endif %}
 
-            <!-- 04 Lampswitch -->
+            
             {% if app.sensor.code = "04" %}
+            <!-- 04 Lampswitch -->
             <div class="well">
               <ul class="inline">
                 <li><button class="btn btn-success lampswitch-on" type="button">On</button></li>
@@ -75,17 +78,20 @@
             </div>
             {% endif %}
 
-            <!-- 05 Water -->
+            
             {% if app.sensor.code = "05" %}
+            <!-- 05 Water -->
             <div class="well">
+              <button class="refresh btn btn-mini pull-right" type="button"><i class="icon-refresh"></i></button>
               <p>Status</p>
-              <p class="water lead">No connection</p>
+              <p class="lead"><span class="water">No connection</span></p>
             </div>
             {% endif %}
 
 
-            <!-- 06 Switch -->
+            
             {% if app.sensor.code = "06" %}
+            <!-- 06 Switch -->
             <div class="well">
               <ul class="inline">
                 <li><button class="btn btn-success switch-06-on" type="button">On</button></li>
@@ -95,8 +101,9 @@
             </div>
             {% endif %}
 
-            <!-- 08 Switch -->
+            
             {% if app.sensor.code = "08" %}
+            <!-- 08 Switch -->
             <div class="well">
               <ul class="inline">
                 <li><button class="btn btn-success switch-08-on" type="button">On</button></li>
@@ -106,8 +113,9 @@
             </div>
             {% endif %}
 
-            <!-- 12 Switch -->
+            
             {% if app.sensor.code = "12" %}
+            <!-- 12 Switch -->
             <div class="well">
               <ul class="inline">
                 <li><button class="btn btn-success switch-12-on" type="button">On</button></li>
@@ -117,7 +125,8 @@
             </div>
             {% endif %}
 
-            <!-- ./custom content -->
+
+
 
           </div>
         </div>
@@ -128,6 +137,7 @@
             <a href="#newModal" data-toggle="modal" class="btn btn-large" type="button"><i class="icon-plus"></i> Add new feature</a>
           </div>
       {% endfor %}
+
 
 
     </ul>
@@ -191,7 +201,7 @@
           <ul class="thumbnails">
             <li class="span2">
               <div class="thumbnail">
-                <img src="{{ sensor.picture_url }}">
+                <img src="{{STATIC_URL}}img/devices/{{ sensor.picture }}" height="128" width="128">
               </div>
             </li>
           </ul>
@@ -257,5 +267,4 @@
 
 
 {% block script %}
-<script src="{{STATIC_URL}}js/{{ title }}.js"></script>
 {% endblock %}

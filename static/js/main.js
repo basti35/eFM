@@ -33,13 +33,61 @@ function equalHeight(group) {
     group.each(function() { $(this).height(tallest); });
 }
 
+// checks water sensor status
+function waterLeak() {
+    var response = '';
+    $.ajax({ type: "GET",   
+      url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
+     async: false,
+     success : function(text)
+     {
+       response = text;
+     }
+    });
+    var answer = '';
+    if (response == 255){
+      answer = 'Water detected!';
+    }
+    else {
+      answer = 'No water';
+    }
+    $(".water").replaceWith(answer);
+}
 
 
-// after page loaded:
+// gets energy consumption values
+function doStuff() {
+  var current = '';
+  $.ajax({ type: "GET",   
+    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
+    async: false,
+    success : function(text)
+    {
+     current = (text).toFixed(2);
+    }
+  });
+  $(".energy-current").replaceWith(current);
+  var total = '';
+  $.ajax({ type: "GET",   
+    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    async: false,
+    success : function(text)
+    {
+     total = (text).toFixed(2);
+    }
+  });
+  $(".energy-total").replaceWith(total);
+}
+
+
+// after page loaded
 $(document).ready(function() {
 
   // tooltips
   $("[rel='tooltip']").tooltip();
+
+  // popover
+  $("[rel='popover']").popover();
 
   // nicescroll
   $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
@@ -55,13 +103,13 @@ $(document).ready(function() {
     $(this).closest('li').slideUp('slow');
   });
 
+  // webcam hide
   $(".websulki").click(function () {
     $(this).closest('.well').slideUp('slow');
   });
 
   // lauch create app dialog if allowed
   $('#myModal').modal('show')
-
 
   // scanning sensors
   $('.lataus').delay(4000).fadeOut(500);
@@ -86,39 +134,8 @@ $(document).ready(function() {
   });
 
 
-
-  doStuff();
+  // 03 multiswitch - energy
   $("#multiclick").click(doStuff);
-
-  function doStuff() {
-
-  // 03 multiswitch - energy current
-  var current = '';
-  $.ajax({ type: "GET",   
-    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
-    async: false,
-    success : function(text)
-    {
-     current = (text).toFixed(2);
-    }
-  });
-  $(".energy-current").replaceWith(current);
-
-
-  // 03 multiswitch - energy total
-  var total = '';
-  $.ajax({ type: "GET",   
-    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
-    async: false,
-    success : function(text)
-    {
-     total = (text).toFixed(2);
-    }
-  });
-  $(".energy-total").replaceWith(total);
-
-  }
-  setInterval(doStuff, 5000);
 
 
   // 04 lampswitch
@@ -137,23 +154,7 @@ $(document).ready(function() {
 
 
   // 05 water
-    var response = '';
-    $.ajax({ type: "GET",   
-      url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
-     async: false,
-     success : function(text)
-     {
-       response = text;
-     }
-   });
-    var answer = '';
-    if (response == 255){
-      answer = 'Water detected!';
-    }
-    else {
-      answer = 'No water';
-    }
-    $(".water").replaceWith(answer);
+  $(".refresh").click(waterLeak);
 
 
   // 06 switch

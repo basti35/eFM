@@ -6,14 +6,14 @@ from django.db import models
 # sensor brand, manufacturing company
 class Brand(models.Model):
 	name = models.CharField(max_length=20)
-	logo_url = models.URLField()
+	logo = models.CharField(blank=True, max_length=100)
 	def __unicode__(self):
 		return self.name
 
 # sensor connection technology
 class Technology(models.Model):
 	name = models.CharField(max_length=20)
-	logo_url = models.URLField()
+	logo = models.CharField(blank=True, max_length=100)
 	def __unicode__(self):
 		return self.name
 
@@ -23,7 +23,7 @@ class Sensor(models.Model):
 	number = models.PositiveIntegerField(null=True)
 	code = models.CharField(max_length=20)
 	lead = models.CharField(blank=True, max_length=25)
-	picture_url = models.URLField(blank=True)
+	picture = models.CharField(blank=True, max_length=100)
 	brand = models.ForeignKey(Brand, blank=True, null=True)
 	technology = models.ForeignKey(Technology, blank=True, null=True)
 	price = models.DecimalField(blank=True, null=True, max_digits=6, decimal_places=2)

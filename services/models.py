@@ -6,7 +6,7 @@ from django.db import models
 class Package(models.Model):
 	name = models.CharField(max_length=20)
 	lead = models.CharField(blank=True, max_length=35)
-	picture_url = models.URLField(blank=True)
+	picture = models.CharField(blank=True, max_length=100)
 	general_description = models.TextField(max_length=200)
 	additional_description = models.TextField(blank=True, max_length=500)
 	price = models.DecimalField(blank=True, null=True, max_digits=6, decimal_places=2)
@@ -17,7 +17,7 @@ class Package(models.Model):
 class ExampleService(models.Model):
 	name = models.CharField(max_length=15)
 	lead = models.CharField(max_length=50)
-	logo_url = models.CharField(blank=True, max_length=200)
+	logo = models.CharField(blank=True, max_length=100)
 	package = models.ForeignKey(Package, blank=True, null=True)
 	service_description = models.TextField(max_length=200)
 	additional_description = models.TextField(blank=True, max_length=300)
