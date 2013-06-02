@@ -19,7 +19,6 @@
 #  others = models.CharField(max_length=100)
 #  latest_feedb = models.ForeignKey(feedbacks_serprov, blank=True, null=True) #see http://stackoverflow.com/questions/2197975/how-to-use-array-in-django
 #  hourly_price= models.DecimalField(max_digits=5, decimal_places=2)
-#  firstAvailability=models.DateTimeField()
 #  password= models.CharField(max_length=30)
 #  pass_md5= models.CharField(max_length=30)
 #  def __unicode__(self):
@@ -57,6 +56,5 @@
 #
 #  status = models.IntegerField(choices=STATUS_CHOICES, default=OPENING)
 #  feedbacks_serprov_id = models.ForeignKey(feedback_serprovs, blank=True, null=True)
-#
-#
+#  firstAvailability=models.DateTimeField()
 #
