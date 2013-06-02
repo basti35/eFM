@@ -160,13 +160,13 @@ $(document).ready(function() {
   // 06 switch
   $(".switch-06-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=06',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=On&name=06',
       type: 'GET',
     });
   });
   $(".switch-06-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=06',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=Off&name=06',
       type: 'GET',
     });
   });
@@ -174,13 +174,13 @@ $(document).ready(function() {
   // 08 switch
   $(".switch-08-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=08',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=On&name=08',
       type: 'GET',
     });
   });
   $(".switch-08-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=08',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=Off&name=08',
       type: 'GET',
     });
   });
@@ -188,13 +188,13 @@ $(document).ready(function() {
   // 12 switch
   $(".switch-12-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=12',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=On&name=12',
       type: 'GET',
     });
   });
   $(".switch-12-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=12',
+      url: 'http://dosa.homeip.net:8084/domotiga/index.php?action=Off&name=12',
       type: 'GET',
     });
   });
