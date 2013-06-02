@@ -3,7 +3,7 @@
  * Recall the function when the floating of the elements changed.
  */
 
-var ' + dosa_homeip_net + ' = "127.0.0.1";
+var dosa_homeip_net = "127.0.0.1";
 
 function fixThumbnailMargins() {
     $('.row-fluid .thumbnails').each(function () {
@@ -40,7 +40,7 @@ function equalHeight(group) {
 function waterLeak() {
     var response = '';
     $.ajax({ type: "GET",   
-      url: 'http://' + ' + dosa_homeip_net + ' + ':8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
+      url: 'http://' + dosa_homeip_net + ':8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
      async: false,
      success : function(text)
      {
