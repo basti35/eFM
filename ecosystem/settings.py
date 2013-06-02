@@ -19,6 +19,14 @@ DATABASES = {
         'PASSWORD': 'ME310-eFM',
         'HOST': 'web327.webfaction.com',
         'PORT': '5432',
+    },
+    'provider': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'djprovdb',
+        'USER': 'efm',
+        'PASSWORD': 'ME310-eFM',
+        'HOST': 'web327.webfaction.com',
+        'PORT': '5432',
     }
 }
 
@@ -141,7 +149,7 @@ INSTALLED_APPS = (
     'home',
     'services',
     'manager',
-    'provider',
+    #'provider',
     'south',
 
 )
