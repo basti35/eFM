@@ -192,9 +192,4 @@ LOGGING = {
 try:
    from local_settings import *
 except ImportError, e:
-<<<<<<< HEAD
    pass
-"""
-=======
-   pass
->>>>>>> fixes for local files
