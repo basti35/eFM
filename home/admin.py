@@ -8,6 +8,3 @@ admin.site.register(Technology)
 admin.site.register(Sensor)
 admin.site.register(Category)
 admin.site.register(Application)
-
-
-
