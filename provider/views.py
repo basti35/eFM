@@ -1,51 +1,143 @@
 # PROVIDER VIEWS
 
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from provider.models import *
-from home.models import *
+from home.models import Sensor
 
-# view function that is called by spefic url (ecosystem/urls.py)
-def provider(request):
-
-
-	# create your view business logic here and return to render data you need for templates
-	examplelist = Serprov.objects.all()
+import datetime
 
 
-	return render(request, 'provider/provider.html', { 		# define a html template to use
-		'title': 'provider',
-		'templatevaluelist' : examplelist,					# define data to template variables
-		})
-
-
+# 1 step: failure alert
 def failure(request, failure_id):
 
-	# failure types
-	FAILURE1 = 'water leak'
+	# define failure types, devices and business fields
+	FAILURE1 = 'water leake'
 	FAILURE2 = 'too much power'
 	FAILURE3 = 'conditioning failure'
-
-	test = failure_id
 
 	if failure_id == '1':
 		failure = FAILURE1
 		device = Sensor.objects.get(code='05')
+		bfield = 9
 	elif failure_id == '2':
 		failure = FAILURE2
 		device = Sensor.objects.get(code='03')
+		bfield = 2
 	elif failure_id == '3':
 		failure = FAILURE3
 		device = Sensor.objects.get(code='02')
+		bfield = 7
 	else:
 		failure = False
 		device = False
+		bfield = False
 
+	request.session["field"] = bfield
+	try:
+		p = Intervention(
+			status = 1,
+			failure = failure_id,
+			)
+		p.save()
+	except:
+		pass
 
 	return render(request, 'provider/failure.html', {
 		'title': 'failure',
 		'failure' : failure,
 		'device' : device,
-		'test' : test,
+		'providerfield' : bfield,
 
 
 		})
+
+
+# 2 step: choosing provider
+def provider(request, field_id):
+
+	# get type of service
+	try:
+		field = Serprov.objects.filter(field=field_id)[0]
+	except:
+		field = False
+
+	# get provider data from a specific business field
+	providers = Serprov.objects.filter(field=field_id).order_by("-avg_rate")[0:3]
+
+	return render(request, 'provider/provider.html', {
+		'title': 'provider',
+		'providerdata' : providers,
+		'field' : field,
+
+		})
+
+
+# 3 step: confirmating deal
+def confirmation(request, provider_id):
+
+	# selected provider
+	try:
+		provider = Serprov.objects.get(id=provider_id)
+	except:
+		provider = False
+
+	rate = provider.avg_rate
+	try:
+		stars = int(rate)
+	except:
+		stars = 0
+
+	return render(request, 'provider/confirmation.html', {
+		'title': 'provider',
+		'provider' : provider,
+		'stars' : stars,
+
+		})
+
+
+# 4 step: review
+def review(request, provider_id):
+
+	# selected provider
+	try:
+		provider = Serprov.objects.get(id=provider_id)
+		price = provider.hourly_price * 2
+	except:
+		provider = False
+		price = 0
+
+	price = provider.hourly_price * 2
+
+	return render(request, 'provider/review.html', {
+		'title': 'provider',
+		'provider' : provider,
+		'price' : price,
+
+
+		})
+
+
+# file review and redirect to home page
+def archieve(request):
+	if request.method == 'POST':
+		try:
+			form = AppForm(request.POST)
+			if form.is_valid():
+				p = request.session['latest_sensor'][0]
+				r = Sensor.objects.get(id=p.id)
+				n = Application(
+			    	name = form.cleaned_data['feature_name'],
+			    	lead = form.cleaned_data['description'],
+			    	author = form.cleaned_data['owner'],
+			    	icon = form.cleaned_data['icon'],
+					sensor = r,
+					installed = True
+					)
+				n.save()
+				request.session['user'] = form.cleaned_data['owner']
+				return HttpResponseRedirect('/home/')
+		except:
+			pass
+	else:
+		return HttpResponseRedirect('/home/')

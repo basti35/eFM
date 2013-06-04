@@ -22,8 +22,13 @@ urlpatterns = patterns('',
 
     url(r'^manager/$', manager),
 
-    url(r'^provider/$', provider),
+
+    # provider steps
     url(r'^failure/(?P<failure_id>\d+)/$', failure),
+    url(r'^provider/(?P<field_id>\d+)/$', provider),
+    url(r'^confirmation/(?P<provider_id>\d+)/$', confirmation),
+    url(r'^review/(?P<provider_id>\d+)/$', review),
+    url(r'^archieve/$', archieve),
 
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),

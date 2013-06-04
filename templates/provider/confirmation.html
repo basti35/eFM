@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="hero-unit">
+
+  <div class="row-fluid">
+
+    <h3>
+      <span class="lataus">Requesting...</span><!-- load -->
+      <span class="tulos">Confirmed</span><!-- result -->
+    </h3>
+
+        <div class="lataus"><!-- load -->
+          <p class="lead">Waiting for confirmation</p>
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+          </div>
+        </div>
+
+        <div class="tulos"><!-- result -->
+          <p class="lead">{{ provider.name }} <span class="muted">has confirmed your request {% now "jS F Y H:i" %}</span></p>
+          <p>Service confirmed for June 5th - 5PM</p>
+
+          <div class="well">
+            <span class="lead">{{ provider.name }}</span><br>
+            <span class="muted"><small>Price</small> </span> {{ provider.hourly_price }} $/hour<br>
+            <span class="muted"><small>Rating</small> </span> 
+
+
+            {% if stars == 0 %}
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            {% endif %}
+
+            {% if stars == 1 %}
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            {% endif %}
+
+            {% if stars == 2 %}
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            {% endif %}
+
+            {% if stars == 3 %}
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            {% endif %}
+
+            {% if stars == 4 %}
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            {% endif %}
+
+            {% if stars == 5 %}
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            {% endif %}
+
+          </div>
+
+
+          <a href="/review/{{ provider.id }}" class="btn btn-primary" type="button">Review</a>
+        </div>
+
+
+
+  </div>
+
+</div>
+
+{% endblock %}

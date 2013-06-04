@@ -89,8 +89,7 @@ class Intervention(models.Model):
     (TOO_MUCH_POWER, 'too much power'),
     (CONDITIONING_FAILURE, 'conditioning failure'))
   failure = models.IntegerField(choices=FAILURE_TYPES)
-  def __unicode__(self):
-    return self.name
+
 
 #Inside the intervention, will be some estimation
 class Estimation(models.Model):
