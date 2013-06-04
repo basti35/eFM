@@ -3,7 +3,7 @@
 from django.db import models
 
 #provider profile
-class serprovs(models.Model):
+class Serprov(models.Model):
   yp_page = models.URLField(max_length=150)
   name = models.CharField(max_length=150)
   owner = models.CharField(max_length=150)
@@ -17,14 +17,51 @@ class serprovs(models.Model):
   description = models.CharField(max_length=1500)
   url = models.URLField(max_length=80)
   others = models.CharField(max_length=100)
-  hourly_price= models.DecimalField(max_digits=5, decimal_places=2)
+
+  BUILDING_CONSTRUCTIONS=1
+  ELECTRICIAN=2
+  HOUSEHOLD_APPLIANCES=3
+  LIFTS=4
+  TV_RADIO_AERIALS=5
+  BOILER_HEATING=6
+  HEATING=7
+  CONDITIONING=8
+  PLUMBERS=9
+  GARDENING=10
+  BLACKSMITH=11
+  WHITEWASHING=12
+  CLEANING_SERVICES=13
+
+  FIELD_CHOICES = (
+    (BUILDING_CONSTRUCTIONS, 'buiding costructions'),
+    (ELECTRICIAN, 'electrician'),
+    (HOUSEHOLD_APPLIANCES, 'household appliances'),
+    (LIFTS, 'lifts - installation and manteinance'),
+    (TV_RADIO_AERIALS, 'tv, radio and aerials'),
+    (BOILER_HEATING, 'boiler and heating'),
+    (HEATING, 'heating system'),
+    (CONDITIONING, 'conditioning'),
+    (PLUMBERS, 'plumbers'),
+    (GARDENING, 'gardening'),
+    (BLACKSMITH, 'blacksmith'),
+    (WHITEWASHING, 'whitewashing'),
+    (CLEANING_SERVICES, 'cleaning services'))
+
+  field = models.IntegerField(choices=FIELD_CHOICES)
+  hourly_price= models.DecimalField(max_digits=5, decimal_places=2, blank=False)
+  longitude = models.FloatField()
+  latitude = models.FloatField()
+  avg_rate = models.DecimalField(max_digits=2, decimal_places=1, null=True)
+  n_rates = models.IntegerField(null=True)
   password= models.CharField(max_length=30)
   pass_md5= models.CharField(max_length=50)
   def __unicode__(self):
     return self.name
 
+
+
 #intervention state
-class interventions(models.Model):
+class Intervention(models.Model):
   #STATUS ENUM: http://www.b-list.org/weblog/2007/nov/02/handle-choices-right-way/
   OPENING=1
   CHOOSING=2
@@ -44,15 +81,27 @@ class interventions(models.Model):
     (CLOSED, 'closed'),
     (REFUSED, 'refused'))
   status = models.IntegerField(choices=STATUS_CHOICES, default=OPENING)
-  serprov = models.ForeignKey(serprovs, blank=True, null=True)
+
+  WATER_LEAKE=1
+  TOO_MUCH_POWER=2
+  CONDITIONING_FAILURE=3
+  FAILURE_TYPES = (
+    (WATER_LEAKE, 'water leake'),
+    (TOO_MUCH_POWER, 'too much power'),
+    (CONDITIONING_FAILURE, 'conditioning failure'))
+  failure = models.IntegerField(choices=FAILURE_TYPES)
+  
+  serprov = models.ForeignKey(Serprov, blank=True, null=True)
   firstAvailability=models.DateTimeField()
   def __unicode__(self):
     return self.name
 
+
+
 #feedback
-class feedbacks_serprov(models.Model):
-  intervention = models.OneToOneField(interventions, blank=True, null=True)
-  serprov = models.ForeignKey(serprovs, blank=True, null=True)
+class Feedback_serprov(models.Model):
+  intervention = models.OneToOneField(Intervention, blank=True, null=True)
+  serprov = models.ForeignKey(Serprov, blank=True, null=True)
   rate = models.DecimalField(max_digits=2, decimal_places=1)
   note = models.CharField(max_length=250)
   def __unicode__(self):
