@@ -9,7 +9,7 @@ def provider(request):
 	examplelist = Example.objects.all()
 
 
-	return render(request, 'provider/index.html', { 		# define a html template to use
+	return render(request, 'provider/provider.html', { 		# define a html template to use
 		'title': 'provider',
 		'templatevaluelist' : examplelist,					# define data to template variables
 		})
