@@ -59,7 +59,6 @@ class Serprov(models.Model):
     return self.name
 
 
-
 #intervention state
 class Intervention(models.Model):
   #STATUS ENUM: http://www.b-list.org/weblog/2007/nov/02/handle-choices-right-way/
@@ -90,13 +89,23 @@ class Intervention(models.Model):
     (TOO_MUCH_POWER, 'too much power'),
     (CONDITIONING_FAILURE, 'conditioning failure'))
   failure = models.IntegerField(choices=FAILURE_TYPES)
-  
-  serprov = models.ForeignKey(Serprov, blank=False, null=True)
-  firstAvailability=models.DateTimeField()
   def __unicode__(self):
     return self.name
 
-
+#Inside the intervention, will be some estimation
+class Estimation(models.Model):
+  READY=1
+  ACCEPTED=2
+  REFUSED=3
+  STATUS_ESTIMATION=(
+    (READY, 'ready'),
+    (ACCEPTED, 'accepted'),
+    (REFUSED, 'refused'))
+  serprov = models.ForeignKey(Serprov, blank=False, null=True)
+  intervention = models.ForeignKey(Intervention, blank=False, null=True)
+  firstAvailability = models.DateTimeField()
+  def __unicode__(self):
+    return self.serprov.name
 
 #feedback
 class Feedback_serprov(models.Model):
