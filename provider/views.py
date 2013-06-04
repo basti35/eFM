@@ -34,6 +34,7 @@ def failure(request, failure_id):
 		bfield = False
 
 	request.session["field"] = bfield
+	"""
 	try:
 		p = Intervention(
 			status = 1,
@@ -42,6 +43,7 @@ def failure(request, failure_id):
 		p.save()
 	except:
 		pass
+	"""
 
 	return render(request, 'provider/failure.html', {
 		'title': 'failure',
