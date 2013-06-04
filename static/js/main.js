@@ -2,6 +2,9 @@
  * Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules.
  * Recall the function when the floating of the elements changed.
  */
+
+var dosa_homeip_net = "127.0.0.1";
+
 function fixThumbnailMargins() {
     $('.row-fluid .thumbnails').each(function () {
         var $thumbnails = $(this).children(),
@@ -38,7 +41,7 @@ function equalHeight(group) {
 function waterLeak() {
     var response = '';
     $.ajax({ type: "GET",   
-      url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
+      url: 'http://' + dosa_homeip_net + ':8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
      async: false,
      success : function(text)
      {
@@ -64,7 +67,7 @@ equalHeight($(".equalize"));
 function doStuff() {
   var current = '';
   $.ajax({ type: "GET",   
-    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
+    url: 'http://' + dosa_homeip_net + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
     async: false,
     success : function(text)
     {
@@ -74,7 +77,7 @@ function doStuff() {
   $(".energy-current").replaceWith(current);
   var total = '';
   $.ajax({ type: "GET",   
-    url: 'http://dosa.homeip.net:8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    url: 'http://' + dosa_homeip_net + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
     async: false,
     success : function(text)
     {
@@ -140,13 +143,13 @@ $(document).ready(function() {
   // 03 multiswitch - switch
   $(".multiswitch-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(2,0)',
+      url: 'http://' + dosa_homeip_net + ':8083/JS/Run/SwitchBinaryOn(2,0)',
       type: 'GET',
     });
   });
   $(".multiswitch-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(2,0)',
+      url: 'http://' + dosa_homeip_net + ':8083/JS/Run/SwitchBinaryOff(2,0)',
       type: 'GET',
     });
   });
@@ -159,13 +162,13 @@ $(document).ready(function() {
   // 04 lampswitch
   $(".lampswitch-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOn(4,0)',
+      url: 'http://' + dosa_homeip_net + ':8083/JS/Run/SwitchBinaryOn(4,0)',
       type: 'GET',
     });
   });
   $(".lampswitch-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:8083/JS/Run/SwitchBinaryOff(4,0)',
+      url: 'http://' + dosa_homeip_net + ':8083/JS/Run/SwitchBinaryOff(4,0)',
       type: 'GET',
     });
   });
@@ -178,13 +181,13 @@ $(document).ready(function() {
   // 06 switch
   $(".switch-06-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=06',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=On&name=06',
       type: 'GET',
     });
   });
   $(".switch-06-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=06',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=Off&name=06',
       type: 'GET',
     });
   });
@@ -192,13 +195,13 @@ $(document).ready(function() {
   // 08 switch
   $(".switch-08-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=08',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=On&name=08',
       type: 'GET',
     });
   });
   $(".switch-08-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=08',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=Off&name=08',
       type: 'GET',
     });
   });
@@ -206,13 +209,13 @@ $(document).ready(function() {
   // 12 switch
   $(".switch-12-on").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=On&name=12',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=On&name=12',
       type: 'GET',
     });
   });
   $(".switch-12-off").click(function () {
     $.ajax({        
-      url: 'http://dosa.homeip.net:83/domotiga/index.php?action=Off&name=12',
+      url: 'http://' + dosa_homeip_net + ':8084/domotiga/index.php?action=Off&name=12',
       type: 'GET',
     });
   });
