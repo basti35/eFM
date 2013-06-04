@@ -14,10 +14,6 @@ def redirects(request):
 	request.session["webcam"] = False
 	return HttpResponseRedirect('/home/')
 
-def finmodal(request):
-	request.session["finmodal"] = True
-	return HttpResponseRedirect('/home/')
-
 # return all created apps
 def returnall(request):
 	Application.objects.all().update(installed=True)
@@ -43,7 +39,6 @@ def home(request):
 	sensor = False
 	webcam = False
 	form = ()
-	finmodal = False
 
 	 # if sensor registered
 	if 'id' in request.GET:
@@ -58,13 +53,6 @@ def home(request):
 	try:
 		if request.session["webcam"]:
 			webcam = True
-	except:
-		pass
-
-	try:
-		if request.session["finmodal"]:
-			finmodal = True
-			request.session["finmodal"] = False
 	except:
 		pass
 
@@ -101,7 +89,6 @@ def home(request):
         'form': form,
         'webcam' : webcam,
         'sensordata' : sensor,
-        'finmodal' : finmodal,
 		})
 
 # remove app

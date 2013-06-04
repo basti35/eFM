@@ -51,7 +51,7 @@ function waterLeak() {
     var answer = '';
     if (response == 255){
       answer = 'Water detected!';
-      $('#noteModal').modal('show');
+      // $('#noteModal').modal('show');
     }
     else {
       answer = 'No water';
@@ -98,9 +98,6 @@ $(document).ready(function() {
   // tooltips
   $("[rel='tooltip']").tooltip();
 
-  // popover
-  $("[rel='popover']").popover();
-
   // nicescroll
   $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
 
@@ -120,21 +117,9 @@ $(document).ready(function() {
   // lauch create app dialog if allowed
   $('#myModal').modal('show')
 
-  // lauch finmodal dialog if allowed
-  $('#finModal').modal('show')
-
   // scanning sensors
   $('.lataus').delay(5000).fadeOut(500);
   $('.tulos').delay(5500).fadeIn(500);
-
-  $(".aloita").click(function () {
-    $('.eka').delay(2000).fadeOut(500);
-    $('.toka').delay(2500).fadeIn(500);
-  });
-
-    $('#noteModal').on('hide', function () {
-    window.location.href = "/finmodal/";
-    })
 
 
 // --- DEVICE CONTROLS -------------------
@@ -219,11 +204,6 @@ $(document).ready(function() {
       type: 'GET',
     });
   });
-
-
-
-
-
 
 
 // -------------------------------------

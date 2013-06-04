@@ -13,8 +13,7 @@ urlpatterns = patterns('',
 
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
-    url(r'^webcam/$', webcam),
-    url(r'^finmodal/$', finmodal),
+    url(r'^webcam/$', webcam), # toggles webcam stream
     url(r'^home/all/$', returnall),
     url(r'^home/flush/$', flush),
     url(r'^remove/(?P<application_id>\d+)/$', remove),
@@ -24,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^manager/$', manager),
 
     url(r'^provider/$', provider),
+    url(r'^failure/(?P<failure_id>\d+)/$', failure),
 
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),

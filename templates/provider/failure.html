@@ -4,13 +4,10 @@
 {% block content %}<!-- template placeholder in 'base' -->
 
 
-
-{{ test }}
-
 <div class="hero-unit">
-  <p class="lead"><span class="muted">Domus platform has received an alert from device</span> {{ device }}</p>
+  <p class="lead"><span class="muted">Domus platform has received an alert from device</span> {{ device|capfirst }}</p>
   <img src="{{STATIC_URL}}img/devices/alert.png" />
-  <h1>{{ failure }}!</h1>
+  <h1>{{ failure|capfirst }}!</h1>
   <hr>
   <p>
     <a class="btn btn-primary btn-large">Look for solution</a>
