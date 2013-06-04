@@ -6,7 +6,7 @@ def provider(request):
 
 
 	# create your view business logic here and return to render data you need for templates
-	examplelist = serprovs.objects.all()
+	examplelist = Serprov.objects.all()
 
 
 	return render(request, 'provider/provider.html', { 		# define a html template to use
