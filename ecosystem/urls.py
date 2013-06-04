@@ -4,6 +4,7 @@ from home.views import *
 from services.views import *
 from manager.views import *
 from provider.views import *
+from notifications.views import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^manager/$', manager),
 
     url(r'^provider/$', provider),
+
+    url(r'^notifications/$', notifications),
 
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),
