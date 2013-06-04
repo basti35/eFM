@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^$', redirects), # redirects to home
     url(r'^home/$', home),
     url(r'^webcam/$', webcam),
+    url(r'^finmodal/$', finmodal),
     url(r'^home/all/$', returnall),
     url(r'^home/flush/$', flush),
     url(r'^remove/(?P<application_id>\d+)/$', remove),

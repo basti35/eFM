@@ -33,6 +33,7 @@ function equalHeight(group) {
     group.each(function() { $(this).height(tallest); });
 }
 
+
 // checks water sensor status
 function waterLeak() {
     var response = '';
@@ -47,12 +48,16 @@ function waterLeak() {
     var answer = '';
     if (response == 255){
       answer = 'Water detected!';
+      $('#noteModal').modal('show');
     }
     else {
       answer = 'No water';
     }
     $(".water").replaceWith(answer);
 }
+
+// equalheight
+equalHeight($(".equalize"));
 
 
 // gets energy consumption values
@@ -82,6 +87,10 @@ function doStuff() {
 
 // after page loaded
 $(document).ready(function() {
+  
+
+  // equalheight
+  equalHeight($(".equalize"));
 
   // tooltips
   $("[rel='tooltip']").tooltip();
@@ -91,9 +100,6 @@ $(document).ready(function() {
 
   // nicescroll
   $("html").niceScroll({cursorborder:"",cursorcolor:"#666",boxzoom:true});
-
-  // equalheight
-  equalHeight($(".equalize"));
 
   // fix thumbnails
   fixThumbnailMargins();
@@ -111,9 +117,21 @@ $(document).ready(function() {
   // lauch create app dialog if allowed
   $('#myModal').modal('show')
 
+  // lauch finmodal dialog if allowed
+  $('#finModal').modal('show')
+
   // scanning sensors
-  $('.lataus').delay(4000).fadeOut(500);
-  $('.tulos').delay(4500).fadeIn(500);
+  $('.lataus').delay(5000).fadeOut(500);
+  $('.tulos').delay(5500).fadeIn(500);
+
+  $(".aloita").click(function () {
+    $('.eka').delay(2000).fadeOut(500);
+    $('.toka').delay(2500).fadeIn(500);
+  });
+
+    $('#noteModal').on('hide', function () {
+    window.location.href = "/finmodal/";
+    })
 
 
 // --- DEVICE CONTROLS -------------------
@@ -198,6 +216,9 @@ $(document).ready(function() {
       type: 'GET',
     });
   });
+
+
+
 
 
 

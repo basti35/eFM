@@ -8,6 +8,7 @@
 
 {% block content %}
 
+
 <div class="active item sisalto"><!-- modules-->
   <div class="row-fluid">
     <ul class="thumbnails">
@@ -26,7 +27,7 @@
             </ul>
             <p class="lead">{{ app.lead }}</p>
 
-        
+
             {% if app.sensor.code = "01" %}
             <!-- 01 Webcam -->
             {% if webcam %}
@@ -83,7 +84,7 @@
             <!-- 05 Water -->
             <div class="well">
               <button class="refresh btn btn-mini pull-right" type="button"><i class="icon-refresh"></i></button>
-              <p>Status</p>
+              <a data-toggle="modal" data-target="#noteModal">Status</a>
               <p class="lead"><span class="water">No connection</span></p>
             </div>
             {% endif %}
@@ -130,9 +131,9 @@
       </li>
 
       {% empty %}
-          <div class="caption">
-            <a href="#newModal" data-toggle="modal" class="btn btn-large" type="button"><i class="icon-plus"></i> Add new feature</a>
-          </div>
+      <div class="caption">
+        <a href="#newModal" data-toggle="modal" class="btn btn-large" type="button"><i class="icon-plus"></i> Add new feature</a>
+      </div>
       {% endfor %}
 
     </ul>
@@ -191,7 +192,7 @@
         <!-- result -->
         <div class="tulos">
 
-        {% if sensordata %}
+          {% if sensordata %}
           {% for sensor in sensordata %}
           <ul class="thumbnails">
             <li class="span2">
@@ -209,7 +210,7 @@
             </div>
           </div>
           {% endfor %}
-        {% else %}
+          {% else %}
           <ul class="thumbnails">
             <li class="span2">
               <div class="thumbnail">
@@ -224,42 +225,238 @@
         </div>
         {% endif %}
 
-        </div>
-        <div class="modal-footer">
-          <div class="lataus">
-          </div><!-- load -->
-          <div class="tulos"><!-- result -->
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
-            <a class="btn btn-success" href="#2tab" data-toggle="tab">Continue</a>
-          </div>
+      </div>
+      <div class="modal-footer">
+        <div class="lataus">
+        </div><!-- load -->
+        <div class="tulos"><!-- result -->
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+          <a class="btn btn-success" href="#2tab" data-toggle="tab">Continue</a>
         </div>
       </div>
+    </div>
 
-      <!-- 2. Modal -->
-      <div class="tab-pane fade" id="2tab">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 id="myModalLabel">Your custom module</h3>
+    <!-- 2. Modal -->
+    <div class="tab-pane fade" id="2tab">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Your custom module</h3>
+      </div>
+      <div class="modal-body">
+        <h3>Feature details</h3>
+        <form action="/home/" method="post">{% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn btn-primary btn-large pull-right" type="submit" value="Ready" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+
+
+
+
+<!-- Modal -->
+<div id="noteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <!-- dynamic modalcontent --> 
+
+  <div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade in active" id="dialog1">
+
+      <!-- dialog1 -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Alert</h3>
+      </div>
+      <div class="modal-body">
+        <p>Domus platform has received following alert:</p>
+
+        <div class="alert alert-block alert-warning">
+          <div class="muted"><small>05 Water detector</small></div>
+          <div class="caption">
+            <ul class="inline">
+              <li><img src="{{STATIC_URL}}img/devices/alert.png" /></li>
+              <li><h3>Water detected!</h3></li>
+            </ul>
+            <p class="lead">Your water detector sensor has recognized a possible water leak!</p>
+          </div>
         </div>
-        <div class="modal-body">
-          <h3>Feature details</h3>
-          <form action="/home/" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input class="btn btn-primary btn-large pull-right" type="submit" value="Ready" />
-          </form>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Ignore</button>
+        <a href="#dialog2" data-toggle="tab" class="btn btn-primary">Look for solution</a>
+      </div>
+
+    </div>
+
+
+    <div class="tab-pane fade" id="dialog2">
+
+      <!-- dialog2 -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Solution</h3>
+      </div>
+      <div class="modal-body">
+        <p class="lead">Choose the best service provider for you</p>
+
+        <div class="well">
+          <span>DALE PLUMBING Inc</span><br>
+          <span class="muted"><small>Available</small> </span> June 5th - 5PM<br>
+          <span class="muted"><small>Price</small> </span> $30/hour<br>
+          <span class="muted"><small>Rating</small> </span> 
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <a href="#dialog3" data-toggle="tab" class="aloita btn btn-primary">Confirm</a>
         </div>
-        <div class="modal-footer">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Back</button>
+
+        <div class="well">
+          <span>GARY’S PLUMBING Inc</span><br>
+          <span class="muted"><small>Available</small> </span> June 6th - 8PM<br>
+          <span class="muted"><small>Price</small> </span> $25/hour<br>
+          <span class="muted"><small>Rating</small> </span>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <i class="icon-star-empty"></i>
+          <a href="#dialog3" data-toggle="tab" class="aloita btn btn-primary">Confirm</a>
+        </div>
+
+        <div class="well">
+          <span>PALO ALTO PLUMBING Inc</span><br>
+          <span class="muted"><small>Available</small> </span> June 5th - 7PM<br>
+          <span class="muted"><small>Price</small> </span> $35/hour<br>
+          <span class="muted"><small>Rating</small> </span>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <i class="icon-star"></i>
+          <a href="#dialog3" data-toggle="tab" class="aloita btn btn-primary">Confirm</a>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#dialog1" data-toggle="tab" class="btn">Back</a>
+      </div>
+
+    </div>
+
+
+    <div class="tab-pane fade" id="dialog3">
+
+      <!-- dialog3 -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+        <h3 id="myModalLabel">
+          <span class="eka">Requesting...</span><!-- load -->
+          <span class="toka">Confirmed</span><!-- result -->
+        </h3>
+
+      </div>
+      <div class="modal-body">
+
+
+        <div class="eka">
+          <p class="lead">Waiting for confirmation</p>
+          <div class="progress progress-striped active">
+            <div class="bar" style="width: 100%;"></div>
+          </div>
+        </div><!-- load -->
+
+        <div class="toka"><!-- result -->
+          <p class="lead">Service provider has confirmed your request</p>
+          <p>Service confirmed for June 5th - 5PM</p>
+
+          <div class="well">
+            <span class="lead">DALE PLUMBING Inc</span><br>
+            <span class="muted"><small>Price</small> </span> $30/hour<br>
+            <span class="muted"><small>Rating</small> </span> 
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <div class="eka"></div><!-- load -->
+        <div class="toka"><!-- result -->
+          <a href="#dialog2" data-toggle="tab" class="btn">Back</a>
+          <button id="laita" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
         </div>
       </div>
 
     </div>
+
   </div>
-  {% endif %}
+
+</div>
 
 
-{% endblock %}
+<!-- ./dynamic modalcontent --> 
+
+</div>
+
+{% if finmodal %}
+<!-- Modal -->
+<div id="finModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="false">×</button>
+    <h3 id="myModalLabel">Review</h3>
+  </div>
+  <div class="modal-body">
+    <p class="lead">Your problem is solved</p>
+    <p>Total price: $ 60 (2 hours)</p>
+
+    <hr>
+
+    <p>Evaluate the service</p>
+
+    <form>
+      <label>Rating</label>
+      <fieldset class="rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+      </fieldset><br><br>
+
+      <fieldset>
+        <label>Leave comments</label>
+        <input type="text" placeholder="">
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Accept and File</button>
+  </div>
+</div>
+{% endif %}
 
 
-{% block script %}
-{% endblock %}
+
+
+      {% endblock %}
+
+
+      {% block script %}
+
+      {% endblock %}
