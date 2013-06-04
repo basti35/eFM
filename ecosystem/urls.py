@@ -30,6 +30,8 @@ urlpatterns = patterns('',
     url(r'^review/(?P<provider_id>\d+)/$', review),
     url(r'^archieve/$', archieve),
 
+    url(r'^notifications/$', notifications),
+
     # ex: /services/1/
     #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),
     #url(r'^myapp/', include('mysite.myapp.urls')),

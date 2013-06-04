@@ -121,6 +121,7 @@ def review(request, provider_id):
 # file review and redirect to home page
 def archieve(request):
 	if request.method == 'POST':
+		"""
 		try:
 			form = AppForm(request.POST)
 			if form.is_valid():
@@ -136,8 +137,21 @@ def archieve(request):
 					)
 				n.save()
 				request.session['user'] = form.cleaned_data['owner']
+				"""
 				return HttpResponseRedirect('/home/')
 		except:
 			pass
 	else:
 		return HttpResponseRedirect('/home/')
+
+
+
+# notes
+def notifications(request):
+
+
+	return render(request, 'provider/notifications.html', {
+		'title': 'notifications',
+
+
+		})
