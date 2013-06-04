@@ -138,9 +138,11 @@ def archieve(request):
 				n.save()
 				request.session['user'] = form.cleaned_data['owner']
 				"""
-				return HttpResponseRedirect('/home/')
+		return HttpResponseRedirect('/home/')
+		"""
 		except:
 			pass
+			"""
 	else:
 		return HttpResponseRedirect('/home/')
 
