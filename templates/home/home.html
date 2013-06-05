@@ -28,6 +28,9 @@
             <p class="lead">{{ app.lead }}</p>
 
 
+
+          <!--end of sensor boxes-->
+
             {% if app.sensor.code = "01" %}
             <!-- 01 Webcam -->
             {% if webcam %}
@@ -125,6 +128,61 @@
             </div>
             {% endif %}
 
+
+
+            {% if app.sensor.code = "32" %}
+            <!-- 03 Multiswitch -->
+            <div class="well">
+              <ul class="inline" id="multiclick">
+                <li><button class="btn btn-success 32-multiswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger 32-multiswitch-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+              <hr>
+              <ul class="unstyled">
+                <li>Energy consumption</li>
+                <li><small>Current <span class="energy-current">-</span> W</small></li>
+                <li><small>Total <span class="energy-total">-</span> kWh</small></li>
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if app.sensor.code = "14" %}
+            <!-- 06 Switch -->
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success 14-multiswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger 14-multiswitch-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if app.sensor.code = "93" %}
+            <!-- 04 Lampswitch -->
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success 93-lampswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger 93-lampswitch-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
+
+            {% if app.sensor.code = "97" %}
+            <!-- 04 Lampswitch -->
+            <div class="well">
+              <ul class="inline">
+                <li><button class="btn btn-success 97-lampswitch-on" type="button">On</button></li>
+                <li><button class="btn btn-danger 97-lampswitch-off" type="button">Off</button></li>
+                <li>Switch</li>
+              </ul>
+            </div>
+            {% endif %}
+
+
+
+          <!--end of sensor boxes-->
 
           </div>
         </div>

@@ -4,9 +4,9 @@
  */
 
 var dosa_homeip_net = "127.0.0.1";
-var z-wave-server-220 = "192.168.1.101";
-var z-wave-server-110 = "192.168.1.116";
-var 433-server = "192.168.1.103";
+var z_wave_server_220 = "192.168.1.101";
+var z_wave_server_110 = "192.168.1.116";
+var server_433 = "192.168.1.103";
 
 function fixThumbnailMargins() {
     $('.row-fluid .thumbnails').each(function () {
@@ -46,7 +46,7 @@ function equalHeight(group) {
 function waterLeak() {
     var response = '';
     $.ajax({ type: "GET",   
-      url: 'http://' + z-wave-server-220 + ':8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
+      url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[3].instances[0].commandClasses[156].data[5].sensorState.valueOf()',   
      async: false,
      success : function(text)
      {
@@ -68,11 +68,11 @@ function waterLeak() {
 equalHeight($(".equalize"));
 
 
-// gets energy consumption values
-function doStuff() {
+// gets energy consumption values - 220V
+function doStuff_220() {
   var current = '';
   $.ajax({ type: "GET",   
-    url: 'http://' + z-wave-server-220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
+    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
     async: false,
     success : function(text)
     {
@@ -82,7 +82,7 @@ function doStuff() {
   $(".energy-current").replaceWith(current);
   var total = '';
   $.ajax({ type: "GET",   
-    url: 'http://' + z-wave-server-220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
     async: false,
     success : function(text)
     {
@@ -92,6 +92,30 @@ function doStuff() {
   $(".energy-total").replaceWith(total);
 }
 
+
+// gets energy consumption values - 110V
+function doStuff_110() {
+  var current = '';
+  $.ajax({ type: "GET",   
+    url: 'http://' + z_wave_server_110 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',
+    async: false,
+    success : function(text)
+    {
+     current = (text).toFixed(2);
+    }
+  });
+  $(".energy-current").replaceWith(current);
+  var total = '';
+  $.ajax({ type: "GET",   
+    url: 'http://' + z_wave_server_110 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    async: false,
+    success : function(text)
+    {
+     total = (text).toFixed(2);
+    }
+  });
+  $(".energy-total").replaceWith(total);
+}
 
 // after page loaded
 $(document).ready(function() {
@@ -133,32 +157,32 @@ $(document).ready(function() {
   // 03 multiswitch - switch
   $(".multiswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-220 + ':8083/JS/Run/SwitchBinaryOn(2,0)',
+      url: 'http://' + z_wave_server_220 + ':8083/JS/Run/SwitchBinaryOn(2,0)',
       type: 'GET',
     });
   });
   $(".multiswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-220 + ':8083/JS/Run/SwitchBinaryOff(2,0)',
+      url: 'http://' + z_wave_server_220 + ':8083/JS/Run/SwitchBinaryOff(2,0)',
       type: 'GET',
     });
   });
 
 
   // 03 multiswitch - energy
-  $("#multiclick").click(doStuff);
+  $("#multiclick").click(doStuff_220);
 
 
   // 04 lampswitch
   $(".lampswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-220 + ':8083/JS/Run/SwitchBinaryOn(4,0)',
+      url: 'http://' + z_wave_server_220 + ':8083/JS/Run/SwitchBinaryOn(4,0)',
       type: 'GET',
     });
   });
   $(".lampswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-220 + ':8083/JS/Run/SwitchBinaryOff(4,0)',
+      url: 'http://' + z_wave_server_220 + ':8083/JS/Run/SwitchBinaryOff(4,0)',
       type: 'GET',
     });
   });
@@ -171,13 +195,13 @@ $(document).ready(function() {
   // 06 switch
   $(".switch-06-on").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=On&name=06',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=On&name=06',
       type: 'GET',
     });
   });
   $(".switch-06-off").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=Off&name=06',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=Off&name=06',
       type: 'GET',
     });
   });
@@ -185,13 +209,13 @@ $(document).ready(function() {
   // 08 switch
   $(".switch-08-on").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=On&name=08',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=On&name=08',
       type: 'GET',
     });
   });
   $(".switch-08-off").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=Off&name=08',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=Off&name=08',
       type: 'GET',
     });
   });
@@ -199,13 +223,13 @@ $(document).ready(function() {
   // 12 switch
   $(".switch-12-on").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=On&name=12',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=On&name=12',
       type: 'GET',
     });
   });
   $(".switch-12-off").click(function () {
     $.ajax({        
-      url: 'http://' + 433-server + ':8084/domotiga/index.php?action=Off&name=12',
+      url: 'http://' + server_433 + ':8084/domotiga/index.php?action=Off&name=12',
       type: 'GET',
     });
   });
@@ -216,33 +240,33 @@ $(document).ready(function() {
   // 32 multiswitch - switch
   $(".32-multiswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(2,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOn(2,0)',
       type: 'GET',
     });
   });
   $(".32-multiswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(2,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOff(2,0)',
       type: 'GET',
     });
   });
 
 
   // 32 multiswitch - energy
-  $("#32-multiclick").click(doStuff);
+  $("#32-multiclick").click(doStuff_110);
 
 
 
   // 14 switch switch
   $(".14-multiswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(3,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOn(3,0)',
       type: 'GET',
     });
   });
   $(".14-multiswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(3,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOff(3,0)',
       type: 'GET',
     });
   });
@@ -251,13 +275,13 @@ $(document).ready(function() {
   // 93 lampswitch
   $(".93-lampswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(4,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOn(4,0)',
       type: 'GET',
     });
   });
   $(".93-lampswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(4,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOff(4,0)',
       type: 'GET',
     });
   });
@@ -266,13 +290,13 @@ $(document).ready(function() {
   // 97 lampswitch
   $(".97-lampswitch-on").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(6,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOn(6,0)',
       type: 'GET',
     });
   });
   $(".97-lampswitch-off").click(function () {
     $.ajax({        
-      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(6,0)',
+      url: 'http://' + z_wave_server_110 + ':8083/JS/Run/SwitchBinaryOff(6,0)',
       type: 'GET',
     });
   });
