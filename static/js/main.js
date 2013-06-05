@@ -211,6 +211,74 @@ $(document).ready(function() {
   });
 
 
+//--------110-VOLTS-DEVICES-----------------
+
+  // 32 multiswitch - switch
+  $(".32-multiswitch-on").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(2,0)',
+      type: 'GET',
+    });
+  });
+  $(".32-multiswitch-off").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(2,0)',
+      type: 'GET',
+    });
+  });
+
+
+  // 32 multiswitch - energy
+  $("#32-multiclick").click(doStuff);
+
+
+
+  // 14 switch switch
+  $(".14-multiswitch-on").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(3,0)',
+      type: 'GET',
+    });
+  });
+  $(".14-multiswitch-off").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(3,0)',
+      type: 'GET',
+    });
+  });
+
+
+  // 93 lampswitch
+  $(".93-lampswitch-on").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(4,0)',
+      type: 'GET',
+    });
+  });
+  $(".93-lampswitch-off").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(4,0)',
+      type: 'GET',
+    });
+  });
+
+
+  // 97 lampswitch
+  $(".97-lampswitch-on").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOn(6,0)',
+      type: 'GET',
+    });
+  });
+  $(".97-lampswitch-off").click(function () {
+    $.ajax({        
+      url: 'http://' + z-wave-server-110 + ':8083/JS/Run/SwitchBinaryOff(6,0)',
+      type: 'GET',
+    });
+  });
+
+
+
 // -------------------------------------
 
 
