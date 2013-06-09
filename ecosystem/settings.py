@@ -20,14 +20,6 @@ DATABASES = {
         'HOST': 'web327.webfaction.com',
         'PORT': '5432'
     }
-#    'provider': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': 'djprovdb',
-#        'USER': 'efm',
-#        'PASSWORD': 'ME310-eFM',
-#        'HOST': 'web327.webfaction.com',
-#        'PORT': '5432'
-#    }
 }
 
 # INTERNAL_IPS = ('127.0.0.1',)
@@ -154,8 +146,6 @@ INSTALLED_APPS = (
     'manager',
     'provider',
     'south',
-    # 'debug_toolbar',
-
 )
 
 # A sample logging configuration. The only tangible logging
@@ -186,8 +176,6 @@ LOGGING = {
         },
     }
 }
-
-
 
 try:
    from local_settings import *

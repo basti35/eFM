@@ -8,7 +8,6 @@
 
 {% block content %}
 
-
 <div class="active item sisalto"><!-- modules-->
   <div class="row-fluid">
     <ul class="thumbnails">
@@ -27,9 +26,7 @@
             </ul>
             <p class="lead">{{ app.lead }}</p>
 
-
-
-          <!--end of sensor boxes-->
+            <!-- sensor boxes -->
 
             {% if app.sensor.code = "01" %}
             <!-- 01 Webcam -->
@@ -46,13 +43,11 @@
             {% endif %}
             
 
-            
             {% if app.sensor.code = "02" %}
             <!-- 02 Temperature -->
             <script src="http://temperature-widget.herokuapp.com/ninja_widget.js?widget_token=rqlshdoiectupilajlvsbsgkfdqpahnbhdgxubflwgbxmfftyv"></script>
             {% endif %}
 
-            
             {% if app.sensor.code = "03" %}
             <!-- 03 Multiswitch -->
             <div class="well">
@@ -70,7 +65,6 @@
             </div>
             {% endif %}
 
-            
             {% if app.sensor.code = "04" %}
             <!-- 04 Lampswitch -->
             <div class="well">
@@ -82,7 +76,6 @@
             </div>
             {% endif %}
 
-            
             {% if app.sensor.code = "05" %}
             <!-- 05 Water -->
             <div class="well">
@@ -92,7 +85,6 @@
             </div>
             {% endif %}
 
-            
             {% if app.sensor.code = "06" %}
             <!-- 06 Switch -->
             <div class="well">
@@ -104,7 +96,6 @@
             </div>
             {% endif %}
 
-            
             {% if app.sensor.code = "08" %}
             <!-- 08 Switch -->
             <div class="well">
@@ -116,7 +107,6 @@
             </div>
             {% endif %}
 
-            
             {% if app.sensor.code = "12" %}
             <!-- 12 Switch -->
             <div class="well">
@@ -127,8 +117,6 @@
               </ul>
             </div>
             {% endif %}
-
-
 
             {% if app.sensor.code = "32" %}
             <!-- 03 Multiswitch -->
@@ -180,9 +168,7 @@
             </div>
             {% endif %}
 
-
-
-          <!--end of sensor boxes-->
+            <!--end of sensor boxes-->
 
           </div>
         </div>
@@ -197,7 +183,6 @@
     </ul>
   </div>
 </div><!-- ./modules-->
-
 
 
 <!-- Sensor ID Modal -->
@@ -222,13 +207,11 @@
 </div><!-- ./sensor ID -->
 
 
-
 {% if appform %}
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
   <div id="myTabContent" class="tab-content">
-
 
     <!-- 1. Modal -->
     <div class="tab-pane fade in active" id="1tab">
@@ -315,11 +298,5 @@
   </div>
 </div>
 {% endif %}
-
-
-{% endblock %}
-
-
-{% block script %}
 
 {% endblock %}

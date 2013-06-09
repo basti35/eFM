@@ -1,13 +1,9 @@
-/**
- * Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules.
- * Recall the function when the floating of the elements changed.
- */
-
 var dosa_homeip_net = "127.0.0.1";
 var z_wave_server_220 = "192.168.1.101";
 var z_wave_server_110 = "192.168.1.116";
 var server_433 = "192.168.1.103";
 
+// Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules
 function fixThumbnailMargins() {
     $('.row-fluid .thumbnails').each(function () {
         var $thumbnails = $(this).children(),
@@ -24,6 +20,7 @@ function fixThumbnailMargins() {
         });
     });
 }
+
 // Fix the margins when potentally the floating changed
 $(window).resize(fixThumbnailMargins);
 
@@ -38,9 +35,6 @@ function equalHeight(group) {
     });    
     group.each(function() { $(this).height(tallest); });
 }
-
-
-
 
 // checks water sensor status
 function waterLeak() {
@@ -67,7 +61,6 @@ function waterLeak() {
 // equalheight
 equalHeight($(".equalize"));
 
-
 // gets energy consumption values - 220V
 function doStuff_220() {
   var current = '';
@@ -91,7 +84,6 @@ function doStuff_220() {
   });
   $(".energy-total").replaceWith(total);
 }
-
 
 // gets energy consumption values - 110V
 function doStuff_110() {
@@ -120,7 +112,6 @@ function doStuff_110() {
 // after page loaded
 $(document).ready(function() {
   
-
   // equalheight
   equalHeight($(".equalize"));
 
@@ -150,9 +141,7 @@ $(document).ready(function() {
   $('.lataus').delay(5000).fadeOut(500);
   $('.tulos').delay(5500).fadeIn(500);
 
-
 // --- DEVICE CONTROLS -------------------
-
 
   // 03 multiswitch - switch
   $(".multiswitch-on").click(function () {
@@ -168,10 +157,8 @@ $(document).ready(function() {
     });
   });
 
-
   // 03 multiswitch - energy
   $("#multiclick").click(doStuff_220);
-
 
   // 04 lampswitch
   $(".lampswitch-on").click(function () {
@@ -187,10 +174,8 @@ $(document).ready(function() {
     });
   });
 
-
   // 05 water
   $(".refresh").click(waterLeak);
-
 
   // 06 switch
   $(".switch-06-on").click(function () {
@@ -234,7 +219,6 @@ $(document).ready(function() {
     });
   });
 
-
 //--------110-VOLTS-DEVICES-----------------
 
   // 32 multiswitch - switch
@@ -251,11 +235,8 @@ $(document).ready(function() {
     });
   });
 
-
   // 32 multiswitch - energy
   $("#32-multiclick").click(doStuff_110);
-
-
 
   // 14 switch switch
   $(".14-multiswitch-on").click(function () {
@@ -271,7 +252,6 @@ $(document).ready(function() {
     });
   });
 
-
   // 93 lampswitch
   $(".93-lampswitch-on").click(function () {
     $.ajax({        
@@ -285,7 +265,6 @@ $(document).ready(function() {
       type: 'GET',
     });
   });
-
 
   // 97 lampswitch
   $(".97-lampswitch-on").click(function () {
@@ -301,10 +280,6 @@ $(document).ready(function() {
     });
   });
 
-
-
 // -------------------------------------
-
-
 
 });

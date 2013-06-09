@@ -17,13 +17,10 @@ urlpatterns = patterns('',
     url(r'^home/all/$', returnall),
     url(r'^home/flush/$', flush),
     url(r'^remove/(?P<application_id>\d+)/$', remove),
-
+    
     url(r'^services/$', services),
-
     url(r'^manager/$', manager),
 
-
-    # provider steps
     url(r'^failure/(?P<failure_id>\d+)/$', failure),
     url(r'^provider/(?P<field_id>\d+)/$', provider),
     url(r'^confirmation/(?P<provider_id>\d+)/$', confirmation),
@@ -31,10 +28,6 @@ urlpatterns = patterns('',
     url(r'^archieve/$', archieve),
 
     url(r'^notifications/$', notifications),
-
-    # ex: /services/1/
-    #url(r'^(?P<app_id>\d+)/$', views.detail, name='detail'),
-    #url(r'^myapp/', include('mysite.myapp.urls')),
 
     # Examples:
     # url(r'^$', 'ecosystem.views.home', name='home'),
@@ -45,5 +38,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-
 )

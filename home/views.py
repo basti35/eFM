@@ -32,7 +32,6 @@ def webcam(request):
 		request.session["webcam"] = True
 	return HttpResponseRedirect('/home/')
 
-
 # home page view
 def home(request):
 
@@ -100,7 +99,6 @@ def remove(request, application_id):
 	except:
 		pass
 	return HttpResponseRedirect('/home/')
-
 
 ICON_CHOICES = (
 				('video', 'video'),

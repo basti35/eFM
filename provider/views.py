@@ -7,7 +7,6 @@ from home.models import Sensor
 
 import datetime
 
-
 # 1 step: failure alert
 def failure(request, failure_id):
 
@@ -34,26 +33,13 @@ def failure(request, failure_id):
 		bfield = False
 
 	request.session["field"] = bfield
-	"""
-	try:
-		p = Intervention(
-			status = 1,
-			failure = failure_id,
-			)
-		p.save()
-	except:
-		pass
-	"""
 
 	return render(request, 'provider/failure.html', {
 		'title': 'failure',
 		'failure' : failure,
 		'device' : device,
 		'providerfield' : bfield,
-
-
 		})
-
 
 # 2 step: choosing provider
 def provider(request, field_id):
@@ -71,9 +57,7 @@ def provider(request, field_id):
 		'title': 'provider',
 		'providerdata' : providers,
 		'field' : field,
-
 		})
-
 
 # 3 step: confirmating deal
 def confirmation(request, provider_id):
@@ -94,9 +78,7 @@ def confirmation(request, provider_id):
 		'title': 'provider',
 		'provider' : provider,
 		'stars' : stars,
-
 		})
-
 
 # 4 step: review
 def review(request, provider_id):
@@ -115,47 +97,19 @@ def review(request, provider_id):
 		'title': 'provider',
 		'provider' : provider,
 		'price' : price,
-
-
 		})
-
 
 # file review and redirect to home page
 def archieve(request):
 	if request.method == 'POST':
 		"""
-		try:
-			form = AppForm(request.POST)
-			if form.is_valid():
-				p = request.session['latest_sensor'][0]
-				r = Sensor.objects.get(id=p.id)
-				n = Application(
-			    	name = form.cleaned_data['feature_name'],
-			    	lead = form.cleaned_data['description'],
-			    	author = form.cleaned_data['owner'],
-			    	icon = form.cleaned_data['icon'],
-					sensor = r,
-					installed = True
-					)
-				n.save()
-				request.session['user'] = form.cleaned_data['owner']
-				"""
-		return HttpResponseRedirect('/home/')
+        TODO: add code for writing review in the db
 		"""
-		except:
-			pass
-			"""
 	else:
 		return HttpResponseRedirect('/home/')
 
-
-
 # notes
 def notifications(request):
-
-
 	return render(request, 'provider/notifications.html', {
 		'title': 'notifications',
-
-
 		})

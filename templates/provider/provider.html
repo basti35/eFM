@@ -1,37 +1,35 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-
 
 <div class="hero-unit">
 
   <p class="lead"><span class="muted">Choose the best </span>{{ field.get_field_display|capfirst }} <span class="muted">service provider for you</span></p>
   <div class="row-fluid">
 
-            <h3>Top provider suggestions</h3>
+    <h3>Top provider suggestions</h3>
 
-            <table class="table table-hover">
+    <table class="table table-hover">
 
-              <tr class="success">
-                <th>Service company</th>
-                <th>City</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th></th>
-              </tr>
+      <tr class="success">
+        <th>Service company</th>
+        <th>City</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th></th>
+      </tr>
 
-              {% for provider in providerdata %}
-              <tr>
-                <td><em><span class="lead">{{ provider.name }}</span></em></td>
-                <td><em>{{ provider.city }}</em></td>
-                <td><em>{{ provider.hourly_price }} $/h</em></td>
-                <td><em>{{ provider.avg_rate }}</em></td>
-                <td><a href="/confirmation/{{ provider.id }}" class="btn btn-primary" type="button">Choose</a></td>
-              </tr>
-              {% endfor %}
+      {% for provider in providerdata %}
+      <tr>
+        <td><em><span class="lead">{{ provider.name }}</span></em></td>
+        <td><em>{{ provider.city }}</em></td>
+        <td><em>{{ provider.hourly_price }} $/h</em></td>
+        <td><em>{{ provider.avg_rate }}</em></td>
+        <td><a href="/confirmation/{{ provider.id }}" class="btn btn-primary" type="button">Choose</a></td>
+      </tr>
+      {% endfor %}
 
-            </table>
+    </table>
 
   </div>
 

@@ -2,7 +2,6 @@
 
 from django.db import models
 
-
 # sensor brand, manufacturing company
 class Brand(models.Model):
 	name = models.CharField(max_length=20)
@@ -54,4 +53,3 @@ class Application(models.Model):
 		return self.name
 	class Meta:
 		ordering = ['date']
-
