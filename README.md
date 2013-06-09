@@ -20,40 +20,63 @@ eFM/							# project folder
 
 	ecosystem/						# project core
 		settings.py 				# settings for server (postgre db on webfaction)
-		local_settings.py 			# settings for local dev env (local db sqlite3)
 		urls.py 					# connects urls to defined view functions
 		views.py 					# view functions, renders content to front end using html templates
 		wsgi.py 					# web server gateway interface configs
 
-	<app name>/					# app folder (see 'feedback' app for example)
+	home/						# app folder
 		admin.py 					# registers app data to be shown is django default admin dashboard
-		views.py 					# app specific views (for 'feedback' app not used, data for home screen in project views)
-		models.py 					# django database api, classes for data structures. note: syntax not db-specific
-		test.py 					# basic python unit tests, let's skip it :)
+		views.py 					# app specific views, defines home screen modules and actions
+		models.py 					# django database api, data of sensors, features etc.
 
-	templates/					# folder html templates
+	services/					# app folder
+		admin.py 					# registers app data to be shown is django default admin dashboard
+		views.py 					# app specific views, gets external services
+		models.py 					# django database api, data of services
+
+	manager/					# app folder
+		views.py 					# app specific views, gets installed sensors (imported from home app)
+
+	provider/					# app folder
+		admin.py 					# registers app data to be shown is django default admin dashboard
+		views.py 					# app specific views, shows service provider search dialog
+		models.py 					# django database api, data of service providers
+
+	templates/					# html templates (shows data via template tags and variables)
 		base.html 					# base template for every page, defines static file links, wrapper frame etc.
-		home.html 					# homescreen view
-		apps/						# folder for app templates
-			example.html 			# extends the base.html and show dynamic data via template tags and variables
+		home/						# folder for app templates
+			home.html 					# extends the base.html, shows home page modules and installation dialog
+		services/					# folder for app templates
+			services.html 				# extends the base.html, shows external services
+		manager/					# folder for app templates
+			manager.html 				# extends the base.html, shows installed sensors and user data
+		provider/					# folder for app templates
+			notifications.html 			# shows links to failure alerts (temporary setup)
+			failure.html				# failure alert
+			provider.html 				# service provider search
+			confirmation.html 			# service confirmation
+			review.html 				# review after service
 		admin/						# folder for django admin page customs
+			base_site.html 			# customizes admin home page
 
 	static/						# folder for static files
 		css/						# css style sheets
-			bootsrap.min.css 			# very nice css library
+			bootsrap.min.css 			# css library (some customizing done directly to it)
 			bootsrap-responsive.min.css	# enables responsive design, optimized for three screen sizes
-			darkstrap.css 				# specific dark theme override for bootstrap
+			boot-custom.css 			# specific additional css rules to customize bootstrap
 			main.css 					# custom styles
-			ubuntu-title-fr-1.1.ttf 	# ubuntu style font
 		img/						# pic folder
+			devices/					# pictures of sensors
 			icons/						# general icons
+			logo/						# domus and efm logos
+			services/					# service pictures
+			provider/					# provider logos
 			pics/						# specific pictures
 		js/							# javascript folder
-			bootstrap.min.js 			# very nice js library
+			jquery-2.0.2.min.js 		# js library
+			bootstrap.min.js 			# jquery library
+			jquery.nicescroll.min.js 	# plugin for custom scroll bar
 			main.js 					# custom js, loaded before page content
-			base.js 					# custom js, loaded after page content
-
-	media/						# folder for data files (for example user uploads etc)
 
 
 
