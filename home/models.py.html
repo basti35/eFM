@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>/media/basti/data/DT/eFM/home/models.py.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v10">
+<meta name="syntax" content="python">
+<meta name="settings" content="use_css,pre_wrap,expand_tabs">
+<style type="text/css">
+<!--
+pre { white-space: pre-wrap; font-family: monospace; color: #000000; background-color: #ffffff; }
+body { font-family: monospace; color: #000000; background-color: #ffffff; }
+.Constant { color: #ff6060; }
+.Identifier { color: #00ffff; }
+.Statement { color: #ffff00; }
+.PreProc { color: #ff40ff; }
+.Comment { color: #8080ff; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment"># HOME MODELS</span>
+
+<span class="PreProc">from</span> django.db <span class="PreProc">import</span> models
+
+
+<span class="Comment"># sensor brand, manufacturing company</span>
+<span class="Statement">class</span> <span class="Identifier">Brand</span>(models.Model):
+  name = models.CharField(max_length=<span class="Constant">20</span>)
+  logo = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">100</span>)
+  <span class="Statement">def</span> <span class="Identifier">__unicode__</span>(self):
+    <span class="Statement">return</span> self.name
+
+<span class="Comment"># sensor connection technology</span>
+<span class="Statement">class</span> <span class="Identifier">Technology</span>(models.Model):
+  name = models.CharField(max_length=<span class="Constant">20</span>)
+  logo = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">100</span>)
+  <span class="Statement">def</span> <span class="Identifier">__unicode__</span>(self):
+    <span class="Statement">return</span> self.name
+
+<span class="Comment"># sensor</span>
+<span class="Statement">class</span> <span class="Identifier">Sensor</span>(models.Model):
+  label = models.CharField(max_length=<span class="Constant">20</span>)
+  number = models.PositiveIntegerField(null=<span class="Identifier">True</span>)
+  code = models.CharField(max_length=<span class="Constant">20</span>)
+  lead = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">25</span>)
+  picture = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">100</span>)
+  brand = models.ForeignKey(Brand, blank=<span class="Identifier">True</span>, null=<span class="Identifier">True</span>)
+  technology = models.ForeignKey(Technology, blank=<span class="Identifier">True</span>, null=<span class="Identifier">True</span>)
+  price = models.DecimalField(blank=<span class="Identifier">True</span>, null=<span class="Identifier">True</span>, max_digits=<span class="Constant">6</span>, decimal_places=<span class="Constant">2</span>)
+  installed = models.BooleanField()
+  date = models.DateField(auto_now_add=<span class="Identifier">True</span>)
+  <span class="Statement">def</span> <span class="Identifier">__unicode__</span>(self):
+    <span class="Statement">return</span> self.label
+  <span class="Statement">class</span> <span class="Identifier">Meta</span>:
+    ordering = [<span class="Constant">'code'</span>]
+
+<span class="Comment"># application type category</span>
+<span class="Statement">class</span> <span class="Identifier">Category</span>(models.Model):
+  name = models.CharField(max_length=<span class="Constant">20</span>)
+  <span class="Statement">def</span> <span class="Identifier">__unicode__</span>(self):
+    <span class="Statement">return</span> self.name
+
+<span class="Comment"># application</span>
+<span class="Statement">class</span> <span class="Identifier">Application</span>(models.Model):
+  name = models.CharField(max_length=<span class="Constant">15</span>)
+  lead = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">25</span>)
+  icon = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">25</span>)
+  sensor = models.ForeignKey(Sensor)
+  category = models.ForeignKey(Category, blank=<span class="Identifier">True</span>, null=<span class="Identifier">True</span>)
+  author = models.CharField(blank=<span class="Identifier">True</span>, max_length=<span class="Constant">15</span>)
+  installed = models.BooleanField()
+  date = models.DateField(auto_now_add=<span class="Identifier">True</span>)
+  <span class="Statement">def</span> <span class="Identifier">__unicode__</span>(self):
+    <span class="Statement">return</span> self.name
+  <span class="Statement">class</span> <span class="Identifier">Meta</span>:
+    ordering = [<span class="Constant">'date'</span>]
+
+</pre>
+</body>
+</html>

@@ -1,7 +1,15 @@
+////Rome Value
 var dosa_homeip_net = "127.0.0.1";
-var z_wave_server_220 = "192.168.1.101";
-var z_wave_server_110 = "192.168.1.116";
+var z_wave_server_220 = "192.168.1.103";
+//var z_wave_server_110 = "192.168.1.116";
 var server_433 = "192.168.1.103";
+
+
+////US Value
+//var dosa_homeip_net = "127.0.0.1";
+//var z_wave_server_220 = "192.168.1.101";
+//var z_wave_server_110 = "192.168.1.116";
+//var server_433 = "192.168.1.103";
 
 // Adds 0 left margin to the first thumbnail on each row that don't get it via CSS rules
 function fixThumbnailMargins() {
@@ -65,7 +73,7 @@ equalHeight($(".equalize"));
 function doStuff_220() {
   var current = '';
   $.ajax({ type: "GET",   
-    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
+    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
     async: false,
     success : function(text)
     {
@@ -75,7 +83,7 @@ function doStuff_220() {
   $(".energy-current").replaceWith(current);
   var total = '';
   $.ajax({ type: "GET",   
-    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[0].val.valueOf()',   
+    url: 'http://' + z_wave_server_220 + ':8083/ZWaveAPI/Run/devices[2].instances[0].commandClasses[50].data[2].val.valueOf()',   
     async: false,
     success : function(text)
     {
