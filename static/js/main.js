@@ -120,9 +120,6 @@ function doStuff_110() {
 // after page loaded
 $(document).ready(function() {
   
-  // equalheight
-  equalHeight($(".equalize"));
-
   // tooltips
   $("[rel='tooltip']").tooltip();
 
@@ -289,5 +286,11 @@ $(document).ready(function() {
   });
 
 // -------------------------------------
+
+
+});
+$(document).load(function() {
+  // equalheight
+  equalHeight($(".equalize"));
 
 });
